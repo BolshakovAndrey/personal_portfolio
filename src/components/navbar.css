@@ -67,3 +67,76 @@
 .animate-toggle span:last-child {
     transform: rotate(-45deg) translate(1px, 1px);
 }
+
+@media screen and (min-width: 1024px) {
+    .nav__menu {
+        all: unset;
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    .nav {
+        position: fixed;
+        inset-block: 0;
+        right: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav__item {
+        margin-block: 20px;
+    }
+
+    .nav__link {
+        padding: 0;
+        border-bottom: none;
+        background-color: var(--container-color);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .nav__icon {
+        font-size: 20px;
+        margin-inline: auto;
+    }
+
+    .nav__name {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--first-color);
+        height: 100%;
+        line-height: 50px;
+        padding-inline: 30px 25px;
+        border-radius: 30px;
+        font-size: var(--small-font-size);
+        color: var(--text-white);
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        transition: all 0.3s, ease;
+    }
+
+    .nav__link:hover .nav__name {
+        right: 27px;
+        color: var(--text-white);
+        opacity: 1;
+        visibility: visible;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .nav__link:hover,
+    .active-nav {
+        background-color: var(--first-color);
+    }
+
+    .nav__link:hover .nav__icon,
+    .active-nav .nav__icon {
+        color: var(--text-white);
+    }
+
+}
