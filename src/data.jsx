@@ -1,6 +1,21 @@
-import {FaBriefcase, FaCode, FaEnvelopeOpen, FaFolderOpen, FaGraduationCap, FaHome, FaUser,} from 'react-icons/fa';
+import {
+  FaBriefcase,
+  FaCode,
+  FaCss3,
+  FaEnvelopeOpen,
+  FaFolderOpen,
+  FaGraduationCap,
+  FaHome,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaPython,
+  FaReact,
+  FaUser,
+} from 'react-icons/fa';
 
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
+import {SiMongodb, SiPostgresql} from "react-icons/si";
 
 import Work1 from './assets/project-1.jpeg';
 import Work2 from './assets/project-2.jpg';
@@ -115,25 +130,25 @@ export const personalInfo = [
 export const stats = [
   {
     id: 1,
-    no: '12+',
+    no: '10+',
     title: 'Years of <br /> Experience',
   },
 
   {
     id: 2,
-    no: '97+',
+    no: '37+',
     title: 'Completed <br /> Projects',
   },
 
   {
     id: 3,
-    no: '81+',
+    no: '13+',
     title: 'Happy <br /> Customers',
   },
 
   {
     id: 4,
-    no: '53+',
+    no: '3+',
     title: ' Awards <br /> Won',
   },
 ];
@@ -197,53 +212,63 @@ export const resume = [
 export const skills = [
   {
     id: 1,
-    title: 'Html',
-    percentage: '25',
-  },
-
-  {
-    id: 2,
-    title: 'Javascript',
-    percentage: '89',
-  },
-
-  {
-    id: 3,
-    title: 'Css',
+    title: 'HTML5',
     percentage: '70',
   },
 
   {
+    id: 2,
+    title: 'CSS3',
+    percentage: '65',
+  },
+
+  {
+    id: 3,
+    title: 'JavaScript',
+    percentage: '75',
+  },
+
+  {
     id: 4,
-    title: 'Php',
-    percentage: '66',
+    title: 'React.js',
+    percentage: '55',
   },
 
   {
     id: 5,
-    title: 'Wordpress',
-    percentage: '95',
+    title: 'Node.js',
+    percentage: '65',
   },
 
   {
     id: 6,
-    title: 'Jquery',
-    percentage: '50',
+    title: 'Python',
+    percentage: '85',
   },
 
   {
     id: 7,
-    title: 'Angular',
+    title: 'PostgreSQL',
     percentage: '65',
   },
 
   {
     id: 8,
-    title: 'React',
-    percentage: '45',
+    title: 'MongoDB',
+    percentage: '55',
   },
 ];
 
+export const icons = {
+  HTML5: <FaHtml5 size={50}/>,
+  JavaScript: <FaJs size={50}/>,
+  CSS3: <FaCss3 size={50}/>,
+  Python: <FaPython size={50}/>,
+  "Node.js": <FaNodeJs size={50}/>,
+  "React.js": <FaReact size={50}/>,
+  PostgreSQL: <SiPostgresql size={50}/>,
+  MongoDB: <SiMongodb size={50}/>,
+}
 export const portfolio = [
   {
     id: 1,
