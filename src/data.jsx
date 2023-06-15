@@ -54,25 +54,25 @@ export const personalInfo = [
   {
     id: 1,
     title: 'First Name : ',
-    description: 'Steve',
+    description: 'Andrei',
   },
 
   {
     id: 2,
     title: 'Last Name : ',
-    description: 'Milner',
+    description: 'Bolshakov',
   },
 
   {
     id: 3,
     title: 'Age : ',
-    description: '27 Years',
+    description: '47 Years',
   },
 
   {
     id: 4,
     title: 'Nationality : ',
-    description: 'Tunisian',
+    description: 'Russian',
   },
 
   {
@@ -84,7 +84,7 @@ export const personalInfo = [
   {
     id: 6,
     title: 'Address : ',
-    description: 'Tunis',
+    description: 'Tashkent',
   },
 
   {
@@ -96,19 +96,19 @@ export const personalInfo = [
   {
     id: 8,
     title: 'Email : ',
-    description: 'you@mail.com',
+    description: 'abolshakovy@gmail.com',
   },
 
   {
     id: 9,
-    title: 'Skype : ',
-    description: 'steve.milner',
+    title: 'Telegram : ',
+    description: '@Bolshakov_Andrey',
   },
 
   {
     id: 10,
-    title: 'Langages : ',
-    description: 'French, English',
+    title: 'Languages : ',
+    description: 'Russian, English',
   },
 ];
 
