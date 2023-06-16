@@ -14,8 +14,9 @@ const Contact = () => {
                 <div className="contact__data">
                     <h3 className="contact__title">Don't be Shy !</h3>
 
-                    <p className="contact description">
-                        Feel free to get in touch with me. I am always open to discussing
+                    <p className="contact__description">
+                        Feel free to get in touch with me. <br/>
+                        I am always open to discussing
                         new projects, creative ideas or opportunities to be part of your
                         visions
                     </p>
@@ -26,7 +27,7 @@ const Contact = () => {
 
                             <div className="info__title">
                                 <span className="info__title">Mail me</span>
-                                <span className="info__desc">abolshakovy@mail.com</span>
+                                <h4 className="info__desc">abolshakovy@mail.com</h4>
                             </div>
                         </div>
 
@@ -35,7 +36,7 @@ const Contact = () => {
 
                             <div className="info__title">
                                 <span className="info__title">Call me</span>
-                                <span className="info__desc">+123455678</span>
+                                <h4 className="info__desc">+123455678</h4>
                             </div>
                         </div>
 
@@ -43,19 +44,19 @@ const Contact = () => {
 
                     <div className="contact__social">
                         <a
-                            href="https://linkin.com"
+                            href="https://www.linkedin.com/in/bolshakovandrei/"
                             className="contact__social-link">
                             <FaLinkedin/>
                         </a>
 
                         <a
-                            href="https://telegram.org"
+                            href="https://t.me/Bolshakov_Andrey"
                             className="contact__social-link">
                             <FaTelegram/>
                         </a>
 
                         <a
-                            href="https://github.com"
+                            href="https://github.com/BolshakovAndrey"
                             className="contact__social-link">
                             <FaGithubSquare/>
                         </a>
@@ -75,9 +76,10 @@ const Contact = () => {
                         <div className="form__input-div">
                             <input type="text" placeholder="Your Subject" className="form__control"/>
                         </div>
+                    </div>
 
                         <div className="form__input-div">
-                            <textarea placeholder="Your Message" className="form__control"></textarea>
+                            <textarea placeholder="Your Message" className="form__control textarea"></textarea>
                         </div>
 
                         <button className="button">
@@ -87,7 +89,6 @@ const Contact = () => {
                             </span>
                         </button>
 
-                    </div>
                 </form>
             </div>
 
