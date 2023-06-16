@@ -5,6 +5,7 @@ import {FaArrowRight} from "react-icons/fa";
 import "./home.css"
 
 const Home = () => {
+    // TODO добавить трапецию на домашний экран
     return (
         <section className="home section grid">
             <img src={Profile} alt="" className="home__img"/>

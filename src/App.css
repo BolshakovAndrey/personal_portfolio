@@ -39,6 +39,15 @@
 }
 
 /*=======================Base =============================*/
+.dark-theme {
+    --title-color: hsl(0, 0%, 100%);
+    --text-color: hsl(0, 0%, 80%);
+    --body-color: hsl(0, 0%, 7%);
+    --container-color: hsl(0, 1%, 17%);
+    --border-color: hsl(0, 0%, 15%);
+}
+
+/*=======================Base =============================*/
 * {
     margin: 0;
     padding: 0;

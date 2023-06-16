@@ -2,20 +2,39 @@ import React, {useEffect, useState} from 'react';
 import {themes} from "../../data";
 import ThemesItem from "./Themestem";
 import {FaCog} from "react-icons/fa";
-import {BsMoon} from "react-icons/bs";
+import {BsMoonFill, BsSun} from "react-icons/bs";
 import "./themes.css";
+
+const getStorageColor = () => {
+    let color = 'hsl(252, 35%, 51%)';
+    if (localStorage.getItem('color')) {
+        color = localStorage.getItem('color')
+    }
+    return color;
+}
 
 const Themes = () => {
     const [showSwitcher, setShowSwitcher] = useState(false);
-    const [color, setColor] = useState('red');
+    const [color, setColor] = useState(getStorageColor());
+    const [theme, setTheme] = useState('light-theme');
 
     const changeColor = (color) => {
         setColor(color);
     }
 
+    const toggleTheme = () => {
+        theme !== 'light-theme' ? setTheme('light-theme') : setTheme('dark-theme');
+
+    }
+
     useEffect(() => {
         document.documentElement.style.setProperty("--first-color", color);
+        localStorage.setItem("color", color);
     }, [color]);
+
+    useEffect(() => {
+        document.documentElement.className = theme;
+    }, [theme]);
 
     return (
         <div>
@@ -26,8 +45,8 @@ const Themes = () => {
                     <FaCog/>
                 </div>
 
-                <div className="theme__toggler">
-                    <BsMoon/>
+                <div className="theme__toggler" onClick={toggleTheme}>
+                    {theme === 'light-theme' ? <BsMoonFill/> : <BsSun/>}
                 </div>
 
                 <h3 className="style__switcher-title">Style Switcher</h3>
