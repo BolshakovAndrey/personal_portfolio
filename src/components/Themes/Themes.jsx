@@ -13,10 +13,18 @@ const getStorageColor = () => {
     return color;
 }
 
+const getStorageTheme = () => {
+    let theme = 'light-theme';
+    if (localStorage.getItem('theme')) {
+        theme = localStorage.getItem('theme')
+    }
+    return theme;
+}
+
 const Themes = () => {
     const [showSwitcher, setShowSwitcher] = useState(false);
     const [color, setColor] = useState(getStorageColor());
-    const [theme, setTheme] = useState('light-theme');
+    const [theme, setTheme] = useState(getStorageTheme());
 
     const changeColor = (color) => {
         setColor(color);
@@ -34,6 +42,7 @@ const Themes = () => {
 
     useEffect(() => {
         document.documentElement.className = theme;
+        localStorage.setItem("theme", theme);
     }, [theme]);
 
     return (

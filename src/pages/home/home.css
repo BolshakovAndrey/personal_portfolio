@@ -8,9 +8,10 @@
 
 .home__img {
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 30px;
     box-shadow: 0 0 8px hsla(0, 0%, 0%, 0.3);
+    z-index: 1;
 }
 
 .home__data {
@@ -45,4 +46,15 @@
 .home__description {
     line-height: 2.125;
     margin-block: 16px 32px;
+}
+
+.color__block {
+    position: fixed;
+    height: 200%;
+    width: 100%;
+    background-color: var(--first-color);
+    top: -50%;
+    left: -83%;
+    transform: rotate(-15deg);
+    Z-index: -1;
 }

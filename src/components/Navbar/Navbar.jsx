@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import "./navbar.css"
 
 const Navbar = () => {
-    const [showMenu, setShowMenu] = useState()
+    const [showMenu, setShowMenu] = useState(false)
 
     return (
         <nav className="nav">
@@ -24,7 +24,7 @@ const Navbar = () => {
                                     <h3 className="nav__name">{name}</h3>
                                 </NavLink>
                             </li>
-                        )
+                        );
                     })}
                 </ul>
             </div>
