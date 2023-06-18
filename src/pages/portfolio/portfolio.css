@@ -110,3 +110,29 @@
 .item__details {
     font-weight: var(--weight-600);
 }
+
+portfolio__container {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Переходы от одного разрешения к другому в средине между указанными точками */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .portfolio__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Десктопы 1024px */
+@media (max-width: 1024px) {
+    .portfolio__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Телефоны 425px */
+@media (max-width: 425px) {
+    .portfolio__container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

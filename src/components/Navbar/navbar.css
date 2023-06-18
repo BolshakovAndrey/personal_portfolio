@@ -85,9 +85,10 @@
     .nav {
         position: fixed;
         inset-block: 0;
-        right: 30px;
+        right: 20px;
         display: flex;
         align-items: center;
+        z-index: 1;
     }
 
     .nav__item {

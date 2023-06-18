@@ -46,6 +46,7 @@
 .home__description {
     line-height: 2.125;
     margin-block: 16px 32px;
+    margin-right: 25px;
 }
 
 .color__block {
@@ -57,4 +58,16 @@
     left: -83%;
     transform: rotate(-15deg);
     Z-index: -1;
+}
+
+@media (max-width: 485px) {
+    .color__block {
+        transform: rotate(-5deg);
+    }
+}
+
+@media (max-width: 425px) {
+    .color__block {
+        transform: rotate(0);
+    }
 }
