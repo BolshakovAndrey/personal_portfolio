@@ -95,3 +95,18 @@
     font-size: var(--h3-font-size);
     line-height: 64px;
 }
+
+@media only screen and (max-width: 768px) and (min-width: 391px) {
+
+    .contact__container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media only screen and (max-width: 525px) and (min-width: 391px) {
+
+    .form__input-group {
+        grid-template-columns: 1fr;
+    }
+}

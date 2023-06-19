@@ -60,14 +60,26 @@
     Z-index: -1;
 }
 
-@media (max-width: 485px) {
+@media (max-width: 525px) {
     .color__block {
         transform: rotate(-5deg);
     }
+
+    .home__img {
+        display: none;
+    }
+
+    .home {
+        margin-left: 85px;
+    }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 445px) {
     .color__block {
         transform: rotate(0);
+    }
+
+    .home {
+        margin-left: 55px;
     }
 }
