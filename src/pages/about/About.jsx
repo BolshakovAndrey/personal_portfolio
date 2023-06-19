@@ -4,7 +4,7 @@ import Stats from "../../components/Stats";
 import Skills from "../../components/Skills";
 import {FaDownload} from "react-icons/fa";
 import {resume} from "../../data"
-import CV from "../../assets/AndreBolshakov-CV.pdf"
+import CV from "../../assets/AndreyBolshakov-CV.pdf"
 import "./about.css"
 import ResumeItem from "../../components/ResumeItem";
 
@@ -26,10 +26,13 @@ const About = () => {
                             <Info/>
                         </ul>
 
-                        <a href={CV} className="button">
+                        <a href={CV}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="button">
                             Download CV{" "}
                             <span className="button__icon">
-                            <FaDownload/>
+                                <FaDownload/>
                             </span>
                         </a>
                     </div>

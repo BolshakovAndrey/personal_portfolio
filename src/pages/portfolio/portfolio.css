@@ -135,4 +135,8 @@ portfolio__container {
     .portfolio__container {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .modal__list {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

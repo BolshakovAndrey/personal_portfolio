@@ -82,6 +82,7 @@ ul {
 
 a {
     text-decoration: none;
+    color: var(--first-color)
 }
 
 button,
@@ -166,4 +167,10 @@ img {
     font-size: var(--large-font-size);
     text-align: center;
     line-height: 60px;
+}
+
+.url-links {
+    color: var(--text-white);
+    font-size: var(--small-font-size);
+    font-weight: var(--weight-600);
 }

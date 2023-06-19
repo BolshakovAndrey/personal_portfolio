@@ -17,8 +17,8 @@ import {
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
 import {SiMongodb, SiPostgresql} from "react-icons/si";
 
-import Work1 from './assets/project-1.jpeg';
-import Work2 from './assets/project-2.jpg';
+import Work1 from './assets/project-1.gif';
+import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
 import Work5 from './assets/project-5.jpg';
@@ -80,48 +80,31 @@ export const personalInfo = [
 
   {
     id: 3,
-    title: 'Age : ',
-    description: '47 Years',
-  },
-
-  {
-    id: 4,
-    title: 'Nationality : ',
-    description: 'Russian',
-  },
-
-  {
-    id: 5,
     title: 'Freelance : ',
     description: 'Available',
   },
 
   {
-    id: 6,
-    title: 'Address : ',
+    id: 4,
+    title: 'Location : ',
     description: 'Tashkent',
   },
 
-  {
-    id: 7,
-    title: 'Phone : ',
-    description: '+21621184010',
-  },
 
   {
-    id: 8,
+    id: 5,
     title: 'Email : ',
     description: 'abolshakovy@gmail.com',
   },
 
   {
-    id: 9,
+    id: 6,
     title: 'Telegram : ',
     description: '@Bolshakov_Andrey',
   },
 
   {
-    id: 10,
+    id: 7,
     title: 'Languages : ',
     description: 'Russian, English',
   },
@@ -158,54 +141,54 @@ export const resume = [
     id: 1,
     category: 'experience',
     icon: <FaBriefcase/>,
-    year: '2018 - PRESENT',
-    title: 'Web Developer <span> Envato </span>',
-    desc: 'Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore adipisicing elit,',
+    year: '2023 - PRESENT',
+    title: 'Web Developer <span> Freelancer </span>',
+    desc: 'Latest freelance project - advanced telegram bot for "GoodChemistry" shop',
   },
 
   {
     id: 2,
     category: 'experience',
     icon: <FaBriefcase/>,
-    year: '2013 - 2018',
-    title: 'UI/UX Designer <span> Themeforest </span>',
-    desc: 'Lorem incididunt dolor sit amet, consectetur eiusmod dunt doldunt dol elit, tempor incididunt',
+    year: '2022 - 2023',
+    title: 'Back-end Developer <span> Yandex.Practicum.Studio </span>',
+    desc: 'Project for the festival of young playwrights "Lubimovka"',
   },
 
   {
     id: 3,
     category: 'experience',
     icon: <FaBriefcase/>,
-    year: '2005 - 2013',
-    title: 'Consultant <span> Videohive </span>',
-    desc: 'Lorem ipsum dolor sit amet, tempor incididunt ut laboreconsectetur elit, sed do eiusmod tempor duntt',
+    year: '2021 - 2022',
+    title: 'Web Developer <span> Yandex Practicum </span>',
+    desc: "Apprenticeship, training on the course Web development.",
   },
 
   {
     id: 4,
     category: 'education',
     icon: <FaGraduationCap/>,
-    year: '2015',
-    title: 'Engineering Degree <span> Oxford University </span>',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do tempor incididunt ut labore',
+    year: '2021 - 2022',
+    title: 'Web Developer <span> Yandex Practicum </span>',
+    desc: "Apprenticeship, training on the course Web development.",
   },
 
   {
     id: 5,
     category: 'education',
     icon: <FaGraduationCap/>,
-    year: '2012',
-    title: 'Master Degree <span> KIEV University </span>',
-    desc: 'Lorem incididunt dolor sit amet, consectetur eiusmod dunt doldunt dol elit, tempor incididunt',
+    year: '2020 - 2021',
+    title: 'Back End Developer <span> Yandex Practicum </span>',
+    desc: 'Apprenticeship, Training on the course Python Bak-end Development.',
   },
 
   {
     id: 6,
     category: 'education',
     icon: <FaGraduationCap/>,
-    year: '2009',
-    title: 'Bachelor Degree <span> Tunis High School </span>',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut labore',
+    year: '2007 - 2009',
+    title: 'Master of Business Administration Degree <span> Moscow RANEPA </span>',
+    desc: 'Business Administration in Strategy Marketing and Management, General',
   },
 ];
 
@@ -213,19 +196,19 @@ export const skills = [
   {
     id: 1,
     title: 'HTML5',
-    percentage: '70',
+    percentage: '73',
   },
 
   {
     id: 2,
     title: 'CSS3',
-    percentage: '65',
+    percentage: '68',
   },
 
   {
     id: 3,
     title: 'JavaScript',
-    percentage: '75',
+    percentage: '71',
   },
 
   {
@@ -243,7 +226,7 @@ export const skills = [
   {
     id: 6,
     title: 'Python',
-    percentage: '85',
+    percentage: '84',
   },
 
   {
@@ -273,27 +256,29 @@ export const portfolio = [
   {
     id: 1,
     img: Work1,
-    title: 'Photo Editing',
+    title: 'Assistance bot',
     details: [
       {
         icon: <FiFileText/>,
-        title: 'Project : ',
-        desc: 'Photo',
+        title: '"GoodChemistry"',
+        desc: ' Telegram Bot',
       },
       {
         icon: <FiUser/>,
         title: 'Client : ',
-        desc: 'Dribble',
+        desc: '"💊GoodChemistry shop"',
       },
       {
         icon: <FaCode/>,
         title: 'Language : ',
-        desc: 'Adobe Photoshop',
+        desc: 'Python3 Aiogram',
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
-        desc: 'www.dribble.com',
+        desc: <a href="http://t.me/online_gc_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">Live</a>,
       },
     ],
   },
@@ -301,55 +286,64 @@ export const portfolio = [
   {
     id: 2,
     img: Work2,
-    title: 'Website Design',
+    title: 'Website - "The Place"',
     details: [
       {
         icon: <FiFileText/>,
-        title: 'Project : ',
-        desc: 'Website',
+        title: 'Mesto : ',
+        desc: "The social network.",
       },
       {
         icon: <FiUser/>,
-        title: 'Client : ',
-        desc: 'Dribble',
+        title: 'Github : ',
+        desc: <a href="https://github.com/BolshakovAndrey/react-mesto-api-full"
+                 target="_blank"
+                 rel="noopener noreferrer">Repo</a>,
       },
       {
+
         icon: <FaCode/>,
         title: 'Language : ',
-        desc: 'React JS',
+        desc: 'React.JS Node.Js',
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
-        desc: 'www.dribble.com',
-      },
+        desc: <a href="https://bolshakov.nomoredomains.xyz/"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo</a>,
+      }
     ],
   },
 
   {
     id: 3,
     img: Work3,
-    title: 'Video Editing',
+    title: 'Adaptive website',
     details: [
       {
         icon: <FiFileText/>,
-        title: 'Project : ',
-        desc: 'Video',
+        title: 'Traveling in Russia : ',
+        desc: 'Website',
       },
       {
         icon: <FiUser/>,
-        title: 'Client : ',
-        desc: 'Dribble',
+        title: 'Github : ',
+        desc: <a href="https://github.com/BolshakovAndrey/russian-travel"
+                 target="_blank"
+                 rel="noopener noreferrer">Repo</a>,
       },
       {
         icon: <FaCode/>,
         title: 'Language : ',
-        desc: 'Adobe Premium',
+        desc: "HTML5, CSS3, Figma",
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
-        desc: 'www.dribble.com',
+        desc: <a href="https://bolshakovandrey.github.io/russian-travel/"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo</a>,
       },
     ],
   },
@@ -357,27 +351,31 @@ export const portfolio = [
   {
     id: 4,
     img: Work4,
-    title: 'Video Editing',
+    title: 'Library website',
     details: [
       {
         icon: <FiFileText/>,
-        title: 'Project : ',
-        desc: 'Video',
+        title: '"Movies-explorer" - ',
+        desc: 'Web App',
       },
       {
         icon: <FiUser/>,
-        title: 'Client : ',
-        desc: 'Dribble',
+        title: 'Github : ',
+        desc: <a href="https://github.com/BolshakovAndrey/movies-explorer-frontend"
+                 target="_blank"
+                 rel="noopener noreferrer">Repo</a>,
       },
       {
         icon: <FaCode/>,
         title: 'Language : ',
-        desc: 'Adobe Premium',
+        desc: 'React.js Node.js',
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
-        desc: 'www.dribble.com',
+        desc: <a href="https://bolshakovav.nomoredomains.xyz/movies"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo</a>
       },
     ],
   },

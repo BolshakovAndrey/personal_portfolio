@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {FaEnvelopeOpen, FaGithubSquare, FaLinkedin, FaPhoneSquareAlt, FaTelegram,} from "react-icons/fa";
+import {FaEnvelopeOpen, FaGithubSquare, FaLinkedin, FaTelegram,} from "react-icons/fa";
 
 import {FiSend} from "react-icons/fi";
 import "./contanct.css"
@@ -28,15 +28,6 @@ const Contact = () => {
                             <div className="info__title">
                                 <span className="info__title">Mail me</span>
                                 <h4 className="info__desc">abolshakovy@mail.com</h4>
-                            </div>
-                        </div>
-
-                        <div className="info__item">
-                            <FaPhoneSquareAlt className="info__icon"/>
-
-                            <div className="info__title">
-                                <span className="info__title">Call me</span>
-                                <h4 className="info__desc">+123455678</h4>
                             </div>
                         </div>
 
