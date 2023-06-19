@@ -10,7 +10,7 @@ const Home = () => {
 
     useEffect(() => {
         const typed = new Typed(el.current, {
-            strings: ["Web Developer", "Backend Developer", "Frontend Developer", "Fullstack Developer", "Python Developer"],
+            strings: ["Web Developer", "Backend Developer", "Frontend Developer", "Full-Stack Developer", "Python Developer"],
             startDelay: 1000,
             typeSpeed: 50,
             backSpeed: 50,
