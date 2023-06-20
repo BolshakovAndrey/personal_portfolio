@@ -22,7 +22,7 @@ import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
 import Work5 from './assets/project-5.jpeg';
-import Work6 from './assets/project-6.jpg';
+import Work6 from './assets/project-6.jpeg';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -214,7 +214,7 @@ export const skills = [
   {
     id: 4,
     title: 'React.js',
-    percentage: '55',
+    percentage: '62',
   },
 
   {
@@ -238,7 +238,7 @@ export const skills = [
   {
     id: 8,
     title: 'MongoDB',
-    percentage: '55',
+    percentage: '58',
   },
 ];
 
@@ -380,20 +380,20 @@ export const portfolio = [
     ],
   },
 
-    {
-        id: 5,
-        img: Work5,
-        title: 'Webportal',
-        details: [
-            {
-                title: 'Stoked to be on the development team,  ',
-                desc: 'as a backend developer!',
-            },
-            {
-                title: 'Client : ',
-                desc: 'Lubimovka',
-            },
-            {
+  {
+    id: 5,
+    img: Work5,
+    title: 'Web-portal',
+    details: [
+      {
+        title: 'Stoked to be on the development team,  ',
+        desc: 'as a backend developer!',
+      },
+      {
+        title: 'Client : ',
+        desc: 'Lyubimovka Festival',
+      },
+      {
                 title: 'Language : ',
                 desc: 'Python, Django, React.js',
             },
@@ -409,27 +409,29 @@ export const portfolio = [
   {
     id: 6,
     img: Work6,
-    title: 'Photo Editing',
+    title: 'E-Shop',
     details: [
       {
         icon: <FiFileText/>,
         title: 'Project : ',
-        desc: 'Photo',
+        desc: 'E-Shop',
       },
       {
         icon: <FiUser/>,
         title: 'Client : ',
-        desc: 'Dribble',
+        desc: 'Toy4Joy',
       },
       {
         icon: <FaCode/>,
         title: 'Language : ',
-        desc: 'Adobe Photoshop',
+        desc: 'jQuery, Bootstrap',
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
-        desc: 'www.dibble.com',
+        desc: <a href="https://www.toy4joy.site/"
+                 target="_blank"
+                 rel="noopener noreferrer">Live</a>
       },
     ],
   },
