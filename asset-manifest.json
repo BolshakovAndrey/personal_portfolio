@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/personal_portfolio/index.html/static/css/main.90f61c90.css",
+    "main.js": "/personal_portfolio/index.html/static/js/main.435b83e2.js",
+    "static/js/787.1ed0c42c.chunk.js": "/personal_portfolio/index.html/static/js/787.1ed0c42c.chunk.js",
+    "static/media/project-1.gif": "/personal_portfolio/index.html/static/media/project-1.df61d3670cae7cd7b04e.gif",
+    "static/media/project-3.jpeg": "/personal_portfolio/index.html/static/media/project-3.d3dba107aed9234a6f8e.jpeg",
+    "static/media/project-4.jpeg": "/personal_portfolio/index.html/static/media/project-4.babdd9ce965afe43bb16.jpeg",
+    "static/media/project-2.jpeg": "/personal_portfolio/index.html/static/media/project-2.2d8ebc8eeeafb414e76b.jpeg",
+    "static/media/home.jpg": "/personal_portfolio/index.html/static/media/home.932a93ad6478ca5e29f2.jpg",
+    "static/media/project-5.jpg": "/personal_portfolio/index.html/static/media/project-5.f6885d316197f5d72029.jpg",
+    "static/media/project-6.jpg": "/personal_portfolio/index.html/static/media/project-6.f4df07761e8241c83a94.jpg",
+    "static/media/AndreyBolshakov-CV.pdf": "/personal_portfolio/index.html/static/media/AndreyBolshakov-CV.08da54d301b74876f073.pdf",
+    "static/media/close.svg": "/personal_portfolio/index.html/static/media/close.9a7c408a20e0307b12a567f75c0ccaed.svg",
+    "index.html": "/personal_portfolio/index.html/index.html",
+    "main.90f61c90.css.map": "/personal_portfolio/index.html/static/css/main.90f61c90.css.map",
+    "main.435b83e2.js.map": "/personal_portfolio/index.html/static/js/main.435b83e2.js.map",
+    "787.1ed0c42c.chunk.js.map": "/personal_portfolio/index.html/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90f61c90.css",
+    "static/js/main.435b83e2.js"
+  ]
+}
