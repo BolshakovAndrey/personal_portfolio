@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.90f61c90.css",
-    "main.js": "./static/js/main.4934b0f5.js",
+    "main.css": "./static/css/main.d35da626.css",
+    "main.js": "./static/js/main.abdde779.js",
     "static/js/787.1ed0c42c.chunk.js": "./static/js/787.1ed0c42c.chunk.js",
     "static/media/project-1.gif": "./static/media/project-1.df61d3670cae7cd7b04e.gif",
     "static/media/project-3.jpeg": "./static/media/project-3.d3dba107aed9234a6f8e.jpeg",
@@ -13,12 +13,12 @@
     "static/media/AndreyBolshakov-CV.pdf": "./static/media/AndreyBolshakov-CV.08da54d301b74876f073.pdf",
     "static/media/close.svg": "./static/media/close.9a7c408a20e0307b12a567f75c0ccaed.svg",
     "index.html": "./index.html",
-    "main.90f61c90.css.map": "./static/css/main.90f61c90.css.map",
-    "main.4934b0f5.js.map": "./static/js/main.4934b0f5.js.map",
+    "main.d35da626.css.map": "./static/css/main.d35da626.css.map",
+    "main.abdde779.js.map": "./static/js/main.abdde779.js.map",
     "787.1ed0c42c.chunk.js.map": "./static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90f61c90.css",
-    "static/js/main.4934b0f5.js"
+    "static/css/main.d35da626.css",
+    "static/js/main.abdde779.js"
   ]
 }
