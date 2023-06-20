@@ -151,7 +151,7 @@ export const resume = [
     category: 'experience',
     icon: <FaBriefcase/>,
     year: '2022 - 2023',
-    title: 'Back-end Developer <span> Yandex.Practicum.Studio </span>',
+    title: 'Backend Developer <span> Yandex.Practicum.Studio </span>',
     desc: 'Project for the festival of young playwrights "Lubimovka"',
   },
 
@@ -159,9 +159,9 @@ export const resume = [
     id: 3,
     category: 'experience',
     icon: <FaBriefcase/>,
-    year: '2021 - 2022',
+    year: '2020 - 2022',
     title: 'Web Developer <span> Yandex Practicum </span>',
-    desc: "Apprenticeship, training on the course Web development.",
+    desc: "Apprenticeship, training on the course Web development and Python Backend development.",
   },
 
   {
@@ -178,7 +178,7 @@ export const resume = [
     category: 'education',
     icon: <FaGraduationCap/>,
     year: '2020 - 2021',
-    title: 'Back End Developer <span> Yandex Practicum </span>',
+    title: 'BackEnd Developer <span> Yandex Practicum </span>',
     desc: 'Apprenticeship, Training on the course Python Bak-end Development.',
   },
 
