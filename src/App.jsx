@@ -1,4 +1,5 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+// import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
 
 import Navbar from "./components/Navbar/Navbar";
@@ -11,7 +12,7 @@ import Themes from "./components/Themes/Themes";
 
 function App() {
     return (
-        <BrowserRouter>
+        <Router>
             <Navbar/>
             <Themes/>
             <Routes>
@@ -20,7 +21,7 @@ function App() {
                 <Route path='portfolio' element={<Portfolio/>}/>
                 <Route path='contact' element={<Contact/>}/>
             </Routes>
-        </BrowserRouter>
+        </Router>
 
     )
 }
