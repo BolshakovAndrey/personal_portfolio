@@ -4,6 +4,7 @@ import {FaEnvelopeOpen, FaGithubSquare, FaLinkedin, FaTelegram,} from "react-ico
 
 import {FiSend} from "react-icons/fi";
 import "./contanct.css"
+import axios from "axios";
 
 const Contact = () => {
     // state
@@ -15,7 +16,22 @@ const Contact = () => {
     // submit event
     const handelSubmit = (e) => {
         e.preventDefault()
-        console.log(name, email, subject, message)
+        // console.log(name, email, subject, message)
+        const data = {
+            Name: name,
+            Email: email,
+            Subject: subject,
+            Message: message
+        }
+        axios.post('https://sheet.best/api/sheets/49b0e9e0-12d5-4879-a9b7-a82907ebb26a', data)
+            .then((response) => {
+                console.log(response);
+                // clearing form fields
+                setName('');
+                setEmail('');
+                setSubject('');
+                setMessage('');
+            })
     };
 
     return (
