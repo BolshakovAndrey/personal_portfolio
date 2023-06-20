@@ -21,7 +21,7 @@ import Work1 from './assets/project-1.gif';
 import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
-import Work5 from './assets/project-5.jpg';
+import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpg';
 
 import Theme1 from './assets/purple.png';
@@ -380,27 +380,29 @@ export const portfolio = [
     ],
   },
 
-  {
-    id: 5,
-    img: Work5,
-    title: 'Landing Page',
-    details: [
-      {
-        title: 'Project : ',
-        desc: 'Website',
-      },
-      {
-        title: 'Client : ',
-        desc: 'Dribble',
-      },
-      {
-        title: 'Language : ',
-        desc: 'React JS, Node JS',
-      },
-      {
-        title: 'Preview : ',
-        desc: 'www.dribble.com',
-      },
+    {
+        id: 5,
+        img: Work5,
+        title: 'Webportal',
+        details: [
+            {
+                title: 'Stoked to be on the development team,  ',
+                desc: 'as a backend developer!',
+            },
+            {
+                title: 'Client : ',
+                desc: 'Lubimovka',
+            },
+            {
+                title: 'Language : ',
+                desc: 'Python, Django, React.js',
+            },
+            {
+                title: 'Preview : ',
+                desc: <a href="https://lubimovka.art/"
+                         target="_blank"
+                         rel="noopener noreferrer">Live</a>
+            },
     ],
   },
 
