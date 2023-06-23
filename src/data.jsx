@@ -23,6 +23,7 @@ import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
 import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpeg';
+import Work7 from './assets/project-7.jpeg';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -435,6 +436,37 @@ export const portfolio = [
       },
     ],
   },
+
+  {
+    id: 7,
+    img: Work7,
+    title: 'Trading bots',
+    details: [
+      {
+        icon: <FiFileText/>,
+        title: 'Project : Trading robots ',
+        desc: '',
+      },
+      {
+        icon: <FiUser/>,
+        title: 'Client : ',
+        desc: 'Quant society',
+      },
+      {
+        icon: <FaCode/>,
+        title: 'Language : ',
+        desc: 'C#',
+      },
+      {
+        icon: <FiExternalLink/>,
+        title: 'Preview : ',
+        desc: <a href=""
+                 target="_blank"
+                 rel="noopener noreferrer">Demo</a>
+      },
+    ],
+  },
+
 ];
 
 export const themes = [
