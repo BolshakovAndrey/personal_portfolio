@@ -512,6 +512,7 @@ export const portfolio = [
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
+        // eslint-disable-next-line
         desc: <a href=""
                  target="_blank"
                  rel="noopener noreferrer">Demo</a>
