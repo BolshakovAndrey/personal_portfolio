@@ -15,7 +15,7 @@ const Skills = () => {
                                 {/* Использую название навыка, чтобы получить соответствующую иконку */}
                                 {icons[title]}
                                 <div style={{fontSize: 12, marginTop: 0}}>
-                                    <strong>{percentage}%</strong>
+                                    {/*<strong>{}</strong>*/}
                                 </div>
                             </CircularProgressbarWithChildren>
                         </div>

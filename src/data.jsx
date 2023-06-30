@@ -1,13 +1,17 @@
 import {
+  FaAws,
+  FaBootstrap,
   FaBriefcase,
   FaCode,
   FaCss3,
+  FaDocker,
   FaEnvelopeOpen,
   FaFolderOpen,
   FaGraduationCap,
   FaHome,
   FaHtml5,
   FaJs,
+  FaLinux,
   FaNodeJs,
   FaPython,
   FaReact,
@@ -15,7 +19,7 @@ import {
 } from 'react-icons/fa';
 
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
-import {SiMongodb, SiPostgresql} from "react-icons/si";
+import {SiDjango, SiExpress, SiMongodb, SiNginx, SiPostgresql, SiTypescript} from "react-icons/si";
 
 import Work1 from './assets/project-1.gif';
 import Work2 from './assets/project-2.jpeg';
@@ -196,62 +200,110 @@ export const resume = [
 export const skills = [
   {
     id: 1,
-    title: 'HTML5',
-    percentage: '73',
+    title: 'JavaScript',
+    percentage: '100',
   },
 
   {
     id: 2,
-    title: 'CSS3',
-    percentage: '68',
+    title: 'TypeScript',
+    percentage: '100',
   },
 
   {
     id: 3,
-    title: 'JavaScript',
-    percentage: '71',
+    title: 'Node.js',
+    percentage: '100',
   },
 
   {
     id: 4,
-    title: 'React.js',
-    percentage: '62',
+    title: 'Express.js',
+    percentage: '100',
   },
 
   {
     id: 5,
-    title: 'Node.js',
-    percentage: '65',
+    title: 'Python',
+    percentage: '100',
   },
 
   {
     id: 6,
-    title: 'Python',
-    percentage: '84',
+    title: 'Django',
+    percentage: '100',
   },
 
   {
     id: 7,
-    title: 'PostgreSQL',
-    percentage: '65',
+    title: 'Nginx',
+    percentage: '100',
   },
 
   {
     id: 8,
+    title: 'Linux',
+    percentage: '100',
+  },
+  {
+    id: 9,
+    title: 'HTML5',
+    percentage: '100',
+  },
+  {
+    id: 10,
+    title: 'CSS3',
+    percentage: '100',
+  },
+  {
+    id: 11,
+    title: 'React.js',
+    percentage: '100',
+  },
+  {
+    id: 12,
+    title: 'Bootstrap',
+    percentage: '100',
+  },
+  {
+    id: 13,
+    title: 'PostgreSQL',
+    percentage: '100',
+  },
+  {
+    id: 14,
     title: 'MongoDB',
-    percentage: '58',
+    percentage: '100',
+  },
+  {
+    id: 15,
+    title: 'Docker',
+    percentage: '100',
+  },
+  {
+    id: 16,
+    title: 'AWS',
+    percentage: '100',
   },
 ];
 
 export const icons = {
-  HTML5: <FaHtml5 size={50}/>,
-  JavaScript: <FaJs size={50}/>,
-  CSS3: <FaCss3 size={50}/>,
-  Python: <FaPython size={50}/>,
-  "Node.js": <FaNodeJs size={50}/>,
-  "React.js": <FaReact size={50}/>,
-  PostgreSQL: <SiPostgresql size={50}/>,
-  MongoDB: <SiMongodb size={50}/>,
+  Python: <FaPython size={60}/>,
+  JavaScript: <FaJs size={60}/>,
+  TypeScript: <SiTypescript size={60}/>,
+  "Node.js": <FaNodeJs size={60}/>,
+  "Express.js": <SiExpress size={60}/>,
+  Django: <SiDjango size={60}/>,
+  CSS3: <FaCss3 size={60}/>,
+  "React.js": <FaReact size={60}/>,
+  HTML5: <FaHtml5 size={60}/>,
+  PostgreSQL: <SiPostgresql size={60}/>,
+  MongoDB: <SiMongodb size={60}/>,
+  Docker: <FaDocker size={60}/>,
+  AWS: <FaAws size={60}/>,
+  Bootstrap: <FaBootstrap size={60}/>,
+  Linux: <FaLinux size={60}/>,
+  Nginx: <SiNginx size={60}/>,
 }
 export const portfolio = [
   {

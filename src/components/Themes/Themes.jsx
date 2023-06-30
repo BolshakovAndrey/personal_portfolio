@@ -8,18 +8,18 @@ import "./themes.css";
 const getStorageColor = () => {
     let color = 'hsl(252, 35%, 51%)';
     if (localStorage.getItem('color')) {
-        color = localStorage.getItem('color')
+        color = localStorage.getItem('color');
     }
     return color;
-}
+};
 
 const getStorageTheme = () => {
     let theme = 'light-theme';
     if (localStorage.getItem('theme')) {
-        theme = localStorage.getItem('theme')
+        theme = localStorage.getItem('theme');
     }
     return theme;
-}
+};
 
 const Themes = () => {
     const [showSwitcher, setShowSwitcher] = useState(false);
@@ -28,20 +28,22 @@ const Themes = () => {
 
     const changeColor = (color) => {
         setColor(color);
-    }
+    };
 
     const toggleTheme = () => {
         theme !== 'light-theme' ? setTheme('light-theme') : setTheme('dark-theme');
-
-    }
+    };
 
     useEffect(() => {
         document.documentElement.style.setProperty("--first-color", color);
+        document.documentElement.style.setProperty("transition", "background-color 0.3s ease");
         localStorage.setItem("color", color);
     }, [color]);
 
     useEffect(() => {
         document.documentElement.className = theme;
+        document.documentElement.style.setProperty("transition", "background-color 0.3s ease");
+
         localStorage.setItem("theme", theme);
     }, [theme]);
 
@@ -49,7 +51,7 @@ const Themes = () => {
         <div>
             <div className={`${showSwitcher ? "show-switcher" : ''} style__switcher`}>
                 <div className="style__switcher-toggler"
-                     onClick={() => setShowSwitcher(!setShowSwitcher())}
+                     onClick={() => setShowSwitcher(!showSwitcher)}
                 >
                     <FaCog/>
                 </div>
@@ -61,12 +63,12 @@ const Themes = () => {
                 <h3 className="style__switcher-title">Style Switcher</h3>
                 <div className="style__switcher-item">
                     {themes.map((theme, index) => {
-                        return <ThemesItem key={index} {...theme} changeColor={changeColor}/>
+                        return <ThemesItem key={index} {...theme} changeColor={changeColor}/>;
                     })}
                 </div>
                 <div
                     className="style__switcher-close"
-                    onClick={() => setShowSwitcher(!setShowSwitcher)}
+                    onClick={() => setShowSwitcher(!showSwitcher)}
                 >
                     &times;
                 </div>
