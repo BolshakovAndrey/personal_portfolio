@@ -147,12 +147,20 @@ export const resume = [
     category: 'experience',
     icon: <FaBriefcase/>,
     year: '2023 - PRESENT',
+    title: 'FullStack Web Developer <span> VoxLink </span>',
+    desc: 'JavaScript (TypeScript) FullStack developer for VoxLink',
+  },
+  {
+    id: 2,
+    category: 'experience',
+    icon: <FaBriefcase/>,
+    year: '2022 - 2023',
     title: 'Web Developer <span> Freelancer </span>',
     desc: 'Latest freelance project - advanced telegram bot for "GoodChemistry" shop',
   },
 
   {
-    id: 2,
+    id: 3,
     category: 'experience',
     icon: <FaBriefcase/>,
     year: '2022 - 2023',
@@ -161,7 +169,7 @@ export const resume = [
   },
 
   {
-    id: 3,
+    id: 4,
     category: 'experience',
     icon: <FaBriefcase/>,
     year: '2020 - 2022',
@@ -170,7 +178,7 @@ export const resume = [
   },
 
   {
-    id: 4,
+    id: 5,
     category: 'education',
     icon: <FaGraduationCap/>,
     year: '2021 - 2022',
@@ -179,7 +187,7 @@ export const resume = [
   },
 
   {
-    id: 5,
+    id: 6,
     category: 'education',
     icon: <FaGraduationCap/>,
     year: '2020 - 2021',
@@ -188,7 +196,7 @@ export const resume = [
   },
 
   {
-    id: 6,
+    id: 7,
     category: 'education',
     icon: <FaGraduationCap/>,
     year: '2007 - 2009',
