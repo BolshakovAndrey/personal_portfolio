@@ -28,6 +28,7 @@ import Work4 from './assets/project-4.jpeg';
 import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpeg';
 import Work7 from './assets/project-7.jpeg';
+import Work8 from './assets/Project-8.png';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -92,7 +93,7 @@ export const personalInfo = [
   {
     id: 4,
     title: 'Location : ',
-    description: 'Tashkent',
+    description: 'Beograd',
   },
 
 
@@ -111,7 +112,7 @@ export const personalInfo = [
   {
     id: 7,
     title: 'Languages : ',
-    description: 'Russian, English',
+    description: 'Russian, English, Serbian',
   },
 ];
 
@@ -314,6 +315,31 @@ export const icons = {
   Nginx: <SiNginx size={60}/>,
 }
 export const portfolio = [
+  {
+    id: 8,
+    img: Work8,
+    title: 'Visual Script Editor',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'A visual editor to design conversation scripts or any step-by-step process. Build visual scenarios with logical branching.',
+      },
+      {
+        icon: <FaCode />,
+        title: 'Technology : ',
+        desc: 'React.js',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="https://bolshakovandrey.github.io/qcodes-react-demo-pages/"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo</a>
+      },
+    ],
+  },
+
   {
     id: 1,
     img: Work1,
@@ -527,7 +553,6 @@ export const portfolio = [
       },
     ],
   },
-
 ];
 
 export const themes = [
