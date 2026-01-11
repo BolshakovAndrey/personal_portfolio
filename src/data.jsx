@@ -344,17 +344,24 @@ export const portfolio = [
   {
     id: 9,
     img: Work9,
-    title: 'Business Lunch Delivery Bot',
+    title: 'Delivery bot',
     details: [
       {
         icon: <FiFileText />,
         title: 'Project : ',
-        desc: 'Telegram bot for business lunch ordering and delivery management. Features include menu browsing, cart management, order processing, and Google Sheets integration.',
+        desc: 'Business Lunch Delivery',
+      },
+      {
+        icon: <FiUser />,
+        title: 'Bot : ',
+        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">@DeliveryBot_mvp_bot</a>,
       },
       {
         icon: <FaCode />,
-        title: 'Technology : ',
-        desc: 'Python, aiogram, SQLite, Google Sheets API',
+        title: 'Language : ',
+        desc: 'Python3 Aiogram',
       },
       {
         icon: <FiExternalLink />,
