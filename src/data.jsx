@@ -21,7 +21,7 @@ import {
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
 import {SiDjango, SiExpress, SiMongodb, SiNginx, SiPostgresql, SiTypescript} from "react-icons/si";
 
-import Work1 from './assets/project-1.jpeg';
+import Work1 from './assets/project-1.gif';
 import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
