@@ -317,63 +317,6 @@ export const icons = {
 }
 export const portfolio = [
   {
-    id: 8,
-    img: Work8,
-    title: 'Visual Script Editor',
-    details: [
-      {
-        icon: <FiFileText />,
-        title: 'Project : ',
-        desc: 'A visual editor to design conversation scripts or any step-by-step process. Build visual scenarios with logical branching.',
-      },
-      {
-        icon: <FaCode />,
-        title: 'Technology : ',
-        desc: 'React.js',
-      },
-      {
-        icon: <FiExternalLink />,
-        title: 'Preview : ',
-        desc: <a href="https://bolshakovandrey.github.io/qcodes-react-demo-pages/"
-                 target="_blank"
-                 rel="noopener noreferrer">Live Demo</a>
-      },
-    ],
-  },
-
-  {
-    id: 9,
-    img: Work9,
-    title: 'Delivery bot',
-    details: [
-      {
-        icon: <FiFileText />,
-        title: 'Project : ',
-        desc: 'Business Lunch Delivery',
-      },
-      {
-        icon: <FiUser />,
-        title: 'Bot : ',
-        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
-                 target="_blank"
-                 rel="noopener noreferrer">@DeliveryBot_mvp_bot</a>,
-      },
-      {
-        icon: <FaCode />,
-        title: 'Language : ',
-        desc: 'Python3 Aiogram',
-      },
-      {
-        icon: <FiExternalLink />,
-        title: 'Preview : ',
-        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
-                 target="_blank"
-                 rel="noopener noreferrer">Live</a>
-      },
-    ],
-  },
-
-  {
     id: 1,
     img: Work1,
     title: 'Assistance bot',
@@ -583,6 +526,63 @@ export const portfolio = [
         desc: <a href=""
                  target="_blank"
                  rel="noopener noreferrer">Demo</a>
+      },
+    ],
+  },
+
+  {
+    id: 8,
+    img: Work8,
+    title: 'Visual Script Editor',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'A visual editor to design conversation scripts or any step-by-step process. Build visual scenarios with logical branching.',
+      },
+      {
+        icon: <FaCode />,
+        title: 'Technology : ',
+        desc: 'React.js',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="https://bolshakovandrey.github.io/qcodes-react-demo-pages/"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo</a>
+      },
+    ],
+  },
+
+  {
+    id: 9,
+    img: Work9,
+    title: 'Delivery bot',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'Business Lunch Delivery',
+      },
+      {
+        icon: <FiUser />,
+        title: 'Bot : ',
+        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">@DeliveryBot_mvp_bot</a>,
+      },
+      {
+        icon: <FaCode />,
+        title: 'Language : ',
+        desc: 'Python3 Aiogram',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">Live</a>
       },
     ],
   },
