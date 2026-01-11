@@ -359,9 +359,9 @@ export const portfolio = [
       {
         icon: <FiExternalLink />,
         title: 'Preview : ',
-        desc: <a href="https://railway.com/project/eed78513-7633-4068-bb6d-37fa2d170665/service/19e16f45-7a9a-46dd-9eb3-48e580d14670?environmentId=2434f83f-5599-445d-b655-ab7ecca13598"
+        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
                  target="_blank"
-                 rel="noopener noreferrer">Live Demo (Railway)</a>
+                 rel="noopener noreferrer">Live</a>
       },
     ],
   },
