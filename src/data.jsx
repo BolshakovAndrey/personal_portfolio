@@ -29,7 +29,7 @@ import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpeg';
 import Work7 from './assets/project-7.jpeg';
 import Work8 from './assets/Project-8.png';
-import Work9 from './assets/project-9.png';
+import Work9 from './assets/project-9.gif';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
