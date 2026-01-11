@@ -21,7 +21,7 @@ import {
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
 import {SiDjango, SiExpress, SiMongodb, SiNginx, SiPostgresql, SiTypescript} from "react-icons/si";
 
-import Work1 from './assets/project-1.gif';
+import Work1 from './assets/project-1.jpeg';
 import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
@@ -29,6 +29,7 @@ import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpeg';
 import Work7 from './assets/project-7.jpeg';
 import Work8 from './assets/Project-8.png';
+import Work9 from './assets/project-9.png';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -336,6 +337,31 @@ export const portfolio = [
         desc: <a href="https://bolshakovandrey.github.io/qcodes-react-demo-pages/"
                  target="_blank"
                  rel="noopener noreferrer">Live Demo</a>
+      },
+    ],
+  },
+
+  {
+    id: 9,
+    img: Work9,
+    title: 'Business Lunch Delivery Bot',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'Telegram bot for business lunch ordering and delivery management. Features include menu browsing, cart management, order processing, and Google Sheets integration.',
+      },
+      {
+        icon: <FaCode />,
+        title: 'Technology : ',
+        desc: 'Python, aiogram, SQLite, Google Sheets API',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="https://railway.com/project/eed78513-7633-4068-bb6d-37fa2d170665/service/19e16f45-7a9a-46dd-9eb3-48e580d14670?environmentId=2434f83f-5599-445d-b655-ab7ecca13598"
+                 target="_blank"
+                 rel="noopener noreferrer">Live Demo (Railway)</a>
       },
     ],
   },
