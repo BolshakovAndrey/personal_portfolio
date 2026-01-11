@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(git -C /Users/andreybolshakov/WebstormProjects/portfolio log --oneline -2)"
-    ]
-  }
-}
