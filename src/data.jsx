@@ -30,6 +30,7 @@ import Work6 from './assets/project-6.jpeg';
 import Work7 from './assets/project-7.jpeg';
 import Work8 from './assets/Project-8.png';
 import Work9 from './assets/project-9.gif';
+import Work10 from './assets/project-marathon.gif';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -583,6 +584,41 @@ export const portfolio = [
         desc: <a href="http://t.me/DeliveryBot_mvp_bot"
                  target="_blank"
                  rel="noopener noreferrer">Live</a>
+      },
+    ],
+  },
+
+  {
+    id: 10,
+    img: Work10,
+    title: 'Marathon bot + Mini App',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'Telegram bot with integrated mini app',
+      },
+      {
+        icon: <FiUser />,
+        title: 'Repository : ',
+        desc: 'Private',
+      },
+      {
+        icon: <FaCode />,
+        title: 'Stack : ',
+        desc: 'Python3 Aiogram, FastAPI, React, Railway, Netlify',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="https://t.me/marathon2_test_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">Live in Telegram</a>
+      },
+      {
+        icon: <FiFileText />,
+        title: 'GIF Demo : ',
+        desc: 'Coming soon (replace src/assets/project-marathon.gif)',
       },
     ],
   },
