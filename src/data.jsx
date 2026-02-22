@@ -615,11 +615,6 @@ export const portfolio = [
                  target="_blank"
                  rel="noopener noreferrer">Live in Telegram</a>
       },
-      {
-        icon: <FiFileText />,
-        title: 'GIF Demo : ',
-        desc: 'Coming soon (replace src/assets/project-marathon.gif)',
-      },
     ],
   },
 ];
