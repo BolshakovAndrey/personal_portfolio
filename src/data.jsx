@@ -591,7 +591,7 @@ export const portfolio = [
   {
     id: 10,
     img: Work10,
-    title: 'Marathon bot + Mini App',
+    title: 'Fitness Marathon Assistant',
     details: [
       {
         icon: <FiFileText />,
