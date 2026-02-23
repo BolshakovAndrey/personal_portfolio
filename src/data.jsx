@@ -591,7 +591,7 @@ export const portfolio = [
   {
     id: 10,
     img: Work10,
-    title: 'Fitness Marathon Assistant',
+    title: 'AI Fitness-marathon Assistant',
     details: [
       {
         icon: <FiFileText />,
