@@ -87,7 +87,7 @@
     position: fixed;
     inset: 0;
     background-color: hsla(0, 0%, 0%, 0.5);
-    backdrop-filter: blur(8px);
+    /* backdrop-filter is handled by framer-motion now */
     z-index: 1000;
     display: grid;
     place-items: center;
@@ -96,56 +96,114 @@
 
 .portfolio__modal-content {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    max-width: 1000px;
+    max-width: 900px; /* Немного уменьшил для собранности */
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 32px;
-    border-radius: 16px;
+    padding: 40px;
+    border-radius: 20px;
     position: relative;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* Глубокая тень */
 }
 
-.modal__close {
-    position: sticky;
-    top: 8px;
-    float: right;
-    width: 25px;
-    height: 25px;
-    filter: invert(0.8);
+/* Скрываем скроллбар для красоты */
+.portfolio__modal-content::-webkit-scrollbar {
+    width: 0;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: transparent;
+    border: none;
     cursor: pointer;
     z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.modal__close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.modal__close-icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(0.6);
+}
+
+.dark-theme .modal__close-icon {
+    filter: invert(1);
 }
 
 .modal__title {
     text-align: center;
     color: var(--first-color);
     font-size: var(--h2-font-size);
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     letter-spacing: 1px;
+}
+
+/* Новая структура внутри модалки (Текст слева, Картинка справа) */
+.modal__body {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.modal__list {
+    flex: 1; /* Занимает доступное место слева */
+    display: grid;
+    grid-template-columns: 1fr; /* В один столбец для чистоты */
+    row-gap: 20px;
+}
+
+.modal__item {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 12px;
 }
 
 .item__icon {
     display: flex;
+    font-size: var(--h3-font-size);
+    color: var(--first-color);
+    transform: translateY(2px);
+}
+
+.item__info {
+    display: flex;
+    flex-direction: column;
 }
 
 .item__title,
-.item__details {
+.item__detail {
     color: var(--title-color);
     font-size: var(--small-font-size);
 }
 
-.modal__img {
-    width: 100%;
-    height: 600px;
-    object-fit: contain;
+.item__title {
+    font-weight: var(--weight-600);
+    margin-bottom: 4px;
 }
 
-.item__details {
-    font-weight: var(--weight-600);
+.modal__img-wrapper {
+    flex: 1.5; /* Картинка занимает чуть больше места */
+    border-radius: 12px;
+    overflow: hidden;
+    /* Легкая тень для самой картинки */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+.modal__img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
 }
 
 portfolio__container {
@@ -173,23 +231,18 @@ portfolio__container {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .modal__list {
-        grid-template-columns: repeat(1, 1fr);
+    /* Модальное окно на телефоне */
+    .modal__body {
+        flex-direction: column-reverse; /* Картинка сверху, текст снизу */
+        gap: 20px;
     }
 
     .modal__img {
         width: 100%;
-        height: 70%;
-        object-fit: cover;
+        max-height: 250px;
     }
 
-    .portfolio__modal {
-        position: fixed;
-        top: 0;
-        place-items: start;
-        background-color: hsla(0, 0%, 0%, 0.7);
-        z-index: 1000;
-        padding: 15px;
+    .portfolio__modal-content {
+        padding: 30px 20px;
     }
-
 }
