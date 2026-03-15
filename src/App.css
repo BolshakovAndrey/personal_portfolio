@@ -67,6 +67,47 @@ textarea {
 body {
     background-color: var(--body-color);
     color: var(--text-color);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 60vw;
+    height: 60vh;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -2;
+    opacity: 0.4;
+    pointer-events: none;
+    animation: blob-bounce 20s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+body::before {
+    background-color: var(--first-color);
+    top: -10%;
+    left: -10%;
+}
+
+body::after {
+    background-color: #b23afc;
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -10s;
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(5vw, 10vh) scale(1.1);
+    }
+    100% {
+        transform: translate(-5vw, -5vh) scale(0.9);
+    }
 }
 
 h1,
