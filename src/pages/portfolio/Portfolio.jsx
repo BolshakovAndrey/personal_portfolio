@@ -10,7 +10,7 @@ const categories = [
 ];
 
 const Portfolio = () => {
-    const [activeCategory, setActiveCategory] = useState('all');
+    const [activeCategory, setActiveCategory] = useState('bots');
 
     const filtered = portfolio
         .filter((item) => activeCategory === 'all' || item.category === activeCategory)

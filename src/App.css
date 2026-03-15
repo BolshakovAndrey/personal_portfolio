@@ -141,21 +141,23 @@ img {
     font-weight: var(--weight-500);
     position: relative;
     overflow: hidden;
-    transition: all 0.25s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.25s ease-in-out, box-shadow 0.3s ease;
 }
 
 .button:hover {
     color: var(--text-white);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .button::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: var(--first-color);
+    background: linear-gradient(135deg, var(--first-color), #b23afc);
     transform: translateX(100%);
     z-index: -1;
-    transition: all 0.3s ease-out;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .button:hover::before {
