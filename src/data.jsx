@@ -632,52 +632,17 @@ export const portfolio = [
 export const themes = [
   {
     id: 1,
-    name: 'Pacific Blue',
-    color: 'hsl(211, 40%, 36%)',
+    name: 'Royal Blue',
+    color: 'hsl(225, 73%, 57%)', // Отличный контраст, классика
   },
   {
     id: 2,
-    name: 'Space Black',
-    color: 'hsl(0, 0%, 20%)',
+    name: 'Deep Purple',
+    color: 'hsl(271, 76%, 53%)', // Глубокий модный цвет
   },
   {
     id: 3,
-    name: 'Titanium',
-    color: 'hsl(38, 12%, 60%)',
-  },
-  {
-    id: 4,
-    name: 'Deep Purple',
-    color: 'hsl(270, 30%, 35%)',
-  },
-  {
-    id: 5,
-    name: 'Midnight',
-    color: 'hsl(220, 30%, 15%)',
-  },
-  {
-    id: 6,
-    name: 'Product RED',
-    color: 'hsl(354, 85%, 44%)',
-  },
-  {
-    id: 7,
-    name: 'Alpine Green',
-    color: 'hsl(140, 20%, 40%)',
-  },
-  {
-    id: 8,
-    name: 'Starlight',
-    color: 'hsl(40, 30%, 85%)',
-  },
-  {
-    id: 9,
-    name: 'Sierra Blue',
-    color: 'hsl(205, 50%, 65%)',
-  },
-  {
-    id: 10,
-    name: 'Rose Gold',
-    color: 'hsl(15, 40%, 65%)',
+    name: 'Crimson Red',
+    color: 'hsl(340, 74%, 55%)', // Яркий, но читаемый красный акцент
   },
 ];
