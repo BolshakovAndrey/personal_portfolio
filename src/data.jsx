@@ -320,6 +320,7 @@ export const portfolio = [
   {
     id: 1,
     img: Work1,
+    category: 'bots',
     title: 'Assistance bot',
     details: [
       {
@@ -350,6 +351,7 @@ export const portfolio = [
   {
     id: 2,
     img: Work2,
+    category: 'websites',
     title: 'Website - "The Place"',
     details: [
       {
@@ -383,6 +385,7 @@ export const portfolio = [
   {
     id: 3,
     img: Work3,
+    category: 'websites',
     title: 'Adaptive website',
     details: [
       {
@@ -415,6 +418,7 @@ export const portfolio = [
   {
     id: 4,
     img: Work4,
+    category: 'websites',
     title: 'Library website',
     details: [
       {
@@ -447,6 +451,7 @@ export const portfolio = [
   {
     id: 5,
     img: Work5,
+    category: 'websites',
     title: 'Web-portal',
     details: [
       {
@@ -473,6 +478,7 @@ export const portfolio = [
   {
     id: 6,
     img: Work6,
+    category: 'websites',
     title: 'E-Shop',
     details: [
       {
@@ -503,6 +509,7 @@ export const portfolio = [
   {
     id: 7,
     img: Work7,
+    category: 'bots',
     title: 'Trading bots',
     details: [
       {
@@ -534,6 +541,7 @@ export const portfolio = [
   {
     id: 8,
     img: Work8,
+    category: 'websites',
     title: 'Visual Script Editor',
     details: [
       {
@@ -559,6 +567,7 @@ export const portfolio = [
   {
     id: 9,
     img: Work9,
+    category: 'bots',
     title: 'Delivery bot',
     details: [
       {
@@ -591,6 +600,7 @@ export const portfolio = [
   {
     id: 10,
     img: Work10,
+    category: 'bots',
     title: 'AI Fitness-marathon Assistant',
     details: [
       {

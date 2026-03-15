@@ -1,6 +1,5 @@
 /*=======================Google fonts =============================*/
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap');
 
 /*=======================CSS variables =============================*/
 :root {
@@ -13,21 +12,22 @@
     --container-color: hsl(0, 0%, 93%);
     --border-color: hsl(0, 0%, 87%);
     --text-white: #fff;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.2);
 
     /*=====================Fonts and Typography =============================*/
-    --body-font: 'Open Sans', sans-serif;
-    --second-font: 'Poppins', sans-serif;
+    --body-font: 'Inter', sans-serif;
+    --second-font: 'Outfit', sans-serif;
 
-    --big-font-size: 56px;
-    --h1-font-size: 50px;
-    --h2-font-size: 32px;
-    --h3-font-size: 24px;
-    --large-font-size: 18px;
-    --normal-font-size: 16px;
-    --small-font-size: 15px;
+    --big-font-size: clamp(2.5rem, 5vw, 4rem);
+    --h1-font-size: clamp(2rem, 4vw, 3.5rem);
+    --h2-font-size: clamp(1.5rem, 3vw, 2.5rem);
+    --h3-font-size: clamp(1.2rem, 2vw, 1.75rem);
+    --large-font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    --normal-font-size: clamp(0.95rem, 1vw, 1rem);
+    --small-font-size: clamp(0.85rem, 0.9vw, 0.9rem);
     --smaller-font-size: 14px;
     --tiny-font-size: 12px;
-
 
     /*=====================Font Weight =============================*/
     --weight-400: 400;
@@ -35,16 +35,18 @@
     --weight-600: 600;
     --weight-700: 700;
     --weight-800: 800;
-
+    --weight-900: 900;
 }
 
 /*=======================Base =============================*/
 .dark-theme {
     --title-color: hsl(0, 0%, 100%);
-    --text-color: hsl(0, 0%, 80%);
-    --body-color: hsl(0, 0%, 7%);
-    --container-color: hsl(0, 1%, 17%);
-    --border-color: hsl(0, 0%, 15%);
+    --text-color: hsl(0, 0%, 75%);
+    --body-color: #0b0f19; /* Deep modern dark color */
+    --container-color: #121826;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(18, 24, 38, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 /*=======================Base =============================*/
@@ -121,7 +123,11 @@ img {
 }
 
 .section__title span {
-    color: var(--first-color)
+    background: linear-gradient(135deg, var(--first-color) 0%, #b23afc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .button {
