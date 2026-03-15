@@ -6,9 +6,9 @@ import {BsMoonFill, BsSun} from "react-icons/bs";
 import "./themes.css";
 
 const getStorageColor = () => {
-    let color = 'hsl(252, 35%, 51%)';
-    if (localStorage.getItem('color')) {
-        color = localStorage.getItem('color');
+    let color = 'hsl(211, 40%, 36%)'; // Pacific Blue default
+    if (localStorage.getItem('theme-color')) {
+        color = localStorage.getItem('theme-color');
     }
     return color;
 };
@@ -37,7 +37,7 @@ const Themes = () => {
     useEffect(() => {
         document.documentElement.style.setProperty("--first-color", color);
         document.documentElement.style.setProperty("transition", "background-color 0.3s ease");
-        localStorage.setItem("color", color);
+        localStorage.setItem("theme-color", color);
     }, [color]);
 
     useEffect(() => {

@@ -632,61 +632,52 @@ export const portfolio = [
 export const themes = [
   {
     id: 1,
-    img: Theme1,
-    color: 'hsl(252, 35%, 51%)',
+    name: 'Pacific Blue',
+    color: 'hsl(211, 40%, 36%)',
   },
-
   {
     id: 2,
-    img: Theme2,
-    color: 'hsl(4, 93%, 54%)',
+    name: 'Space Black',
+    color: 'hsl(0, 0%, 20%)',
   },
-
   {
     id: 3,
-    img: Theme3,
-    color: 'hsl(271, 76%, 53%)',
+    name: 'Titanium',
+    color: 'hsl(38, 12%, 60%)',
   },
-
   {
     id: 4,
-    img: Theme4,
-    color: 'hsl(225, 73%, 57%)',
+    name: 'Deep Purple',
+    color: 'hsl(270, 30%, 35%)',
   },
-
   {
     id: 5,
-    img: Theme5,
-    color: 'hsl(43, 74%, 49%)',
+    name: 'Midnight',
+    color: 'hsl(220, 30%, 15%)',
   },
-
   {
     id: 6,
-    img: Theme6,
-    color: 'hsl(339, 81%, 66%)',
+    name: 'Product RED',
+    color: 'hsl(354, 85%, 44%)',
   },
-
   {
     id: 7,
-    img: Theme7,
-    color: 'hsl(80, 61%, 50%)',
+    name: 'Alpine Green',
+    color: 'hsl(140, 20%, 40%)',
   },
-
   {
     id: 8,
-    img: Theme8,
-    color: 'hsl(19, 96%, 52%)',
+    name: 'Starlight',
+    color: 'hsl(40, 30%, 85%)',
   },
-
   {
     id: 9,
-    img: Theme9,
-    color: 'hsl(88, 65%, 43%)',
+    name: 'Sierra Blue',
+    color: 'hsl(205, 50%, 65%)',
   },
-
   {
     id: 10,
-    img: Theme10,
-    color: 'hsl(42, 100%, 50%)',
+    name: 'Rose Gold',
+    color: 'hsl(15, 40%, 65%)',
   },
 ];
