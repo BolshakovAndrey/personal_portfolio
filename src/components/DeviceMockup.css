@@ -1,0 +1,169 @@
+.device-mockup {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* ---- Mobile (phone) mockup ---- */
+.device-mockup.mobile {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 9 / 19;
+    border: 8px solid #1a1a1a;
+    border-radius: 32px;
+    background: #000;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 22px;
+    background: #1a1a1a;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    z-index: 10;
+}
+
+.device-mockup.mobile .screen {
+    border-radius: 24px;
+}
+
+/* ---- Desktop (browser) mockup ---- */
+.device-mockup.desktop {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.browser-bar {
+    height: 28px;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+/* ---- Screen (shared) ---- */
+.screen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* ---- Inside portfolio card ---- */
+.portfolio__preview {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    min-height: 280px;
+}
+
+.portfolio__preview .device-mockup.mobile {
+    max-width: 140px;
+    border-width: 5px;
+    border-radius: 22px;
+}
+
+.portfolio__preview .device-mockup.mobile .notch {
+    width: 60px;
+    height: 14px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.portfolio__preview .device-mockup.mobile .screen {
+    border-radius: 17px;
+}
+
+.portfolio__preview .device-mockup.desktop {
+    border-radius: 8px;
+}
+
+.portfolio__preview .browser-bar {
+    height: 22px;
+    padding: 0 8px;
+    gap: 5px;
+}
+
+.portfolio__preview .dot {
+    width: 6px;
+    height: 6px;
+}
+
+/* ---- Inside modal ---- */
+.modal__img-wrapper .device-mockup.mobile {
+    max-width: 260px;
+}
+
+.modal__img-wrapper .device-mockup.desktop {
+    border-radius: 10px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .portfolio__preview {
+        padding: 12px;
+        min-height: 220px;
+    }
+
+    .portfolio__preview .device-mockup.mobile {
+        max-width: 120px;
+        border-width: 4px;
+        border-radius: 18px;
+    }
+
+    .modal__img-wrapper .device-mockup.mobile {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 425px) {
+    .portfolio__preview {
+        padding: 10px;
+        min-height: 180px;
+    }
+
+    .portfolio__preview .device-mockup.mobile {
+        max-width: 100px;
+        border-width: 3px;
+        border-radius: 14px;
+    }
+
+    .portfolio__preview .device-mockup.mobile .notch {
+        width: 40px;
+        height: 10px;
+    }
+}

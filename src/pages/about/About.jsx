@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import Info from "../../components/Info";
 import Stats from "../../components/Stats";
 import Skills from "../../components/Skills";
+import SkillsCloud from "../../components/SkillsCloud";
 import {FaLinkedin} from "react-icons/fa";
+import {FiGrid, FiCloud} from "react-icons/fi";
 import {resume} from "../../data"
 import "./about.css"
 import ResumeItem from "../../components/ResumeItem";
 
 const About = () => {
+    const [skillsView, setSkillsView] = useState('cloud');
+
     return (
         <main className="section container">
             <section className="about">
@@ -45,13 +49,36 @@ const About = () => {
             <div className="separator"></div>
 
             <section className="skills">
-                <h3 className="section__subtitle subtitle__center">
-                    My Skills
-                </h3>
+                <div className="skills__header">
+                    <h3 className="section__subtitle subtitle__center">
+                        My Skills
+                    </h3>
 
-                <div className="skills__container grid">
-                    <Skills/>
+                    <div className="skills__view-toggle">
+                        <button
+                            className={`view-toggle__btn ${skillsView === 'cloud' ? 'active' : ''}`}
+                            onClick={() => setSkillsView('cloud')}
+                            title="Cloud view"
+                        >
+                            <FiCloud />
+                        </button>
+                        <button
+                            className={`view-toggle__btn ${skillsView === 'grid' ? 'active' : ''}`}
+                            onClick={() => setSkillsView('grid')}
+                            title="Grid view"
+                        >
+                            <FiGrid />
+                        </button>
+                    </div>
                 </div>
+
+                {skillsView === 'grid' ? (
+                    <div className="skills__container grid">
+                        <Skills/>
+                    </div>
+                ) : (
+                    <SkillsCloud />
+                )}
             </section>
 
             <div className="separator"></div>

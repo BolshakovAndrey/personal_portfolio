@@ -1,23 +1,28 @@
 import React, {useState} from 'react';
 import Close from "../assets/close.svg";
 import { motion, AnimatePresence } from "framer-motion";
+import DeviceMockup from "./DeviceMockup";
 
-const PortfolioItem = ({img, title, details}) => {
+const PortfolioItem = ({img, title, details, deviceType}) => {
     const [modal, setModal] = useState(false)
     const toggleModal = () => {
         setModal(!modal);
     };
 
     return (
-        <motion.div 
-            layout 
-            initial={{ opacity: 0, scale: 0.9 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            exit={{ opacity: 0, scale: 0.9 }} 
+        <motion.div
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className="portfolio__item"
         >
-            <img src={img} alt="" className="portfolio__img"/>
+            <div className="portfolio__preview">
+                <DeviceMockup type={deviceType || 'desktop'}>
+                    <img src={img} alt="" className="portfolio__img"/>
+                </DeviceMockup>
+            </div>
 
             <div className="portfolio__hover" onClick={toggleModal}>
                 <h3 className="portfolio__title">{title}</h3>
@@ -25,20 +30,20 @@ const PortfolioItem = ({img, title, details}) => {
 
             <AnimatePresence>
                 {modal && (
-                    <motion.div 
+                    <motion.div
                         className="portfolio__modal"
                         initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
                         animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
                         exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
                         onClick={toggleModal}
                     >
-                        <motion.div 
+                        <motion.div
                             className="portfolio__modal-content"
                             initial={{ y: 100, opacity: 0, scale: 0.9 }}
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 50, opacity: 0, scale: 0.9 }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking content
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <button className="modal__close-btn" onClick={toggleModal}>
                                 <img src={Close} alt="close" className="modal__close-icon" />
@@ -62,7 +67,9 @@ const PortfolioItem = ({img, title, details}) => {
                                 </ul>
 
                                 <div className="modal__img-wrapper">
-                                    <img src={img} alt="" className="modal__img"/>
+                                    <DeviceMockup type={deviceType || 'desktop'}>
+                                        <img src={img} alt="" className="modal__img"/>
+                                    </DeviceMockup>
                                 </div>
                             </div>
                         </motion.div>

@@ -7,6 +7,7 @@ import {
   FaDocker,
   FaEnvelopeOpen,
   FaFolderOpen,
+  FaGitAlt,
   FaGraduationCap,
   FaHome,
   FaHtml5,
@@ -15,11 +16,34 @@ import {
   FaNodeJs,
   FaPython,
   FaReact,
+  FaTelegramPlane,
   FaUser,
 } from 'react-icons/fa';
 
 import {FiExternalLink, FiFileText, FiUser} from 'react-icons/fi';
-import {SiDjango, SiExpress, SiMongodb, SiNginx, SiPostgresql, SiTypescript} from "react-icons/si";
+import {
+  SiDjango,
+  SiExpress,
+  SiFastapi,
+  SiFastify,
+  SiFramer,
+  SiJest,
+  SiMongodb,
+  SiMui,
+  SiNextdotjs,
+  SiNginx,
+  SiPostgresql,
+  SiPrisma,
+  SiRedis,
+  SiSentry,
+  SiSqlite,
+  SiStorybook,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+  SiWebpack,
+} from "react-icons/si";
 
 import Work1 from './assets/project-1.gif';
 import Work2 from './assets/project-2.jpeg';
@@ -209,118 +233,82 @@ export const resume = [
 ];
 
 export const skills = [
-  {
-    id: 1,
-    title: 'JavaScript',
-    percentage: '100',
-  },
-
-  {
-    id: 2,
-    title: 'TypeScript',
-    percentage: '100',
-  },
-
-  {
-    id: 3,
-    title: 'Node.js',
-    percentage: '100',
-  },
-
-  {
-    id: 4,
-    title: 'Express.js',
-    percentage: '100',
-  },
-
-  {
-    id: 5,
-    title: 'Python',
-    percentage: '100',
-  },
-
-  {
-    id: 6,
-    title: 'Django',
-    percentage: '100',
-  },
-
-  {
-    id: 7,
-    title: 'Nginx',
-    percentage: '100',
-  },
-
-  {
-    id: 8,
-    title: 'Linux',
-    percentage: '100',
-  },
-  {
-    id: 9,
-    title: 'HTML5',
-    percentage: '100',
-  },
-  {
-    id: 10,
-    title: 'CSS3',
-    percentage: '100',
-  },
-  {
-    id: 11,
-    title: 'React.js',
-    percentage: '100',
-  },
-  {
-    id: 12,
-    title: 'Bootstrap',
-    percentage: '100',
-  },
-  {
-    id: 13,
-    title: 'PostgreSQL',
-    percentage: '100',
-  },
-  {
-    id: 14,
-    title: 'MongoDB',
-    percentage: '100',
-  },
-  {
-    id: 15,
-    title: 'Docker',
-    percentage: '100',
-  },
-  {
-    id: 16,
-    title: 'AWS',
-    percentage: '100',
-  },
+  { id: 1, title: 'JavaScript' },
+  { id: 2, title: 'TypeScript' },
+  { id: 3, title: 'Python' },
+  { id: 4, title: 'React.js' },
+  { id: 5, title: 'Next.js' },
+  { id: 6, title: 'Node.js' },
+  { id: 7, title: 'Express.js' },
+  { id: 8, title: 'Fastify' },
+  { id: 9, title: 'Django' },
+  { id: 10, title: 'FastAPI' },
+  { id: 11, title: 'HTML5' },
+  { id: 12, title: 'CSS3' },
+  { id: 13, title: 'Tailwind CSS' },
+  { id: 14, title: 'MUI' },
+  { id: 15, title: 'Bootstrap' },
+  { id: 16, title: 'PostgreSQL' },
+  { id: 17, title: 'MongoDB' },
+  { id: 18, title: 'Redis' },
+  { id: 19, title: 'SQLite' },
+  { id: 20, title: 'Supabase' },
+  { id: 21, title: 'Prisma' },
+  { id: 22, title: 'Docker' },
+  { id: 23, title: 'Nginx' },
+  { id: 24, title: 'Linux' },
+  { id: 25, title: 'AWS' },
+  { id: 26, title: 'Git' },
+  { id: 27, title: 'Vite' },
+  { id: 28, title: 'Webpack' },
+  { id: 29, title: 'Storybook' },
+  { id: 30, title: 'Jest' },
+  { id: 31, title: 'Sentry' },
+  { id: 32, title: 'Framer Motion' },
+  { id: 33, title: 'Aiogram' },
 ];
 
 export const icons = {
-  Python: <FaPython size={60}/>,
-  JavaScript: <FaJs size={60}/>,
-  TypeScript: <SiTypescript size={60}/>,
-  "Node.js": <FaNodeJs size={60}/>,
-  "Express.js": <SiExpress size={60}/>,
-  Django: <SiDjango size={60}/>,
-  CSS3: <FaCss3 size={60}/>,
-  "React.js": <FaReact size={60}/>,
-  HTML5: <FaHtml5 size={60}/>,
-  PostgreSQL: <SiPostgresql size={60}/>,
-  MongoDB: <SiMongodb size={60}/>,
-  Docker: <FaDocker size={60}/>,
-  AWS: <FaAws size={60}/>,
-  Bootstrap: <FaBootstrap size={60}/>,
-  Linux: <FaLinux size={60}/>,
-  Nginx: <SiNginx size={60}/>,
-}
+  JavaScript: <FaJs size={60} />,
+  TypeScript: <SiTypescript size={60} />,
+  Python: <FaPython size={60} />,
+  "React.js": <FaReact size={60} />,
+  "Next.js": <SiNextdotjs size={60} />,
+  "Node.js": <FaNodeJs size={60} />,
+  "Express.js": <SiExpress size={60} />,
+  Fastify: <SiFastify size={60} />,
+  Django: <SiDjango size={60} />,
+  FastAPI: <SiFastapi size={60} />,
+  HTML5: <FaHtml5 size={60} />,
+  CSS3: <FaCss3 size={60} />,
+  "Tailwind CSS": <SiTailwindcss size={60} />,
+  MUI: <SiMui size={60} />,
+  Bootstrap: <FaBootstrap size={60} />,
+  PostgreSQL: <SiPostgresql size={60} />,
+  MongoDB: <SiMongodb size={60} />,
+  Redis: <SiRedis size={60} />,
+  SQLite: <SiSqlite size={60} />,
+  Supabase: <SiSupabase size={60} />,
+  Prisma: <SiPrisma size={60} />,
+  Docker: <FaDocker size={60} />,
+  Nginx: <SiNginx size={60} />,
+  Linux: <FaLinux size={60} />,
+  AWS: <FaAws size={60} />,
+  Git: <FaGitAlt size={60} />,
+  Vite: <SiVite size={60} />,
+  Webpack: <SiWebpack size={60} />,
+  Storybook: <SiStorybook size={60} />,
+  Jest: <SiJest size={60} />,
+  Sentry: <SiSentry size={60} />,
+  "Framer Motion": <SiFramer size={60} />,
+  Aiogram: <FaTelegramPlane size={60} />,
+};
 export const portfolio = [
   {
     id: 1,
     img: Work1,
     category: 'bots',
+    deviceType: 'mobile',
     title: 'Assistance bot',
     details: [
       {
@@ -352,6 +340,7 @@ export const portfolio = [
     id: 2,
     img: Work2,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'Website - "The Place"',
     details: [
       {
@@ -386,6 +375,7 @@ export const portfolio = [
     id: 3,
     img: Work3,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'Adaptive website',
     details: [
       {
@@ -419,6 +409,7 @@ export const portfolio = [
     id: 4,
     img: Work4,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'Library website',
     details: [
       {
@@ -452,6 +443,7 @@ export const portfolio = [
     id: 5,
     img: Work5,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'Web-portal',
     details: [
       {
@@ -479,6 +471,7 @@ export const portfolio = [
     id: 6,
     img: Work6,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'E-Shop',
     details: [
       {
@@ -510,6 +503,7 @@ export const portfolio = [
     id: 7,
     img: Work7,
     category: 'bots',
+    deviceType: 'desktop',
     title: 'Trading bots',
     details: [
       {
@@ -542,6 +536,7 @@ export const portfolio = [
     id: 8,
     img: Work8,
     category: 'websites',
+    deviceType: 'desktop',
     title: 'Visual Script Editor',
     details: [
       {
@@ -568,6 +563,7 @@ export const portfolio = [
     id: 9,
     img: Work9,
     category: 'bots',
+    deviceType: 'mobile',
     title: 'Delivery bot',
     details: [
       {
@@ -601,6 +597,7 @@ export const portfolio = [
     id: 10,
     img: Work10,
     category: 'bots',
+    deviceType: 'mobile',
     title: 'AI Fitness-marathon Assistant',
     details: [
       {

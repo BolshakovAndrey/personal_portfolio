@@ -77,6 +77,47 @@
     margin-bottom: 50px;
 }
 
+.skills__header {
+    position: relative;
+}
+
+.skills__view-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 4px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.view-toggle__btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.view-toggle__btn:hover {
+    color: var(--first-color);
+}
+
+.view-toggle__btn.active {
+    background: var(--first-color);
+    color: var(--text-white);
+}
+
 .skills__container {
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
