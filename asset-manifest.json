@@ -1,11 +1,8 @@
 {
   "files": {
-    "main.css": "./static/css/main.ecb5746f.css",
-    "main.js": "./static/js/main.d9240319.js",
+    "main.css": "./static/css/main.baf82b1f.css",
+    "main.js": "./static/js/main.1862630d.js",
     "static/js/787.1ed0c42c.chunk.js": "./static/js/787.1ed0c42c.chunk.js",
-    "static/media/project-9.gif": "./static/media/project-9.e2580ef5235c6eb8acbf.gif",
-    "static/media/project-1.gif": "./static/media/project-1.df61d3670cae7cd7b04e.gif",
-    "static/media/project-marathon.gif": "./static/media/project-marathon.5314edbd0fd65f2012ef.gif",
     "static/media/project-3.jpeg": "./static/media/project-3.d3dba107aed9234a6f8e.jpeg",
     "static/media/project-4.jpeg": "./static/media/project-4.babdd9ce965afe43bb16.jpeg",
     "static/media/project-2.jpeg": "./static/media/project-2.2d8ebc8eeeafb414e76b.jpeg",
@@ -13,15 +10,32 @@
     "static/media/project-7.jpeg": "./static/media/project-7.1ab6a600320e08c53d66.jpeg",
     "static/media/project-5.jpeg": "./static/media/project-5.18585a2803fabe0bef58.jpeg",
     "static/media/Project-8.png": "./static/media/Project-8.a2dbb8bd7030a1730905.png",
+    "static/media/goodchemistry-03-product.png": "./static/media/goodchemistry-03-product.4848616b2d8e54cf045b.png",
+    "static/media/marathon-02-chat.png": "./static/media/marathon-02-chat.1e73a808b347e26e53ab.png",
+    "static/media/healthtracker-02-food.png": "./static/media/healthtracker-02-food.d1af8ad296df9b0b2078.png",
+    "static/media/marathon-01-start.png": "./static/media/marathon-01-start.da3b9b1984ee3df7b4f9.png",
+    "static/media/goodchemistry-05-delivery.png": "./static/media/goodchemistry-05-delivery.f755a47086df3aed7127.png",
+    "static/media/goodchemistry-06-order.png": "./static/media/goodchemistry-06-order.4b81f3de0e15fcd4bf40.png",
+    "static/media/healthtracker-04-report.png": "./static/media/healthtracker-04-report.65525bb8c536dcd20685.png",
+    "static/media/delivery-03-dish.png": "./static/media/delivery-03-dish.20187ffbeb9196c200fe.png",
+    "static/media/healthtracker-05-stats.png": "./static/media/healthtracker-05-stats.69d23bee674e0b7db0e7.png",
+    "static/media/delivery-01-start.png": "./static/media/delivery-01-start.92655c0ad5928b18123b.png",
+    "static/media/goodchemistry-04-cart.png": "./static/media/goodchemistry-04-cart.975f67945d92b31a755c.png",
+    "static/media/healthtracker-03-activities.png": "./static/media/healthtracker-03-activities.354fd6c33e3e613cad9a.png",
+    "static/media/delivery-02-category.png": "./static/media/delivery-02-category.f06e09a5673a7b535436.png",
+    "static/media/delivery-04-cart.png": "./static/media/delivery-04-cart.08a43cf1815a42e6ae00.png",
+    "static/media/healthtracker-01-welcome.png": "./static/media/healthtracker-01-welcome.c719d6ce1040b5556050.png",
+    "static/media/goodchemistry-02-catalog.png": "./static/media/goodchemistry-02-catalog.2d28b10014193dbe9310.png",
+    "static/media/goodchemistry-01-start.png": "./static/media/goodchemistry-01-start.a3a934e51449646fdf97.png",
     "static/media/home.jpg": "./static/media/home.5761b2518c19a818cd09.jpg",
     "static/media/close.svg": "./static/media/close.9a7c408a20e0307b12a567f75c0ccaed.svg",
     "index.html": "./index.html",
-    "main.ecb5746f.css.map": "./static/css/main.ecb5746f.css.map",
-    "main.d9240319.js.map": "./static/js/main.d9240319.js.map",
+    "main.baf82b1f.css.map": "./static/css/main.baf82b1f.css.map",
+    "main.1862630d.js.map": "./static/js/main.1862630d.js.map",
     "787.1ed0c42c.chunk.js.map": "./static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ecb5746f.css",
-    "static/js/main.d9240319.js"
+    "static/css/main.baf82b1f.css",
+    "static/js/main.1862630d.js"
   ]
 }
