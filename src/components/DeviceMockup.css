@@ -32,6 +32,7 @@
 
 .device-mockup.mobile .screen {
     border-radius: 24px;
+    padding-top: 25px;
 }
 
 /* ---- Desktop (browser) mockup ---- */
@@ -66,7 +67,6 @@
 /* ---- Screen (shared) ---- */
 .screen {
     width: 100%;
-    height: 100%;
     overflow: hidden;
     background: #111;
     display: flex;
@@ -74,11 +74,49 @@
     justify-content: center;
 }
 
+/* Mobile screen needs fixed aspect via parent */
+.device-mockup.mobile .screen {
+    height: 100%;
+    align-items: center;
+}
+
+/* Desktop screen shows full image */
+.device-mockup.desktop .screen {
+    max-height: 500px;
+}
+
 .screen img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* ---- Auto slideshow inside screen ---- */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slideshow__img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.slideshow__img.active {
+    opacity: 1;
+}
+
+.slideshow__img:first-child {
+    position: relative;
 }
 
 /* ---- Inside portfolio card ---- */
@@ -125,11 +163,19 @@
 
 /* ---- Inside modal ---- */
 .modal__img-wrapper .device-mockup.mobile {
-    max-width: 260px;
+    max-width: none;
+    width: auto;
+    height: 100%;
+    max-height: 75vh;
 }
 
 .modal__img-wrapper .device-mockup.desktop {
     border-radius: 10px;
+    width: 100%;
+}
+
+.modal__img-wrapper .device-mockup.desktop .screen {
+    max-height: 500px;
 }
 
 /* ---- Responsive ---- */
@@ -146,7 +192,10 @@
     }
 
     .modal__img-wrapper .device-mockup.mobile {
-        max-width: 200px;
+        max-width: none;
+        max-height: none;
+        height: 100%;
+        width: auto;
     }
 }
 
@@ -165,5 +214,14 @@
     .portfolio__preview .device-mockup.mobile .notch {
         width: 40px;
         height: 10px;
+    }
+
+    .modal__img-wrapper .device-mockup.mobile {
+        border-width: 6px;
+        border-radius: 28px;
+    }
+
+    .modal__img-wrapper .device-mockup.mobile .screen {
+        border-radius: 22px;
     }
 }

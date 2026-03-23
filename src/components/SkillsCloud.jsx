@@ -12,7 +12,7 @@ const generatePositions = (count) => {
 
     for (let i = 0; i < count; i++) {
         // Sunflower seed pattern — evenly distributed inside a circle
-        const r = Math.sqrt((i + 0.5) / count) * 38; // max ~38% from center
+        const r = Math.sqrt((i + 0.5) / count) * 46; // max ~46% from center
         const theta = i * goldenAngle;
         const x = 50 + r * Math.cos(theta); // percent from left
         const y = 50 + r * Math.sin(theta); // percent from top

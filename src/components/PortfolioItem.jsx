@@ -1,13 +1,42 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Close from "../assets/close.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import DeviceMockup from "./DeviceMockup";
 
-const PortfolioItem = ({img, title, details, deviceType}) => {
-    const [modal, setModal] = useState(false)
-    const toggleModal = () => {
-        setModal(!modal);
-    };
+const AutoSlideshow = ({ images, interval = 3000 }) => {
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        if (!images || images.length <= 1) return;
+        const timer = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % images.length);
+        }, interval);
+        return () => clearInterval(timer);
+    }, [images, interval]);
+
+    if (!images || images.length === 0) return null;
+
+    return (
+        <div className="slideshow">
+            {images.map((src, i) => (
+                <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    className={`slideshow__img ${i === current ? 'active' : ''}`}
+                />
+            ))}
+        </div>
+    );
+};
+
+const PortfolioItem = ({img, images, title, details, deviceType}) => {
+    const [modal, setModal] = useState(false);
+    const toggleModal = useCallback(() => {
+        setModal((prev) => !prev);
+    }, []);
+
+    const hasSlideshow = images && images.length > 1;
 
     return (
         <motion.div
@@ -20,7 +49,11 @@ const PortfolioItem = ({img, title, details, deviceType}) => {
         >
             <div className="portfolio__preview">
                 <DeviceMockup type={deviceType || 'desktop'}>
-                    <img src={img} alt="" className="portfolio__img"/>
+                    {hasSlideshow ? (
+                        <AutoSlideshow images={images} interval={3500} />
+                    ) : (
+                        <img src={img} alt="" className="portfolio__img"/>
+                    )}
                 </DeviceMockup>
             </div>
 
@@ -49,26 +82,32 @@ const PortfolioItem = ({img, title, details, deviceType}) => {
                                 <img src={Close} alt="close" className="modal__close-icon" />
                             </button>
 
-                            <h3 className="modal__title">{title}</h3>
-
                             <div className="modal__body">
-                                <ul className="modal__list grid">
-                                    {details.map(({icon, title, desc}, index) => {
-                                        return (
-                                            <li className="modal__item" key={index}>
-                                                <span className="item__icon">{icon}</span>
-                                                <div className="item__info">
-                                                    <span className="item__title">{title}</span>
-                                                    <span className="item__detail">{desc}</span>
-                                                </div>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
+                                <div className="modal__info">
+                                    <h3 className="modal__title">{title}</h3>
+
+                                    <ul className="modal__list">
+                                        {details.map(({icon, title, desc}, index) => {
+                                            return (
+                                                <li className="modal__item" key={index}>
+                                                    <span className="item__icon">{icon}</span>
+                                                    <div className="item__info">
+                                                        <span className="item__title">{title}</span>
+                                                        <span className="item__detail">{desc}</span>
+                                                    </div>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </div>
 
                                 <div className="modal__img-wrapper">
                                     <DeviceMockup type={deviceType || 'desktop'}>
-                                        <img src={img} alt="" className="modal__img"/>
+                                        {hasSlideshow ? (
+                                            <AutoSlideshow images={images} interval={3000} />
+                                        ) : (
+                                            <img src={img} alt="" className="modal__img"/>
+                                        )}
                                     </DeviceMockup>
                                 </div>
                             </div>

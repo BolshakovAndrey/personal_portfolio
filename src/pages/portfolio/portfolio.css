@@ -88,7 +88,6 @@
     position: fixed;
     inset: 0;
     background-color: hsla(0, 0%, 0%, 0.5);
-    /* backdrop-filter is handled by framer-motion now */
     z-index: 1000;
     display: grid;
     place-items: center;
@@ -100,27 +99,34 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    max-width: 900px; /* Немного уменьшил для собранности */
+    max-width: 900px;
     width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 40px;
+    max-height: 85vh;
+    overflow: hidden;
+    padding: 0;
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* Глубокая тень */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* Скрываем скроллбар для красоты */
 .portfolio__modal-content::-webkit-scrollbar {
     width: 0;
 }
 
 .modal__close-btn {
     position: absolute;
-    top: 25px;
-    right: 30px;
-    background: transparent;
-    border: none;
+    top: 16px;
+    right: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 10;
     transition: transform 0.3s ease;
@@ -131,8 +137,8 @@
 }
 
 .modal__close-icon {
-    width: 30px;
-    height: 30px;
+    width: 18px;
+    height: 18px;
     filter: invert(0.6);
 }
 
@@ -140,26 +146,32 @@
     filter: invert(1);
 }
 
-.modal__title {
-    text-align: center;
-    color: var(--first-color);
-    font-size: var(--h2-font-size);
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-/* Новая структура внутри модалки (Текст слева, Картинка справа) */
+/* ---- Modal body: info left, device right ---- */
 .modal__body {
     display: flex;
-    gap: 40px;
-    align-items: flex-start;
+    min-height: 450px;
+}
+
+.modal__info {
+    flex: 0 0 280px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal__title {
+    text-align: left;
+    color: var(--first-color);
+    font-size: var(--h2-font-size);
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
 }
 
 .modal__list {
-    flex: 1; /* Занимает доступное место слева */
-    display: grid;
-    grid-template-columns: 1fr; /* В один столбец для чистоты */
-    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
 .modal__item {
@@ -191,24 +203,21 @@
     margin-bottom: 4px;
 }
 
+/* ---- Device mockup area (right side) ---- */
 .modal__img-wrapper {
-    flex: 1.5; /* Картинка занимает чуть больше места */
-    border-radius: 12px;
-    overflow: hidden;
-    /* Легкая тень для самой картинки */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: visible;
+    min-height: 100%;
 }
 
 .modal__img {
     width: 100%;
     height: auto;
-    max-height: 500px;
-    object-fit: cover;
     display: block;
-}
-
-portfolio__container {
-    grid-template-columns: repeat(3, 1fr);
 }
 
 /* Переходы от одного разрешения к другому в средине между указанными точками */
@@ -226,24 +235,87 @@ portfolio__container {
 }
 
 
+/* Планшеты */
+@media (max-width: 768px) {
+    .portfolio__modal {
+        padding: 8px;
+    }
+
+    .portfolio__modal-content {
+        max-height: 95vh;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal__body {
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .modal__info {
+        flex: none;
+        padding: 20px 20px 12px;
+    }
+
+    .modal__title {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .modal__img-wrapper {
+        flex: 1;
+        min-height: 0;
+        padding: 0 8px 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal__close-btn {
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .modal__close-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
 /* Телефоны 425px */
 @media (max-width: 425px) {
     .portfolio__container {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    /* Модальное окно на телефоне */
-    .modal__body {
-        flex-direction: column-reverse; /* Картинка сверху, текст снизу */
-        gap: 20px;
-    }
-
-    .modal__img {
-        width: 100%;
-        max-height: 250px;
+    .portfolio__modal {
+        padding: 4px;
     }
 
     .portfolio__modal-content {
-        padding: 30px 20px;
+        max-height: 97vh;
+        border-radius: 12px;
+    }
+
+    .modal__info {
+        padding: 16px 16px 8px;
+    }
+
+    .modal__title {
+        font-size: var(--h3-font-size);
+        margin-bottom: 12px;
+    }
+
+    .modal__list {
+        gap: 10px;
+    }
+
+    .modal__img-wrapper {
+        padding: 0 4px 4px;
     }
 }

@@ -45,7 +45,6 @@ import {
   SiWebpack,
 } from "react-icons/si";
 
-import Work1 from './assets/project-1.gif';
 import Work2 from './assets/project-2.jpeg';
 import Work3 from './assets/project-3.jpeg';
 import Work4 from './assets/project-4.jpeg';
@@ -53,8 +52,25 @@ import Work5 from './assets/project-5.jpeg';
 import Work6 from './assets/project-6.jpeg';
 import Work7 from './assets/project-7.jpeg';
 import Work8 from './assets/Project-8.png';
-import Work9 from './assets/project-9.gif';
-import Work10 from './assets/project-marathon.gif';
+
+// Bot screenshots from Antigravity (Telegram Web recordings)
+import GC1 from './assets/bots/goodchemistry-01-start.png';
+import GC2 from './assets/bots/goodchemistry-02-catalog.png';
+import GC3 from './assets/bots/goodchemistry-03-product.png';
+import GC4 from './assets/bots/goodchemistry-04-cart.png';
+import GC5 from './assets/bots/goodchemistry-05-delivery.png';
+import GC6 from './assets/bots/goodchemistry-06-order.png';
+import DL1 from './assets/bots/delivery-01-start.png';
+import DL2 from './assets/bots/delivery-02-category.png';
+import DL3 from './assets/bots/delivery-03-dish.png';
+import DL4 from './assets/bots/delivery-04-cart.png';
+import MR1 from './assets/bots/marathon-01-start.png';
+import MR2 from './assets/bots/marathon-02-chat.png';
+import HT1 from './assets/bots/healthtracker-01-welcome.png';
+import HT2 from './assets/bots/healthtracker-02-food.png';
+import HT3 from './assets/bots/healthtracker-03-activities.png';
+import HT4 from './assets/bots/healthtracker-04-report.png';
+import HT5 from './assets/bots/healthtracker-05-stats.png';
 
 import Theme1 from './assets/purple.png';
 import Theme2 from './assets/red.png';
@@ -145,25 +161,25 @@ export const personalInfo = [
 export const stats = [
   {
     id: 1,
-    no: '10+',
+    no: '13+',
     title: 'Years of <br /> Experience',
   },
 
   {
     id: 2,
-    no: '37+',
+    no: '30+',
     title: 'Completed <br /> Projects',
   },
 
   {
     id: 3,
-    no: '13+',
+    no: '30+',
     title: 'Happy <br /> Customers',
   },
 
   {
     id: 4,
-    no: '3+',
+    no: '3',
     title: ' Awards <br /> Won',
   },
 ];
@@ -306,7 +322,8 @@ export const icons = {
 export const portfolio = [
   {
     id: 1,
-    img: Work1,
+    img: GC1,
+    images: [GC1, GC2, GC3, GC4, GC5, GC6],
     category: 'bots',
     deviceType: 'mobile',
     title: 'Assistance bot',
@@ -561,7 +578,8 @@ export const portfolio = [
 
   {
     id: 9,
-    img: Work9,
+    img: DL1,
+    images: [DL1, DL2, DL3, DL4],
     category: 'bots',
     deviceType: 'mobile',
     title: 'Delivery bot',
@@ -595,7 +613,8 @@ export const portfolio = [
 
   {
     id: 10,
-    img: Work10,
+    img: MR1,
+    images: [MR1, MR2],
     category: 'bots',
     deviceType: 'mobile',
     title: 'AI Fitness-marathon Assistant',
@@ -619,6 +638,39 @@ export const portfolio = [
         icon: <FiExternalLink />,
         title: 'Preview : ',
         desc: <a href="https://t.me/marathon2_test_bot"
+                 target="_blank"
+                 rel="noopener noreferrer">Live in Telegram</a>
+      },
+    ],
+  },
+
+  {
+    id: 11,
+    img: HT1,
+    images: [HT1, HT2, HT3, HT4, HT5],
+    category: 'bots',
+    deviceType: 'mobile',
+    title: 'AI Health Tracker',
+    details: [
+      {
+        icon: <FiFileText />,
+        title: 'Project : ',
+        desc: 'AI-powered health & nutrition tracker with food photo analysis',
+      },
+      {
+        icon: <FiUser />,
+        title: 'Client : ',
+        desc: '"GoodChemistry"',
+      },
+      {
+        icon: <FaCode />,
+        title: 'Stack : ',
+        desc: 'Python3 Aiogram, OpenAI Vision, PostgreSQL, Redis',
+      },
+      {
+        icon: <FiExternalLink />,
+        title: 'Preview : ',
+        desc: <a href="https://t.me/online_gc_bot"
                  target="_blank"
                  rel="noopener noreferrer">Live in Telegram</a>
       },
