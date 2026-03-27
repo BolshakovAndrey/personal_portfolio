@@ -326,29 +326,24 @@ export const portfolio = [
     images: [GC1, GC2, GC3, GC4, GC5, GC6],
     category: 'bots',
     deviceType: 'mobile',
-    title: 'Assistance bot',
+    title: 'GoodChemistry Bot',
     details: [
       {
         icon: <FiFileText/>,
-        title: '"GoodChemistry"',
-        desc: ' Telegram Bot',
-      },
-      {
-        icon: <FiUser/>,
-        title: 'Client : ',
-        desc: '"💊GoodChemistry shop"',
+        title: 'E-commerce bot for a supplement store',
+        desc: 'Product catalog, smart cart, checkout flow, CDEK shipping integration, order logistics & tracking',
       },
       {
         icon: <FaCode/>,
-        title: 'Language : ',
-        desc: 'Python3 Aiogram',
+        title: 'Stack : ',
+        desc: 'Python, Aiogram, PostgreSQL, Redis',
       },
       {
         icon: <FiExternalLink/>,
         title: 'Preview : ',
         desc: <a href="http://t.me/online_gc_bot"
                  target="_blank"
-                 rel="noopener noreferrer">Live</a>,
+                 rel="noopener noreferrer">Live in Telegram</a>,
       },
     ],
   },
@@ -521,30 +516,17 @@ export const portfolio = [
     img: Work7,
     category: 'bots',
     deviceType: 'desktop',
-    title: 'Trading bots',
+    title: 'Trading Bots',
     details: [
       {
         icon: <FiFileText/>,
-        title: 'Project : Trading robots ',
-        desc: '',
-      },
-      {
-        icon: <FiUser/>,
-        title: 'Client : ',
-        desc: 'Quant society',
+        title: 'Algorithmic trading robots',
+        desc: 'Automated strategies for stock & crypto markets with risk management and backtesting',
       },
       {
         icon: <FaCode/>,
-        title: 'Language : ',
-        desc: 'C#',
-      },
-      {
-        icon: <FiExternalLink/>,
-        title: 'Preview : ',
-        // eslint-disable-next-line
-        desc: <a href=""
-                 target="_blank"
-                 rel="noopener noreferrer">Demo</a>
+        title: 'Stack : ',
+        desc: 'C#, Trading APIs',
       },
     ],
   },
@@ -582,31 +564,24 @@ export const portfolio = [
     images: [DL1, DL2, DL3, DL4],
     category: 'bots',
     deviceType: 'mobile',
-    title: 'Delivery bot',
+    title: 'Delivery Bot',
     details: [
       {
         icon: <FiFileText />,
-        title: 'Project : ',
-        desc: 'Business Lunch Delivery',
-      },
-      {
-        icon: <FiUser />,
-        title: 'Bot : ',
-        desc: <a href="http://t.me/DeliveryBot_mvp_bot"
-                 target="_blank"
-                 rel="noopener noreferrer">@DeliveryBot_mvp_bot</a>,
+        title: 'Business lunch delivery service',
+        desc: 'Daily menu management, ordering & cart, Google Sheets sync for kitchen, manager reports via chat',
       },
       {
         icon: <FaCode />,
-        title: 'Language : ',
-        desc: 'Python3 Aiogram',
+        title: 'Stack : ',
+        desc: 'Python, Aiogram, PostgreSQL, Google Sheets API',
       },
       {
         icon: <FiExternalLink />,
         title: 'Preview : ',
         desc: <a href="http://t.me/DeliveryBot_mvp_bot"
                  target="_blank"
-                 rel="noopener noreferrer">Live</a>
+                 rel="noopener noreferrer">Live in Telegram</a>
       },
     ],
   },
@@ -617,22 +592,17 @@ export const portfolio = [
     images: [MR1, MR2],
     category: 'bots',
     deviceType: 'mobile',
-    title: 'AI Fitness-marathon Assistant',
+    title: 'Fitness Marathon Bot',
     details: [
       {
         icon: <FiFileText />,
-        title: 'Project : ',
-        desc: 'Telegram bot with integrated mini app',
-      },
-      {
-        icon: <FiUser />,
-        title: 'Repository : ',
-        desc: 'Private',
+        title: 'Gamified fitness challenge platform',
+        desc: 'Team marathons, penalty system, leaderboards, Mini App with AI-powered step analysis',
       },
       {
         icon: <FaCode />,
         title: 'Stack : ',
-        desc: 'Python3 Aiogram, FastAPI, React, Railway, Netlify',
+        desc: 'Python, Aiogram, FastAPI, React, Railway, Netlify',
       },
       {
         icon: <FiExternalLink />,
@@ -654,18 +624,13 @@ export const portfolio = [
     details: [
       {
         icon: <FiFileText />,
-        title: 'Project : ',
-        desc: 'AI-powered health & nutrition tracker with food photo analysis',
-      },
-      {
-        icon: <FiUser />,
-        title: 'Client : ',
-        desc: '"GoodChemistry"',
+        title: 'AI-powered nutrition & wellness tracker',
+        desc: 'Food photo analysis, AI step recognition, KBJU tracking, water intake, daily reports to TG group, referral system',
       },
       {
         icon: <FaCode />,
         title: 'Stack : ',
-        desc: 'Python3 Aiogram, OpenAI Vision, PostgreSQL, Redis',
+        desc: 'Python, Aiogram, OpenAI Vision API, PostgreSQL, Redis',
       },
       {
         icon: <FiExternalLink />,
