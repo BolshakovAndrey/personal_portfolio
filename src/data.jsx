@@ -607,7 +607,7 @@ export const portfolio = [
       {
         icon: <FiExternalLink />,
         title: 'Preview : ',
-        desc: <a href="https://t.me/marathon2_test_bot"
+        desc: <a href="https://t.me/slim_together_bot"
                  target="_blank"
                  rel="noopener noreferrer">Live in Telegram</a>
       },
