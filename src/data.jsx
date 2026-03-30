@@ -635,7 +635,7 @@ export const portfolio = [
       {
         icon: <FiExternalLink />,
         title: 'Preview : ',
-        desc: <a href="https://t.me/online_gc_bot"
+        desc: <a href="https://t.me/NutrForProBot"
                  target="_blank"
                  rel="noopener noreferrer">Live in Telegram</a>
       },
