@@ -6,19 +6,25 @@ import About from "../../pages/about/About";
 import Contact from "../../pages/contact/Contact";
 import Portfolio from "../../pages/portfolio/Portfolio";
 import PageWrapper from "./PageWrapper";
+import NewNav from "../Navbar/NewNav";
+import { useTheme } from "../Navbar/NewNav";
 
 const AnimatedRoutes = () => {
     const location = useLocation();
+    const { theme, toggle } = useTheme();
 
     return (
-        <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-                <Route index element={<PageWrapper><Home /></PageWrapper>} />
-                <Route path="about" element={<PageWrapper><About /></PageWrapper>} />
-                <Route path="portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
-                <Route path="contact" element={<PageWrapper><Contact /></PageWrapper>} />
-            </Routes>
-        </AnimatePresence>
+        <>
+            <NewNav theme={theme} onToggleTheme={toggle} />
+            <AnimatePresence mode="wait">
+                <Routes location={location} key={location.pathname}>
+                    <Route index element={<PageWrapper><Home theme={theme} /></PageWrapper>} />
+                    <Route path="about" element={<PageWrapper><About /></PageWrapper>} />
+                    <Route path="portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
+                    <Route path="contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                </Routes>
+            </AnimatePresence>
+        </>
     );
 };
 
