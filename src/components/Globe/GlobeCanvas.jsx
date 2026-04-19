@@ -124,22 +124,31 @@ function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nod
 
     // ── Continents ──
     if (land && land.length) {
-      ctx.fillStyle   = isLight ? 'rgba(120, 140, 160, 0.30)' : 'rgba(80, 120, 160, 0.18)';
-      ctx.strokeStyle = isLight ? 'rgba(70, 90, 120, 0.55)'   : 'rgba(140, 200, 240, 0.35)';
-      ctx.lineWidth = 0.7;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.clip();
+
+      ctx.strokeStyle = isLight ? 'rgba(70, 90, 120, 0.60)' : 'rgba(140, 200, 240, 0.40)';
+      ctx.lineWidth = 0.8;
+
+      // Stroke-only — fill() auto-closes open paths causing diagonal artifacts
       for (const poly of land) {
-        ctx.beginPath();
-        let started = false;
+        let inSeg = false;
         for (const [lon, lat] of poly) {
           const p = rotateVec(sphToVec(lat, lon), rotation, tilt);
-          if (p.z < 0.05) { started = false; continue; }
+          if (p.z < 0.05) {
+            if (inSeg) { ctx.stroke(); inSeg = false; }
+            continue;
+          }
           const sx = cx + p.x * r, sy = cy + p.y * r;
-          if (!started) { ctx.moveTo(sx, sy); started = true; }
+          if (!inSeg) { ctx.beginPath(); ctx.moveTo(sx, sy); inSeg = true; }
           else ctx.lineTo(sx, sy);
         }
-        ctx.fill();
-        ctx.stroke();
+        if (inSeg) ctx.stroke();
       }
+
+      ctx.restore();
     }
 
     // ── Ambient dots ──
