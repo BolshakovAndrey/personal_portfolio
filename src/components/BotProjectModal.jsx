@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { LiveChat } from './BotLiveChat';
+import MiniAppDemo from './MiniAppDemo';
 
 // ── Phone frame ───────────────────────────────────────────────────────────────
 function PhoneFrame({ children, glow, width = 300, height = 620 }) {
@@ -47,7 +48,7 @@ const BOT_META = {
     kicker: 'AI HEALTH TRACKER · PRO / TRIAL',
     big: ['ИИ считает КБЖУ', 'по фото за', '2 секунды.'],
     sub: 'Мультипровайдерный AI (OpenAI → Anthropic → Gemini, auto-fallback). Трекинг еды, воды, шагов, тренировок, сна и настроения. Встроенный марафон со штрафной системой. Pro/Trial-подписка. Mini App. 782 теста.',
-    stack: ['Python', 'Aiogram 3', 'FastAPI', 'PostgreSQL', 'Redis', 'APScheduler', 'React Mini App', 'Railway'],
+    stack: ['Python', 'Aiogram 3', 'FastAPI', 'PostgreSQL', 'Redis', 'APScheduler', 'Telegram Mini App', 'Railway'],
     url: 'https://t.me/NutrForProBot',
     accent: 'oklch(78% 0.15 160)',
   },
@@ -60,12 +61,13 @@ const BOT_META = {
     accent: 'oklch(78% 0.15 50)',
   },
   mr: {
-    kicker: 'GAMIFIED FITNESS · MARATHON BOT',
+    kicker: 'GAMIFIED FITNESS · MARATHON BOT + MINI APP',
     big: ['30-дневный', 'марафон со', 'штрафами.'],
-    sub: 'КБЖУ, шаги (AI-проверка скриншота), тренировки — каждый день. Штраф 3 EUR за пропуск, 100 EUR за выход. Лидерборд, настраиваемые правила, APScheduler, 605+ тестов. Функционал влит в Health Tracker.',
-    stack: ['Python 3.13', 'Aiogram 3', 'PostgreSQL', 'Redis', 'APScheduler', 'AI Vision', 'Railway'],
+    sub: 'КБЖУ, шаги (AI-проверка скриншота), тренировки — каждый день. Штраф 3 EUR за пропуск, 100 EUR за выход. Лидерборд, Telegram Mini App с дашбордом и рейтингом, 605+ тестов. Функционал влит в Health Tracker.',
+    stack: ['Python 3.13', 'Aiogram 3', 'PostgreSQL', 'Redis', 'APScheduler', 'AI Vision', 'Telegram Mini App', 'Railway'],
     url: 'https://t.me/slim_together_bot',
     accent: 'oklch(78% 0.16 210)',
+    miniApp: true,
   },
 };
 
@@ -109,12 +111,22 @@ export default function BotProjectModal({ botId, onClose }) {
           min-width: 0;
         }
         .bot-modal-right {
-          width: clamp(300px, 36vw, 420px);
+          width: clamp(300px, 36vw, 480px);
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 40px 56px 40px 36px;
+          gap: 16px;
+          padding: 40px 40px 40px 24px;
           flex-shrink: 0;
+        }
+        .bot-modal-right.has-miniapp {
+          width: clamp(480px, 52vw, 660px);
+        }
+        @media (max-width: 900px) {
+          .bot-modal-right.has-miniapp {
+            width: 100%;
+            padding: 32px 24px 48px;
+          }
         }
         @media (max-width: 700px) {
           .bot-modal-inner {
@@ -201,11 +213,25 @@ export default function BotProjectModal({ botId, onClose }) {
           </div>
         </div>
 
-        {/* RIGHT — phone */}
-        <div className="bot-modal-right">
-          <PhoneFrame glow={accent}>
-            <LiveChat botId={botId} />
+        {/* RIGHT — phone(s) */}
+        <div className={`bot-modal-right${meta.miniApp ? ' has-miniapp' : ''}`}>
+          {/* Bot chat phone */}
+          <PhoneFrame glow={accent} width={meta.miniApp ? 240 : 300} height={meta.miniApp ? 500 : 620}>
+            <LiveChat botId={botId} compact={!!meta.miniApp} />
           </PhoneFrame>
+
+          {/* MiniApp phone — shown only when miniApp: true */}
+          {meta.miniApp && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+              <PhoneFrame glow={accent} width={240} height={500}>
+                <MiniAppDemo botId={botId} />
+              </PhoneFrame>
+              <div style={{
+                fontFamily: 'JetBrains Mono, monospace', fontSize: 9,
+                color: accent, letterSpacing: '0.15em', textTransform: 'uppercase', opacity: 0.7,
+              }}>Mini App</div>
+            </div>
+          )}
         </div>
       </div>
 

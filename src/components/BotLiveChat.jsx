@@ -303,10 +303,10 @@ export function LiveChat({ botId, compact = false, autoScroll = false }) {
       </div>
 
       {/* Messages */}
-      <div ref={scrollRef} style={{
+      <div ref={scrollRef} className="lc-scroll" style={{
         flex: 1, overflowY: 'auto', padding: compact ? '6px 8px 4px' : '10px 10px 6px',
         display: 'flex', flexDirection: 'column', gap: compact ? 3 : 5,
-        scrollbarWidth: 'none',
+        scrollbarWidth: 'none', msOverflowStyle: 'none',
       }}>
         {script.steps.map((step, i) => {
           if (!visibleSteps.includes(i)) return null;
