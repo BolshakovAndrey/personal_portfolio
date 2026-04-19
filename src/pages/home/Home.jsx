@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import GlobeCanvas from '../../components/Globe/GlobeCanvas';
 import ProjectDetail from '../../components/Globe/ProjectDetail';
+import BotProjectModal from '../../components/BotProjectModal';
 
 // Bot screenshot images (imported from assets)
 import GC2 from '../../assets/bots/goodchemistry-02-catalog.png';
@@ -98,17 +99,32 @@ function HoverCard({ hover, boxRect }) {
 }
 
 // ── HeroSection ──────────────────────────────────────────────────────────────
+// Europe oscillation constants
+const EUROPE_CENTER = 0.32; // ~18° lon — Central Europe in front
+const EUROPE_AMP    = 0.48; // ±27° — covers Portugal↔Moscow
+
 function HeroSection({ theme }) {
-  const [rotation, setRotation] = useState(0);
-  const [pulseT, setPulseT] = useState(0);
-  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
-  const [hover, setHover] = useState(null);
-  const [land, setLand] = useState(null);
+  const [rotation, setRotation] = useState(EUROPE_CENTER - EUROPE_AMP); // start at Greenwich
+  const [pulseT, setPulseT]     = useState(0);
+  const [mouse, setMouse]       = useState({ x: 0.5, y: 0.5 });
+  const [hover, setHover]       = useState(null);
+  const [land, setLand]         = useState(null);
   const [loadState, setLoadState] = useState('loading');
   const [selected, setSelected] = useState(null);
-  const nodesRef = useRef([]);
+  const [speed, setSpeed]       = useState(1);
+  const [paused, setPaused]     = useState(false);
+  const pausedRef               = useRef(false);
+  const nodesRef    = useRef([]);
   const globeBoxRef = useRef(null);
   const [boxRect, setBoxRect] = useState({ left: 0, top: 0 });
+
+  // Drag state
+  const isDragging      = useRef(false);
+  const dragStartX      = useRef(0);
+  const dragStartRot    = useRef(0);
+  const manualOffset    = useRef(0);
+  const preDragOffset   = useRef(0);   // offset saved at drag start — prevents click from resetting position
+  const animTime        = useRef(0);
 
   // Load world land polygons
   useEffect(() => {
@@ -146,18 +162,22 @@ function HeroSection({ theme }) {
     loadWorld();
   }, []);
 
-  // Rotation + pulse animation
+  // Rotation + pulse animation — oscillates over Europe, no full spins
   useEffect(() => {
     let raf, last = performance.now();
     const step = (ts) => {
-      const dt = (ts - last) / 1000; last = ts;
-      setRotation(r => r + dt * 0.12);
+      const dt = Math.min((ts - last) / 1000, 0.05); last = ts;
+      if (!isDragging.current && !pausedRef.current) {
+        animTime.current += dt * speed * 0.18;
+        const osc = EUROPE_CENTER + EUROPE_AMP * Math.sin(animTime.current);
+        setRotation(osc + manualOffset.current);
+      }
       setPulseT(p => (p + dt * 0.5) % 1);
       raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [speed]);
 
   // Mouse parallax
   useEffect(() => {
@@ -208,6 +228,22 @@ function HeroSection({ theme }) {
   const parallaxX = (mouse.x - 0.5) * 16;
   const parallaxY = (mouse.y - 0.5) * 10;
 
+  // Drag handlers
+  const onDragStart = (e) => {
+    isDragging.current = true;
+    dragStartX.current = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+    preDragOffset.current = manualOffset.current;          // save before drag
+    dragStartRot.current = rotation - manualOffset.current;
+  };
+  const onDragMove = (e) => {
+    if (!isDragging.current) return;
+    const x = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+    const dx = x - dragStartX.current;
+    manualOffset.current = preDragOffset.current + dx / 240; // accumulate, don't reset
+    setRotation(dragStartRot.current + manualOffset.current);
+  };
+  const onDragEnd = () => { isDragging.current = false; };
+
   return (
     <>
       <section
@@ -216,16 +252,18 @@ function HeroSection({ theme }) {
           position: 'relative',
           minHeight: '100vh',
           background: 'var(--bg-hero)',
-          overflow: 'hidden',
+          overflow: 'visible',
           fontFamily: 'Inter, system-ui, sans-serif',
           display: 'flex', alignItems: 'center',
           padding: isMobile ? '90px 20px 40px' : isTablet ? '100px 40px 60px' : '100px 80px 60px',
         }}
       >
+        {/* Clipped decorative layer — film grain + stars stay inside section bounds */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
         <FilmGrain opacity={0.04} />
 
         {/* Starfield */}
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.5, pointerEvents: 'none', zIndex: 0 }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.5, pointerEvents: 'none' }}>
           <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0 }}>
             <defs>
               <pattern id="stars" width="140" height="140" patternUnits="userSpaceOnUse">
@@ -240,6 +278,7 @@ function HeroSection({ theme }) {
             <rect width="100%" height="100%" fill="url(#stars)"/>
           </svg>
         </div>
+        </div>{/* end clipped decorative layer */}
 
         {/* Main grid layout */}
         <div style={{
@@ -359,42 +398,120 @@ function HeroSection({ theme }) {
           </div>
 
           {/* RIGHT: Globe */}
-          <div
-            ref={globeBoxRef}
-            style={{
-              position: 'relative',
-              width: globeSize, height: globeSize,
-              margin: isMobile || isTablet ? '0 auto' : '0 0 0 auto',
-              marginRight: !isMobile && !isTablet ? '-100px' : undefined,
-              transform: isMobile ? 'none' : `translate(${parallaxX * 0.3}px, ${parallaxY * 0.3}px)`,
-              order: isMobile || isTablet ? 0 : 1,
-            }}
-          >
-            {loadState === 'ready' ? (
-              <GlobeCanvas
-                size={globeSize}
-                rotation={rotation}
-                tilt={tilt}
-                land={land}
-                pulseT={pulseT}
-                theme={theme}
-                nodes={nodesRef}
-                botNodes={BOT_NODES}
-                webNodes={WEB_NODES}
-                onNodeHover={setHover}
-                onNodeClick={(h) => setSelected({ project: h.node, group: h.group })}
-              />
-            ) : (
-              <div style={{
+          <div style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            margin: isMobile || isTablet ? '0 auto' : '0 0 0 auto',
+            order: isMobile || isTablet ? 0 : 1,
+            transform: isMobile ? 'none' : `translate(${parallaxX * 0.3}px, ${parallaxY * 0.3}px)`,
+          }}>
+            <div
+              ref={globeBoxRef}
+              onMouseDown={onDragStart}
+              onMouseMove={onDragMove}
+              onMouseUp={onDragEnd}
+              onMouseLeave={onDragEnd}
+              onTouchStart={onDragStart}
+              onTouchMove={onDragMove}
+              onTouchEnd={onDragEnd}
+              style={{
+                position: 'relative',
                 width: globeSize, height: globeSize,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'JetBrains Mono, monospace', fontSize: 12,
-                color: 'var(--fg)', opacity: 0.5,
-                letterSpacing: '0.2em', textTransform: 'uppercase',
+                cursor: isDragging.current ? 'grabbing' : 'grab',
+                userSelect: 'none',
+              }}
+            >
+              {/* Outer atmospheric glow — circular clip prevents square blur bleed */}
+              <div style={{
+                position: 'absolute',
+                inset: -Math.round(globeSize * 0.28),
+                borderRadius: '50%',
+                overflow: 'hidden',
+                pointerEvents: 'none',
+                zIndex: -1,
               }}>
-                Loading world…
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(120,180,220,0.18) 25%, rgba(80,140,200,0.08) 55%, transparent 75%)',
+                  filter: `blur(${Math.round(globeSize * 0.09)}px)`,
+                }} />
               </div>
-            )}
+              {loadState === 'ready' ? (
+                <GlobeCanvas
+                  size={globeSize}
+                  rotation={rotation}
+                  tilt={tilt}
+                  land={land}
+                  pulseT={pulseT}
+                  theme={theme}
+                  nodes={nodesRef}
+                  botNodes={BOT_NODES}
+                  webNodes={WEB_NODES}
+                  onNodeHover={setHover}
+                  onNodeClick={(h) => { if (!isDragging.current) setSelected({ project: h.node, group: h.group }); }}
+                />
+              ) : (
+                <div style={{
+                  width: globeSize, height: globeSize,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'JetBrains Mono, monospace', fontSize: 12,
+                  color: 'var(--fg)', opacity: 0.5,
+                  letterSpacing: '0.2em', textTransform: 'uppercase',
+                }}>
+                  Loading world…
+                </div>
+              )}
+            </div>
+
+            {/* Globe controls */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 10, marginTop: 12,
+              fontFamily: 'JetBrains Mono, monospace', fontSize: 9,
+              color: 'var(--fg)', opacity: 0.5, letterSpacing: '0.15em',
+              userSelect: 'none',
+            }}>
+              {/* Pause / Play toggle */}
+              <button
+                onClick={() => { pausedRef.current = !pausedRef.current; setPaused(p => !p); }}
+                title={paused ? 'Resume rotation' : 'Pause rotation'}
+                style={{
+                  width: 28, height: 28, borderRadius: '50%',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: paused ? 'oklch(78% 0.18 280)' : 'transparent',
+                  border: '1px solid',
+                  borderColor: paused ? 'oklch(78% 0.18 280)' : 'var(--fg-20)',
+                  color: paused ? '#03050a' : 'var(--fg)',
+                  cursor: 'pointer', flexShrink: 0,
+                  transition: 'all 200ms ease',
+                }}
+              >
+                {paused ? (
+                  /* Play triangle */
+                  <svg width="8" height="9" viewBox="0 0 8 9" fill="currentColor">
+                    <polygon points="1,0 8,4.5 1,9"/>
+                  </svg>
+                ) : (
+                  /* Pause bars */
+                  <svg width="8" height="9" viewBox="0 0 8 9" fill="currentColor">
+                    <rect x="0" y="0" width="3" height="9"/>
+                    <rect x="5" y="0" width="3" height="9"/>
+                  </svg>
+                )}
+              </button>
+
+              <span style={{ opacity: paused ? 1 : 0.6 }}>
+                {paused ? 'PAUSED' : 'SPEED'}
+              </span>
+              <input
+                type="range" min="0.1" max="4" step="0.1"
+                value={speed}
+                onChange={e => setSpeed(parseFloat(e.target.value))}
+                disabled={paused}
+                style={{ width: 80, accentColor: 'oklch(78% 0.18 280)', cursor: paused ? 'default' : 'pointer', opacity: paused ? 0.3 : 1 }}
+              />
+              <span style={{ opacity: paused ? 0.3 : 1 }}>{speed.toFixed(1)}×</span>
+            </div>
           </div>
         </div>
 
@@ -408,11 +525,19 @@ function HeroSection({ theme }) {
         />
       </section>
 
-      {/* Project detail modal */}
-      {selected && (
+      {/* Bot modal — same as Portfolio (with LiveChat simulation) */}
+      {selected && selected.group === 'bots' && (
+        <BotProjectModal
+          botId={selected.project.id}
+          onClose={() => setSelected(null)}
+        />
+      )}
+
+      {/* Web project detail */}
+      {selected && selected.group === 'web' && (
         <ProjectDetail
           project={selected.project}
-          group={selected.group}
+          group="web"
           onClose={() => setSelected(null)}
           botImageMap={BOT_IMAGE_MAP}
         />
