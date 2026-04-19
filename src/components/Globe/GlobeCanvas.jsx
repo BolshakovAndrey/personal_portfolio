@@ -61,21 +61,23 @@ const AMBIENT = [
 ];
 
 // ── GlobeCanvas ──────────────────────────────────────────────────────────────
-function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nodes, pulseT, theme, botNodes, webNodes }) {
+function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nodes, pulseT, theme, botNodes, webNodes, arcs }) {
   const canvasRef = useRef(null);
+
+  const pad = Math.round(size * 0.14); // extra canvas room for arc overshoot
 
   const draw = useCallback(() => {
     const c = canvasRef.current;
     if (!c) return;
     const dpr = window.devicePixelRatio || 1;
-    const W = size, H = size;
+    const W = size + pad * 2, H = size + pad * 2;
     if (c.width !== W * dpr) { c.width = W * dpr; c.height = H * dpr; }
     const ctx = c.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
 
     const cx = W / 2, cy = H / 2;
-    const r = W / 2 - 20;
+    const r = size / 2 - 20; // sphere radius stays the same
     const isLight = theme === 'light';
 
     // ── Sphere fill ──
@@ -165,12 +167,11 @@ function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nod
       ctx.fill();
     }
 
-    // ── Arcs ──
-    const drawArcs = (groupNodes, colorRGB) => {
-      for (let i = 0; i < groupNodes.length; i++) {
-        const a = groupNodes[i];
-        const b = groupNodes[(i + 1) % groupNodes.length];
-        const pts = arcPoints([a.lat, a.lon], [b.lat, b.lon], 60, 0.28);
+    // ── Arcs: project city → world cities ──
+    if (arcs && arcs.length) {
+      for (let i = 0; i < arcs.length; i++) {
+        const { from, to, color } = arcs[i];
+        const pts = arcPoints(from, to, 60, 0.20);
         ctx.beginPath();
         let started = false;
         let maxZ = -1;
@@ -183,30 +184,28 @@ function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nod
           else ctx.lineTo(sx, sy);
         }
         const visible = Math.max(0, Math.min(1, (maxZ + 0.2) / 1.2));
-        ctx.strokeStyle = `rgba(${colorRGB}, ${0.25 + visible * 0.55})`;
-        ctx.lineWidth = 1.3;
-        ctx.shadowColor = `rgba(${colorRGB}, 0.8)`;
-        ctx.shadowBlur = 8;
+        ctx.strokeStyle = `rgba(${color}, ${0.18 + visible * 0.50})`;
+        ctx.lineWidth = 1.1;
+        ctx.shadowColor = `rgba(${color}, 0.7)`;
+        ctx.shadowBlur = 7;
         ctx.stroke();
         ctx.shadowBlur = 0;
 
-        const pulsePos = (pulseT + i * 0.1) % 1;
+        const pulsePos = (pulseT + i * (1 / arcs.length)) % 1;
         const pi = Math.floor(pulsePos * pts.length);
         const pp = rotateVec(pts[pi], rotation, tilt);
         if (pp.z > -0.1) {
           const psx = cx + pp.x * r, psy = cy + pp.y * r;
           ctx.beginPath();
-          ctx.fillStyle = `rgba(${colorRGB}, 0.9)`;
-          ctx.shadowColor = `rgba(${colorRGB}, 1)`;
+          ctx.fillStyle = `rgba(${color}, 0.9)`;
+          ctx.shadowColor = `rgba(${color}, 1)`;
           ctx.shadowBlur = 12;
-          ctx.arc(psx, psy, 2.2, 0, Math.PI * 2);
+          ctx.arc(psx, psy, 2.0, 0, Math.PI * 2);
           ctx.fill();
           ctx.shadowBlur = 0;
         }
       }
-    };
-    drawArcs(botNodes, '178, 132, 255');
-    drawArcs(webNodes, '120, 220, 160');
+    }
 
     // ── Project nodes ──
     const nodeScreenPositions = [];
@@ -239,18 +238,9 @@ function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nod
     drawNodes(botNodes, '178, 132, 255', 'bots');
     drawNodes(webNodes, '120, 220, 160', 'web');
 
-    // ── Atmosphere glow ──
-    const glow = ctx.createRadialGradient(cx, cy, r * 0.95, cx, cy, r * 1.15);
-    const glowRGB = isLight ? '90, 110, 140' : '120, 180, 220';
-    glow.addColorStop(0, `rgba(${glowRGB}, ${isLight ? 0.18 : 0.25})`);
-    glow.addColorStop(1, `rgba(${glowRGB}, 0)`);
-    ctx.beginPath();
-    ctx.fillStyle = glow;
-    ctx.arc(cx, cy, r * 1.15, 0, Math.PI * 2);
-    ctx.fill();
 
     nodes.current = nodeScreenPositions.filter(Boolean);
-  }, [size, rotation, tilt, land, pulseT, theme, botNodes, webNodes, nodes]);
+  }, [size, pad, rotation, tilt, land, pulseT, theme, botNodes, webNodes, arcs, nodes]);
 
   useEffect(() => { draw(); }, [draw]);
 
@@ -281,7 +271,11 @@ function GlobeCanvas({ size, rotation, tilt, land, onNodeHover, onNodeClick, nod
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: size, height: size, display: 'block', cursor: 'pointer' }}
+      style={{
+        width: size + pad * 2, height: size + pad * 2,
+        display: 'block', cursor: 'pointer',
+        position: 'absolute', top: -pad, left: -pad,
+      }}
       onMouseMove={handleMove}
       onMouseLeave={() => onNodeHover(null)}
       onClick={handleClick}
