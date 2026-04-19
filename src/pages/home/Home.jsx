@@ -34,6 +34,28 @@ const WEB_NODES = [
   { id: 'editor', city: 'Zurich',    lat: 47.38, lon:  8.55, title: 'Visual Script Editor', sub: 'QCodes',           url: 'https://bolshakovandrey.github.io/qcodes-react-demo-pages/', kind: 'editor',   stack: 'React.js',                accent: 'oklch(72% 0.15 300)' },
 ];
 
+const WORLD_CITIES = [
+  [40.71, -74.01], [35.68, 139.69], [-33.87, 151.21], [-23.55, -46.63],
+  [1.35,  103.82], [25.20,  55.27], [28.61,   77.21], [43.65,  -79.38],
+  [-1.29,  36.82], [13.75, 100.50], [37.57,  126.98], [19.43,  -99.13],
+  [39.90, 116.40], [37.77,-122.42], [22.32,  114.17], [-34.60, -58.38],
+  [41.88, -87.63], [34.05,-118.24], [ 6.52,    3.38], [29.76,  -95.37],
+  [30.04,  31.23], [59.33,  18.07], [48.86,    2.35], [51.51,   -0.13],
+  [33.75, -84.39], [45.42, -75.70], [64.13,  -21.95], [14.60,  120.98],
+];
+
+function generateArcs() {
+  const B = '178, 132, 255';
+  const W = '120, 220, 160';
+  const pick = (n) => [...WORLD_CITIES].sort(() => Math.random() - 0.5).slice(0, n);
+  const arcs = [];
+  for (const node of BOT_NODES)
+    pick(3).forEach(to => arcs.push({ from: [node.lat, node.lon], to, color: B }));
+  for (const node of WEB_NODES)
+    pick(2).forEach(to => arcs.push({ from: [node.lat, node.lon], to, color: W }));
+  return arcs;
+}
+
 // ── FilmGrain ────────────────────────────────────────────────────────────────
 function FilmGrain({ opacity = 0.04 }) {
   return (
@@ -114,6 +136,7 @@ function HeroSection({ theme }) {
   const [speed, setSpeed]       = useState(1);
   const [paused, setPaused]     = useState(false);
   const pausedRef               = useRef(false);
+  const [globeArcs, setGlobeArcs] = useState(() => generateArcs());
   const nodesRef    = useRef([]);
   const globeBoxRef = useRef(null);
   const [boxRect, setBoxRect] = useState({ left: 0, top: 0 });
@@ -206,6 +229,28 @@ function HeroSection({ theme }) {
     };
   }, []);
 
+  // Each arc refreshes independently at a random interval (3–9 s)
+  useEffect(() => {
+    const alive = { v: true };
+    const timers = new Map();
+
+    const schedule = (i) => {
+      const delay = 3000 + Math.random() * 6000;
+      timers.set(i, setTimeout(() => {
+        if (!alive.v) return;
+        setGlobeArcs(prev => {
+          const next = [...prev];
+          next[i] = { ...next[i], to: WORLD_CITIES[Math.floor(Math.random() * WORLD_CITIES.length)] };
+          return next;
+        });
+        schedule(i);
+      }, delay));
+    };
+
+    globeArcs.forEach((_, i) => schedule(i));
+    return () => { alive.v = false; timers.forEach(clearTimeout); };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // Escape key to close modal
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setSelected(null); };
@@ -224,9 +269,8 @@ function HeroSection({ theme }) {
   const isMobile  = vw < 820;
   const isTablet  = vw < 1180 && !isMobile;
   const globeSize = isMobile ? Math.min(vw - 20, 460) : isTablet ? 540 : 720;
-  const tilt      = 0.25 + (mouse.y - 0.5) * 0.25;
+  const tilt      = 0.25;
   const parallaxX = (mouse.x - 0.5) * 16;
-  const parallaxY = (mouse.y - 0.5) * 10;
 
   // Drag handlers
   const onDragStart = (e) => {
@@ -292,7 +336,7 @@ function HeroSection({ theme }) {
 
           {/* LEFT: Text */}
           <div style={{
-            transform: isMobile ? 'none' : `translate(${parallaxX * 0.4}px, ${parallaxY * 0.4}px)`,
+            transform: isMobile ? 'none' : `translateX(${parallaxX * 0.4}px)`,
             maxWidth: isMobile ? '100%' : 480,
             order: isMobile || isTablet ? 1 : 0,
           }}>
@@ -402,7 +446,7 @@ function HeroSection({ theme }) {
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             margin: isMobile || isTablet ? '0 auto' : '0 0 0 auto',
             order: isMobile || isTablet ? 0 : 1,
-            transform: isMobile ? 'none' : `translate(${parallaxX * 0.3}px, ${parallaxY * 0.3}px)`,
+            transform: isMobile ? 'none' : `translateX(${parallaxX * 0.3}px)`,
           }}>
             <div
               ref={globeBoxRef}
@@ -420,23 +464,16 @@ function HeroSection({ theme }) {
                 userSelect: 'none',
               }}
             >
-              {/* Outer atmospheric glow — circular clip prevents square blur bleed */}
+              {/* Circular glow aligned to sphere boundary (canvas has 20px padding around sphere) */}
               <div style={{
                 position: 'absolute',
-                inset: -Math.round(globeSize * 0.28),
+                inset: 20,
                 borderRadius: '50%',
-                overflow: 'hidden',
+                boxShadow: '0 0 36px 4px rgba(60,100,170,0.20)',
                 pointerEvents: 'none',
                 zIndex: -1,
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(120,180,220,0.18) 25%, rgba(80,140,200,0.08) 55%, transparent 75%)',
-                  filter: `blur(${Math.round(globeSize * 0.09)}px)`,
-                }} />
-              </div>
+              }} />
+
               {loadState === 'ready' ? (
                 <GlobeCanvas
                   size={globeSize}
@@ -448,6 +485,7 @@ function HeroSection({ theme }) {
                   nodes={nodesRef}
                   botNodes={BOT_NODES}
                   webNodes={WEB_NODES}
+                  arcs={globeArcs}
                   onNodeHover={setHover}
                   onNodeClick={(h) => { if (!isDragging.current) setSelected({ project: h.node, group: h.group }); }}
                 />
