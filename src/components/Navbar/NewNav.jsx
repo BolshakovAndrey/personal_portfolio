@@ -118,9 +118,10 @@ function NewNav({ theme, onToggleTheme }) {
         padding: isMobile ? '14px 20px' : '20px 40px',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         background: scrolled ? 'var(--bg-nav)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--fg-06)' : '1px solid transparent',
-        transition: 'background 300ms ease, border-color 300ms ease',
+        backdropFilter: scrolled ? 'blur(28px) saturate(1.8)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(28px) saturate(1.8)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--fg-08)' : '1px solid transparent',
+        transition: 'background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
       }}>
         {/* Logo / name */}
         <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
