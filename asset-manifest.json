@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.baf82b1f.css",
-    "main.js": "./static/js/main.b0fcea23.js",
+    "main.css": "./static/css/main.39904c95.css",
+    "main.js": "./static/js/main.ffd6b623.js",
     "static/js/787.1ed0c42c.chunk.js": "./static/js/787.1ed0c42c.chunk.js",
     "static/media/project-3.jpeg": "./static/media/project-3.d3dba107aed9234a6f8e.jpeg",
     "static/media/project-4.jpeg": "./static/media/project-4.babdd9ce965afe43bb16.jpeg",
@@ -28,14 +28,13 @@
     "static/media/goodchemistry-02-catalog.png": "./static/media/goodchemistry-02-catalog.2d28b10014193dbe9310.png",
     "static/media/goodchemistry-01-start.png": "./static/media/goodchemistry-01-start.a3a934e51449646fdf97.png",
     "static/media/home.jpg": "./static/media/home.5761b2518c19a818cd09.jpg",
-    "static/media/close.svg": "./static/media/close.9a7c408a20e0307b12a567f75c0ccaed.svg",
     "index.html": "./index.html",
-    "main.baf82b1f.css.map": "./static/css/main.baf82b1f.css.map",
-    "main.b0fcea23.js.map": "./static/js/main.b0fcea23.js.map",
+    "main.39904c95.css.map": "./static/css/main.39904c95.css.map",
+    "main.ffd6b623.js.map": "./static/js/main.ffd6b623.js.map",
     "787.1ed0c42c.chunk.js.map": "./static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.baf82b1f.css",
-    "static/js/main.b0fcea23.js"
+    "static/css/main.39904c95.css",
+    "static/js/main.ffd6b623.js"
   ]
 }
