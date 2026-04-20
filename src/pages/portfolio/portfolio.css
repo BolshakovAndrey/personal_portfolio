@@ -356,3 +356,12 @@
 .project-card:hover .project-card-link {
     transform: translateX(4px);
 }
+
+.spotlight-overlay {
+    opacity: 0;
+    transition: opacity 400ms ease;
+    mix-blend-mode: color-dodge;
+}
+.project-card:hover .spotlight-overlay {
+    opacity: 1;
+}

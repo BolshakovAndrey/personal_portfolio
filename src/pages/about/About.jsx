@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '../../components/PageHero';
 import SkillsCloud from '../../components/SkillsCloud';
 import OrbitCloud from '../../components/OrbitCloud';
@@ -131,28 +132,47 @@ export default function About() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {resume.filter(r => r.category === resumeTab).map(r => {
-              const itemTitle = t(`resume_items.${r.id}.title`, { defaultValue: r.title });
-              const itemDesc  = t(`resume_items.${r.id}.desc`,  { defaultValue: r.desc });
-              return (
-              <div key={r.id} style={{
-                background: 'var(--fg-02)', border: '1px solid var(--fg-08)',
-                borderRadius: 10, padding: '24px 28px',
-                transition: 'border-color 200ms',
-              }}>
-                <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'oklch(82% 0.17 50)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
-                  {r.year}
-                </div>
-                <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.01em', marginBottom: 6 }}
-                  dangerouslySetInnerHTML={{ __html: itemTitle }} />
-                <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: 'var(--fg)', opacity: 0.6, lineHeight: 1.5 }}>
-                  {itemDesc}
-                </div>
-              </div>
-              );
-            })}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={resumeTab}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+              }}
+              style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+            >
+              {resume.filter(r => r.category === resumeTab).map(r => {
+                const itemTitle = t(`resume_items.${r.id}.title`, { defaultValue: r.title });
+                const itemDesc  = t(`resume_items.${r.id}.desc`,  { defaultValue: r.desc });
+                return (
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, x: -80, filter: 'blur(15px)', skewX: -10 },
+                    show:   { opacity: 1, x: 0, filter: 'blur(0px)', skewX: 0, transition: { type: 'spring', damping: 20, stiffness: 120 } },
+                    exit:   { opacity: 0, x: 40, filter: 'blur(10px)', transition: { duration: 0.2 } }
+                  }}
+                  exit="exit"
+                  key={r.id} style={{
+                  background: 'var(--fg-02)', border: '1px solid var(--fg-08)',
+                  borderRadius: 10, padding: '24px 28px',
+                  transition: 'border-color 200ms',
+                }}>
+                  <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'oklch(82% 0.17 50)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
+                    {r.year}
+                  </div>
+                  <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.01em', marginBottom: 6 }}
+                    dangerouslySetInnerHTML={{ __html: itemTitle }} />
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: 'var(--fg)', opacity: 0.6, lineHeight: 1.5 }}>
+                    {itemDesc}
+                  </div>
+                </motion.div>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
     </main>

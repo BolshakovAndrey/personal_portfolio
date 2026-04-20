@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence, useMotionTemplate, useMotionValue } from 'framer-motion';
+import MagneticButton from '../../components/MagneticButton/MagneticButton';
 import './portfolio.css';
 import { LiveChat } from '../../components/BotLiveChat';
 import PageHero from '../../components/PageHero';
@@ -56,13 +58,33 @@ function SectionLabel({ color, text }) {
   );
 }
 
+const itemVariant = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.95 },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -20, filter: 'blur(10px)', transition: { duration: 0.3 } }
+};
+
 function ProjectCard({ project, onClick }) {
   const { t } = useTranslation();
   const accent = project.group === 'bots' ? 'oklch(78% 0.18 280)' : 'oklch(78% 0.15 140)';
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  const background = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, ${accent}33, transparent 40%)`;
+
   return (
-    <div
+    <motion.div
+      variants={itemVariant}
+      layout
       onClick={onClick}
+      onMouseMove={handleMouseMove}
       className="project-card"
       style={{
         position: 'relative',
@@ -76,10 +98,20 @@ function ProjectCard({ project, onClick }) {
         "--accent-hover-shadow": `${accent}22`
       }}
     >
+      <motion.div 
+        className="spotlight-overlay"
+        style={{
+           background,
+           position: 'absolute',
+           inset: 0,
+           pointerEvents: 'none',
+           zIndex: 1,
+        }}
+      />
       {/* Preview */}
       <div style={{
         height: 180, marginBottom: 20, borderRadius: 6, overflow: 'hidden',
-        background: '#0c0d10', position: 'relative',
+        background: '#0c0d10', position: 'relative', zIndex: 2
       }}>
         {project.group === 'bots' ? (
           <div style={{ width: '100%', height: '100%', pointerEvents: 'none', overflow: 'hidden' }}>
@@ -100,18 +132,18 @@ function ProjectCard({ project, onClick }) {
         </div>
       </div>
 
-      <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 22, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.02em', marginBottom: 4 }}>
+      <div style={{ position: 'relative', zIndex: 2, fontFamily: '"Space Grotesk", sans-serif', fontSize: 22, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.02em', marginBottom: 4 }}>
         {project.title}
       </div>
-      <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: 'var(--fg)', opacity: 0.55, marginBottom: 14 }}>
+      <div style={{ position: 'relative', zIndex: 2, fontFamily: 'Inter, sans-serif', fontSize: 13, color: 'var(--fg)', opacity: 0.55, marginBottom: 14 }}>
         {project.sub}
       </div>
-      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--fg)', opacity: 0.45, letterSpacing: '0.05em' }}>
+      <div style={{ position: 'relative', zIndex: 2, fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--fg)', opacity: 0.45, letterSpacing: '0.05em' }}>
         {project.stack}
       </div>
 
-      <div className="project-card-link">{t('portfolio.open')}</div>
-    </div>
+      <div className="project-card-link" style={{ zIndex: 2 }}>{t('portfolio.open')}</div>
+    </motion.div>
   );
 }
 
@@ -155,16 +187,18 @@ export default function Portfolio() {
                 { id: 'bots', label: t('portfolio.filter_bots', { count: BOT_NODES.length }) },
                 { id: 'web',  label: t('portfolio.filter_web',  { count: WEB_NODES.length }) },
               ].map(f => (
-                <button key={f.id} onClick={() => setFilter(f.id)} style={{
-                  padding: '10px 18px',
-                  background: filter === f.id ? 'var(--fg)' : 'transparent',
-                  color: filter === f.id ? 'var(--bg-deep)' : 'var(--fg)',
-                  border: '1px solid', borderColor: filter === f.id ? 'var(--fg)' : 'var(--fg-20)',
-                  borderRadius: 4,
-                  fontFamily: 'JetBrains Mono, monospace', fontSize: 11, fontWeight: 600,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  cursor: 'pointer', transition: 'all 200ms',
-                }}>{f.label}</button>
+                <MagneticButton key={f.id} onClick={() => setFilter(f.id)}>
+                  <button style={{
+                    padding: '10px 18px',
+                    background: filter === f.id ? 'var(--fg)' : 'transparent',
+                    color: filter === f.id ? 'var(--bg-deep)' : 'var(--fg)',
+                    border: '1px solid', borderColor: filter === f.id ? 'var(--fg)' : 'var(--fg-20)',
+                    borderRadius: 4,
+                    fontFamily: 'JetBrains Mono, monospace', fontSize: 11, fontWeight: 600,
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                    cursor: 'pointer', transition: 'all 200ms',
+                  }}>{f.label}</button>
+                </MagneticButton>
               ))}
             </div>
           </div>
@@ -175,15 +209,24 @@ export default function Portfolio() {
               if (bot) setSelected({ project: { ...bot, group: 'bots' }, group: 'bots' });
             }} />
           ) : (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-              gap: 20,
-            }}>
-              {filtered.map(p => (
-                <ProjectCard key={p.id} project={p} onClick={() => setSelected({ project: p, group: p.group })} />
-              ))}
-            </div>
+            <motion.div 
+              initial="hidden"
+              animate="show"
+              variants={{
+                show: { transition: { staggerChildren: 0.1 } }
+              }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                gap: 20,
+              }}
+            >
+              <AnimatePresence mode="popLayout">
+                {filtered.map(p => (
+                  <ProjectCard key={p.id} project={p} onClick={() => setSelected({ project: p, group: p.group })} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
           )}
         </div>
       </section>
