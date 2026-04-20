@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "portfolio": "作品集",
+    "contact": "联系",
+    "theme_light": "切换亮色模式",
+    "theme_dark": "切换暗色模式"
+  },
+  "home": {
+    "label": "// 作品集 · {{count}} 个项目 · 2 大洲",
+    "h1": "每个机器人",
+    "h2": "都在某处运行。",
+    "sub": "4 个 Telegram 机器人和 6 个网页应用，为欧洲各地的真实团队部署。",
+    "hint": "悬停节点预览。点击查看详情。",
+    "stats_bots": "机器人",
+    "stats_web": "网页应用",
+    "stats_years": "年",
+    "loading": "加载地图中…",
+    "speed": "速度",
+    "paused": "已暂停",
+    "pause": "暂停旋转",
+    "resume": "继续旋转",
+    "click_open": "点击打开 →",
+    "tg_bot": "TG 机器人",
+    "web_app": "网页应用",
+    "ai_note": "翻译由 AI 生成——可能存在错误"
+  },
+  "hero": {
+    "about_label": "// 关于",
+    "about_kicker": "4+ 年 · 2 大洲",
+    "about_title": "开发者。",
+    "about_sub": "Python 后端。React 前端。为真实团队开发 Telegram 机器人和网页应用。",
+    "portfolio_label": "// 项目 · 10",
+    "portfolio_kicker": "十个已交付项目",
+    "portfolio_title": "作品。",
+    "portfolio_sub": "机器人、平台、编辑类网站。点击任意卡片预览。",
+    "contact_label": "// 联系",
+    "contact_kicker": "Telegram 回复最快",
+    "contact_title": "联系我。",
+    "contact_sub": "招聘、自由职业、友好交流 — 均欢迎。"
+  },
+  "about": {
+    "section_label": "// 关于 · 01",
+    "h2_1": "全栈开发者",
+    "h2_2": "专注于\n实际交付。",
+    "bio1": "我构建并交付生产级软件——Telegram 机器人、网络平台和 AI 集成。驻扎欧洲，与俄罗斯、德国和巴尔干半岛的团队远程合作。",
+    "bio2": "四年来编写真实用户每天使用的代码——为数百名访客服务的节日平台、处理数千订单的机器人、真正能节省时间而不只是演示效果好的 AI 工具。",
+    "skills_label": "// 技术栈 · 02",
+    "skills_title": "技术栈。",
+    "orbit": "◎ 轨道",
+    "cloud": "⊹ 云图",
+    "resume_label": "// 简历 · 03",
+    "resume_title": "经验与\n教育。",
+    "experience": "工作经验",
+    "education": "教育背景"
+  },
+  "portfolio": {
+    "section_label": "// 项目 · 02",
+    "headline": "{{count}} 个",
+    "headline2": "已交付项目。",
+    "filter_all": "全部 · {{count}}",
+    "filter_bots": "机器人 · {{count}}",
+    "filter_web": "网页 · {{count}}",
+    "open": "查看 →",
+    "tg_bot": "TG 机器人",
+    "web": "网页"
+  },
+  "contact": {
+    "section_label": "// 联系 · 04",
+    "h2_1": "让我们一起",
+    "h2_2": "构建真实的东西。",
+    "sub": "接受新项目——机器人、全栈网页应用、AI 集成。远程工作，欧洲时区。通过以下任意渠道联系我。",
+    "form_label": "// 或发送消息",
+    "name": "您的姓名",
+    "email": "您的邮箱",
+    "subject": "主题",
+    "message": "您的留言",
+    "send": "发送消息 →",
+    "sent": "已发送 ✓",
+    "footer": "© 2026 Andrei Bolshakov",
+    "built": "基于 React 构建 · v2.0"
+  },
+  "modal": {
+    "open_telegram": "在 Telegram 中打开 →",
+    "close": "Esc"
+  },
+  "bot_modal": {
+    "ht": {
+      "big_0": "AI健康追踪器：",
+      "big_1": "健康习惯，",
+      "big_2": "轻松实现。",
+      "sub": "AI助手，分析食物照片和语音消息，计算卡路里和营养素（宏量营养素+膳食纤维），追踪饮水、步数、运动、睡眠和情绪。内置马拉松系统，含排行榜、惩罚和奖励——激励用户共同达成目标。订阅模式+管理后台，支持群发邮件、支持工单和每用户数据分析。读取食品标签，识别品牌，自动计算克重。"
+    }
+  },
+  "resume_items": {
+    "1": {
+      "title": "全栈开发者 <span> VoxLink </span>",
+      "desc": "VoxLink 公司的 JavaScript (TypeScript) 全栈开发者"
+    },
+    "2": {
+      "title": "网页开发者 <span> 自由职业 </span>",
+      "desc": "最近的自由职业项目——为「GoodChemistry」商店开发高级 Telegram 机器人"
+    },
+    "3": {
+      "title": "后端开发者 <span> Yandex.Practicum.Studio </span>",
+      "desc": "为青年剧作家节「Lubimovka」开发项目"
+    },
+    "4": {
+      "title": "网页开发者 <span> Yandex Practicum </span>",
+      "desc": "实习，学习网页开发和 Python 后端开发课程"
+    },
+    "5": {
+      "title": "网页开发者 <span> Yandex Practicum </span>",
+      "desc": "实习，学习网页开发课程"
+    },
+    "6": {
+      "title": "后端开发者 <span> Yandex Practicum </span>",
+      "desc": "实习，学习 Python 后端开发课程"
+    },
+    "7": {
+      "title": "工商管理硕士 <span> 莫斯科 RANEPA </span>",
+      "desc": "工商管理，专业方向：战略营销与管理"
+    }
+  }
+}

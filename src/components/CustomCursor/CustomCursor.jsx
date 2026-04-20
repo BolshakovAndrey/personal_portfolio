@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './customCursor.css';
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({
-        x: 0,
-        y: 0
-    });
-    
+    // Avoid React re-renders on mousemove by using Framer Motion values directly
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+
+    const springConfig = { damping: 20, stiffness: 200, mass: 0.1 };
+    const cursorXSpring = useSpring(cursorX, springConfig);
+    const cursorYSpring = useSpring(cursorY, springConfig);
+
     const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
         const updateMousePosition = (e) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY
-            });
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
         const handleMouseOver = (e) => {
-            if (e.target.tagName.toLowerCase() === 'a' || 
-                e.target.tagName.toLowerCase() === 'button' ||
-                e.target.closest('a') !== null ||
-                e.target.closest('button') !== null) {
+            const t = e.target;
+            if (t.tagName.toLowerCase() === 'a' || 
+                t.tagName.toLowerCase() === 'button' ||
+                t.closest('a') !== null ||
+                t.closest('button') !== null || 
+                t.closest('[role="button"]') !== null) {
                 setIsHovering(true);
             } else {
                 setIsHovering(false);
@@ -36,23 +39,20 @@ const CustomCursor = () => {
             window.removeEventListener('mousemove', updateMousePosition);
             window.removeEventListener('mouseover', handleMouseOver);
         };
-    }, []);
+    }, [cursorX, cursorY]);
 
     const variants = {
         default: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
             scale: 1,
-            transition: { type: 'spring', mass: 0.1, stiffness: 200, damping: 20 }
+            backgroundColor: 'transparent',
+            mixBlendMode: 'normal',
+            border: '2px solid var(--first-color)'
         },
         hover: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
             scale: 2.5,
             backgroundColor: 'rgba(255, 255, 255, 0.2)',
             mixBlendMode: 'difference',
             border: 'none',
-            transition: { type: 'spring', mass: 0.1, stiffness: 200, damping: 20 }
         }
     };
 
@@ -60,16 +60,24 @@ const CustomCursor = () => {
         <React.Fragment>
             <motion.div
                 className="cursor-dot"
-                animate={{
-                    x: mousePosition.x - 4,
-                    y: mousePosition.y - 4,
+                style={{
+                    x: cursorX,
+                    y: cursorY,
+                    marginLeft: -4,
+                    marginTop: -4
                 }}
-                transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
             />
             <motion.div
                 className="cursor-outline"
                 variants={variants}
                 animate={isHovering ? "hover" : "default"}
+                transition={{ type: 'spring', mass: 0.1, stiffness: 200, damping: 20 }}
+                style={{
+                    x: cursorXSpring,
+                    y: cursorYSpring,
+                    marginLeft: -16,
+                    marginTop: -16
+                }}
             />
         </React.Fragment>
     );

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import './portfolio.css';
 import { LiveChat } from '../../components/BotLiveChat';
 import PageHero from '../../components/PageHero';
 import ProjectDetail from '../../components/Globe/ProjectDetail';
@@ -55,26 +57,23 @@ function SectionLabel({ color, text }) {
 }
 
 function ProjectCard({ project, onClick }) {
-  const [hover, setHover] = useState(false);
+  const { t } = useTranslation();
   const accent = project.group === 'bots' ? 'oklch(78% 0.18 280)' : 'oklch(78% 0.15 140)';
-  const img = BOT_IMAGE_MAP[project.id];
 
   return (
     <div
       onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className="project-card"
       style={{
         position: 'relative',
         background: 'var(--fg-02)',
-        border: `1px solid ${hover ? accent + '66' : 'var(--fg-08)'}`,
         borderRadius: 10,
         padding: 24,
         cursor: 'pointer',
-        transition: 'all 250ms cubic-bezier(.2,.8,.2,1)',
-        transform: hover ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hover ? `0 20px 50px rgba(0,0,0,0.4), 0 0 40px ${accent}22` : 'none',
         overflow: 'hidden',
+        "--accent": accent,
+        "--accent-hover-border": `${accent}66`,
+        "--accent-hover-shadow": `${accent}22`
       }}
     >
       {/* Preview */}
@@ -87,10 +86,7 @@ function ProjectCard({ project, onClick }) {
             <LiveChat botId={project.id} compact autoScroll />
           </div>
         ) : project.group === 'web' && WEB_IMAGE_MAP[project.id] ? (
-          <img src={WEB_IMAGE_MAP[project.id]} alt="" style={{
-            width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top',
-            transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 400ms',
-          }} />
+          <img className="project-card-image" src={WEB_IMAGE_MAP[project.id]} alt="" />
         ) : null}
         <div style={{
           position: 'absolute', top: 10, left: 10,
@@ -100,7 +96,7 @@ function ProjectCard({ project, onClick }) {
           fontFamily: 'JetBrains Mono, monospace', fontSize: 9,
           color: accent, letterSpacing: '0.15em', textTransform: 'uppercase',
         }}>
-          {project.group === 'bots' ? 'tg bot' : 'web'} · {project.city}
+          {project.group === 'bots' ? t('portfolio.tg_bot') : t('portfolio.web')} · {project.city}
         </div>
       </div>
 
@@ -114,22 +110,17 @@ function ProjectCard({ project, onClick }) {
         {project.stack}
       </div>
 
-      <div style={{
-        position: 'absolute', right: 24, bottom: 24,
-        fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
-        color: accent, letterSpacing: '0.15em', textTransform: 'uppercase',
-        transform: hover ? 'translateX(4px)' : 'translateX(0)',
-        transition: 'transform 200ms',
-      }}>open →</div>
+      <div className="project-card-link">{t('portfolio.open')}</div>
     </div>
   );
 }
 
 export default function Portfolio() {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState(null);
 
-  const filtered = filter === 'all' ? ALL : ALL.filter(p => p.group === filter);
+  const filtered = useMemo(() => filter === 'all' ? ALL : ALL.filter(p => p.group === filter), [filter]);
 
   return (
     <main style={{ background: 'var(--bg)', minHeight: '100vh' }}>
@@ -142,7 +133,7 @@ export default function Portfolio() {
         borderTop: '1px solid var(--fg-04)',
       }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <SectionLabel color="oklch(78% 0.15 140)" text="// projects · 02" />
+          <SectionLabel color="oklch(78% 0.15 140)" text={t('portfolio.section_label')} />
 
           <div style={{
             display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
@@ -154,15 +145,15 @@ export default function Portfolio() {
               fontWeight: 500, color: 'var(--fg)',
               letterSpacing: '-0.04em', lineHeight: 0.95, margin: 0,
             }}>
-              {ALL.length} shipped<br />
-              <span style={{ fontStyle: 'italic', color: 'oklch(78% 0.15 140)' }}>things.</span>
+              {t('portfolio.headline', { count: ALL.length })}<br />
+              <span style={{ fontStyle: 'italic', color: 'oklch(78% 0.15 140)' }}>{t('portfolio.headline2')}</span>
             </h2>
 
             <div style={{ display: 'flex', gap: 8 }}>
               {[
-                { id: 'all',  label: `All · ${ALL.length}` },
-                { id: 'bots', label: `Bots · ${BOT_NODES.length}` },
-                { id: 'web',  label: `Web · ${WEB_NODES.length}` },
+                { id: 'all',  label: t('portfolio.filter_all',  { count: ALL.length }) },
+                { id: 'bots', label: t('portfolio.filter_bots', { count: BOT_NODES.length }) },
+                { id: 'web',  label: t('portfolio.filter_web',  { count: WEB_NODES.length }) },
               ].map(f => (
                 <button key={f.id} onClick={() => setFilter(f.id)} style={{
                   padding: '10px 18px',

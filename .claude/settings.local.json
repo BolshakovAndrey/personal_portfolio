@@ -1,7 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx react-scripts:*)"
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+      "Bash(rm -rf /tmp/portfolio-build-tmp)",
+      "Bash(rm -rf .claude)",
+      "Bash(curl -s https://bolshakovandrey.github.io/personal_portfolio/index.html)",
+      "Bash(git -C /Users/andreybolshakov/WebstormProjects/portfolio branch -a)",
+      "Read(//private/tmp/portfolio-handoff/personalportfolio/**)",
+      "Bash(npm run *)",
+      "Bash(npx react-scripts *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill *)",
+      "Read(//Users/andreybolshakov/DEV/GoodChemistri/GoodChemistry/**)",
+      "Read(//Users/andreybolshakov/DEV/GoodChemistri/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://lubimovka.art\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://bolshakov.nomoredomains.xyz\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://bolshakovav.nomoredomains.xyz/movies\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://bolshakovandrey.github.io/russian-travel/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://www.toy4joy.site/\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Read(//Users/andreybolshakov/.openclaw/workspace/memory/**)",
+      "Bash(npm list *)",
+      "Bash(npm start *)"
     ]
   }
 }

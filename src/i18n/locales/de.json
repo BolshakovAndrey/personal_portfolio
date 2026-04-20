@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "portfolio": "Portfolio",
+    "contact": "Kontakt",
+    "theme_light": "Helles Design",
+    "theme_dark": "Dunkles Design"
+  },
+  "home": {
+    "label": "// portfolio · {{count}} Projekte · 2 Kontinente",
+    "h1": "Jeder Bot",
+    "h2": "landet irgendwo.",
+    "sub": "4 Telegram-Bots und 6 Web-Apps, für echte Teams in Europa entwickelt.",
+    "hint": "Node berühren zum Vorschauen. Klicken zum Öffnen.",
+    "stats_bots": "Bots",
+    "stats_web": "Web-Apps",
+    "stats_years": "Jahre",
+    "loading": "Welt laden…",
+    "speed": "TEMPO",
+    "paused": "PAUSE",
+    "pause": "Rotation pausieren",
+    "resume": "Rotation fortsetzen",
+    "click_open": "öffnen →",
+    "tg_bot": "tg bot",
+    "web_app": "web app",
+    "ai_note": "Übersetzungen von KI generiert — können Fehler enthalten"
+  },
+  "hero": {
+    "about_label": "// über mich",
+    "about_kicker": "4+ Jahre · 2 Kontinente",
+    "about_title": "Entwickler.",
+    "about_sub": "Python Backend. React Frontend. Telegram-Bots und Web-Apps für echte Teams.",
+    "portfolio_label": "// projekte · 10",
+    "portfolio_kicker": "zehn fertige Projekte",
+    "portfolio_title": "Die Arbeit.",
+    "portfolio_sub": "Bots, Plattformen, Redaktionsseiten. Karte anklicken zum Vorschauen.",
+    "contact_label": "// kontakt",
+    "contact_kicker": "schnellste Antwort auf Telegram",
+    "contact_title": "Kontakt aufnehmen.",
+    "contact_sub": "Anstellung, Freelance, freundliche Nachrichten — alles willkommen."
+  },
+  "about": {
+    "section_label": "// über mich · 01",
+    "h2_1": "Full-stack",
+    "h2_2": "mit Fokus\naufs Shipping.",
+    "bio1": "Ich entwickle produktionsreife Software — Telegram-Bots, Web-Plattformen und KI-Integrationen. In Europa ansässig, arbeite remote mit Teams in Russland, Deutschland und dem Balkan.",
+    "bio2": "Vier Jahre Code schreiben, den echte Menschen täglich nutzen — eine Festival-Plattform für Hunderte von Besuchern, Bots die Tausende von Bestellungen verarbeiten, KI-Tools die tatsächlich Zeit sparen.",
+    "skills_label": "// fähigkeiten · 02",
+    "skills_title": "Tech-Stack.",
+    "orbit": "◎ orbit",
+    "cloud": "⊹ cloud",
+    "resume_label": "// lebenslauf · 03",
+    "resume_title": "Erfahrung und\nAusbildung.",
+    "experience": "erfahrung",
+    "education": "ausbildung"
+  },
+  "portfolio": {
+    "section_label": "// projekte · 02",
+    "headline": "{{count}} fertige",
+    "headline2": "Projekte.",
+    "filter_all": "Alle · {{count}}",
+    "filter_bots": "Bots · {{count}}",
+    "filter_web": "Web · {{count}}",
+    "open": "öffnen →",
+    "tg_bot": "tg bot",
+    "web": "web"
+  },
+  "contact": {
+    "section_label": "// kontakt · 04",
+    "h2_1": "Lass uns",
+    "h2_2": "etwas Echtes bauen.",
+    "sub": "Offen für neue Projekte — Bots, Full-Stack-Web-Apps, KI-Integrationen. Remote, europäische Zeiten. Meld dich über einen Kanal unten.",
+    "form_label": "// oder Nachricht senden",
+    "name": "Dein Name",
+    "email": "Deine E-Mail",
+    "subject": "Betreff",
+    "message": "Deine Nachricht",
+    "send": "Nachricht senden →",
+    "sent": "Gesendet ✓",
+    "footer": "© 2026 Andrei Bolshakov",
+    "built": "Gebaut mit React · v2.0"
+  },
+  "modal": {
+    "open_telegram": "In Telegram öffnen →",
+    "close": "Esc"
+  },
+  "bot_modal": {
+    "ht": {
+      "big_0": "KI-Gesundheitstracker:",
+      "big_1": "gesunde Gewohnheiten",
+      "big_2": "mühelos.",
+      "sub": "KI-Assistent, der Essensfotos und Sprachnachrichten analysiert, Kalorien und Nährstoffe (Makros + Ballaststoffe) zählt und Wasser, Schritte, Training, Schlaf und Stimmung verfolgt. Integriertes Marathon-System mit Ranglisten, Strafen und Belohnungen — motiviert Nutzer, gemeinsam Ziele zu erreichen. Abonnementmodell + Admin-Panel mit Newslettern, Support-Tickets und Nutzeranalysen. Liest Etiketten, erkennt Marken, berücksichtigt Portionsgrößen."
+    }
+  },
+  "resume_items": {
+    "1": {
+      "title": "FullStack Web-Entwickler <span> VoxLink </span>",
+      "desc": "JavaScript (TypeScript) FullStack-Entwickler bei VoxLink"
+    },
+    "2": {
+      "title": "Web-Entwickler <span> Freiberufler </span>",
+      "desc": "Letztes Freelance-Projekt — fortgeschrittener Telegram-Bot für den \"GoodChemistry\"-Shop"
+    },
+    "3": {
+      "title": "Backend-Entwickler <span> Yandex.Practicum.Studio </span>",
+      "desc": "Projekt für das Festival für junge Dramatiker \"Lubimovka\""
+    },
+    "4": {
+      "title": "Web-Entwickler <span> Yandex Practicum </span>",
+      "desc": "Praktikum, Ausbildung im Bereich Webentwicklung und Python-Backend-Entwicklung"
+    },
+    "5": {
+      "title": "Web-Entwickler <span> Yandex Practicum </span>",
+      "desc": "Praktikum, Ausbildung im Bereich Webentwicklung"
+    },
+    "6": {
+      "title": "Backend-Entwickler <span> Yandex Practicum </span>",
+      "desc": "Praktikum, Ausbildung im Bereich Python-Backend-Entwicklung"
+    },
+    "7": {
+      "title": "Master of Business Administration <span> Moscow RANEPA </span>",
+      "desc": "Betriebswirtschaft in Strategiemarketing und Management, Allgemein"
+    }
+  }
+}

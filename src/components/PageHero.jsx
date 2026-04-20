@@ -1,30 +1,33 @@
 import React from 'react';
-
-const PAGE_META = {
-  about: {
-    label: '// about',
-    kicker: '4+ years · 2 continents',
-    title: 'Builder.',
-    sub: 'Python backend. React frontend. Telegram bots and web apps for real teams.',
-    accent: 'var(--accent-bots)',
-  },
-  portfolio: {
-    label: '// projects · 10',
-    kicker: 'ten shipped things',
-    title: 'The work.',
-    sub: 'Bots, platforms, editorial sites. Click any card to preview.',
-    accent: 'var(--accent-web)',
-  },
-  contact: {
-    label: '// contact',
-    kicker: 'fastest response on telegram',
-    title: 'Get in touch.',
-    sub: 'Hiring, freelance, friendly DMs — all welcome.',
-    accent: 'var(--accent-link)',
-  },
-};
+import { useTranslation } from 'react-i18next';
 
 export default function PageHero({ page }) {
+  const { t } = useTranslation();
+
+  const PAGE_META = {
+    about: {
+      label: t('hero.about_label'),
+      kicker: t('hero.about_kicker'),
+      title: t('hero.about_title'),
+      sub: t('hero.about_sub'),
+      accent: 'var(--accent-bots)',
+    },
+    portfolio: {
+      label: t('hero.portfolio_label'),
+      kicker: t('hero.portfolio_kicker'),
+      title: t('hero.portfolio_title'),
+      sub: t('hero.portfolio_sub'),
+      accent: 'var(--accent-web)',
+    },
+    contact: {
+      label: t('hero.contact_label'),
+      kicker: t('hero.contact_kicker'),
+      title: t('hero.contact_title'),
+      sub: t('hero.contact_sub'),
+      accent: 'var(--accent-link)',
+    },
+  };
+
   const m = PAGE_META[page];
   if (!m) return null;
 

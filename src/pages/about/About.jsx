@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PageHero from '../../components/PageHero';
 import SkillsCloud from '../../components/SkillsCloud';
 import OrbitCloud from '../../components/OrbitCloud';
@@ -36,6 +37,7 @@ const h2Style = {
 };
 
 export default function About() {
+  const { t } = useTranslation();
   const [resumeTab, setResumeTab] = useState('experience');
   const [skillsView, setSkillsView] = useState('orbit');
 
@@ -46,7 +48,7 @@ export default function About() {
       {/* Bio + Skills tags */}
       <section style={sectionStyle}>
         <div style={inner}>
-          <SectionLabel color="oklch(78% 0.18 280)" text="// about · 01" />
+          <SectionLabel color="oklch(78% 0.18 280)" text={t('about.section_label')} />
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -56,29 +58,27 @@ export default function About() {
           }}>
             <div>
               <h2 style={h2Style}>
-                Full-stack<br />
+                {t('about.h2_1')}<br />
                 <span style={{
                   fontStyle: 'italic',
                   background: 'linear-gradient(90deg, oklch(78% 0.18 280), oklch(78% 0.15 140))',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  whiteSpace: 'pre-line',
                 }}>
-                  with a bias<br />for shipping.
+                  {t('about.h2_2')}
                 </span>
               </h2>
             </div>
 
             <div style={{ maxWidth: 560 }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(15px, 1.2vw, 17px)', color: 'var(--fg)', opacity: 0.7, lineHeight: 1.65, margin: 0 }}>
-                I build and ship production software — Telegram bots, web platforms, and AI integrations.
-                Based in Europe, working remotely with teams across Russia, Germany, and the Balkans.
+                {t('about.bio1')}
               </p>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(15px, 1.2vw, 17px)', color: 'var(--fg)', opacity: 0.7, lineHeight: 1.65, margin: '20px 0 0' }}>
-                Four years of writing code that real people use daily — a festival platform serving hundreds of visitors,
-                bots handling thousands of orders, AI tools that actually save time instead of just demoing well.
+                {t('about.bio2')}
               </p>
-
             </div>
           </div>
         </div>
@@ -87,9 +87,9 @@ export default function About() {
       {/* Skills Cloud */}
       <section style={sectionStyle}>
         <div style={inner}>
-          <SectionLabel color="oklch(78% 0.15 140)" text="// skills · 02" />
+          <SectionLabel color="oklch(78% 0.15 140)" text={t('about.skills_label')} />
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginTop: 32, marginBottom: 48 }}>
-            <h2 style={h2Style}>Tech stack.</h2>
+            <h2 style={h2Style}>{t('about.skills_title')}</h2>
             <div style={{ display: 'flex', gap: 8 }}>
               {['orbit', 'cloud'].map(v => (
                 <button key={v} onClick={() => setSkillsView(v)} style={{
@@ -101,7 +101,7 @@ export default function About() {
                   fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 600,
                   letterSpacing: '0.12em', textTransform: 'uppercase',
                   cursor: 'pointer', transition: 'all 200ms',
-                }}>{v === 'orbit' ? '◎ orbit' : '⊹ cloud'}</button>
+                }}>{v === 'orbit' ? t('about.orbit') : t('about.cloud')}</button>
               ))}
             </div>
           </div>
@@ -112,9 +112,9 @@ export default function About() {
       {/* Resume */}
       <section style={{ ...sectionStyle, paddingBottom: 'clamp(80px, 12vh, 160px)' }}>
         <div style={inner}>
-          <SectionLabel color="oklch(82% 0.17 50)" text="// resume · 03" />
+          <SectionLabel color="oklch(82% 0.17 50)" text={t('about.resume_label')} />
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20, marginTop: 32, marginBottom: 48 }}>
-            <h2 style={h2Style}>Experience &<br />Education.</h2>
+            <h2 style={{ ...h2Style, whiteSpace: 'pre-line' }}>{t('about.resume_title')}</h2>
             <div style={{ display: 'flex', gap: 8 }}>
               {['experience', 'education'].map(tab => (
                 <button key={tab} onClick={() => setResumeTab(tab)} style={{
@@ -126,13 +126,16 @@ export default function About() {
                   fontFamily: 'JetBrains Mono, monospace', fontSize: 11, fontWeight: 600,
                   letterSpacing: '0.12em', textTransform: 'uppercase',
                   cursor: 'pointer', transition: 'all 200ms',
-                }}>{tab}</button>
+                }}>{tab === 'experience' ? t('about.experience') : t('about.education')}</button>
               ))}
             </div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {resume.filter(r => r.category === resumeTab).map(r => (
+            {resume.filter(r => r.category === resumeTab).map(r => {
+              const itemTitle = t(`resume_items.${r.id}.title`, { defaultValue: r.title });
+              const itemDesc  = t(`resume_items.${r.id}.desc`,  { defaultValue: r.desc });
+              return (
               <div key={r.id} style={{
                 background: 'var(--fg-02)', border: '1px solid var(--fg-08)',
                 borderRadius: 10, padding: '24px 28px',
@@ -142,12 +145,13 @@ export default function About() {
                   {r.year}
                 </div>
                 <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.01em', marginBottom: 6 }}
-                  dangerouslySetInnerHTML={{ __html: r.title }} />
+                  dangerouslySetInnerHTML={{ __html: itemTitle }} />
                 <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: 'var(--fg)', opacity: 0.6, lineHeight: 1.5 }}>
-                  {r.desc}
+                  {itemDesc}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

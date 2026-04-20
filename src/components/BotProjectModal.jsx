@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { LiveChat } from './BotLiveChat';
 import MiniAppDemo from './MiniAppDemo';
 
@@ -73,8 +74,16 @@ const BOT_META = {
 
 // ── Main Modal ────────────────────────────────────────────────────────────────
 export default function BotProjectModal({ botId, onClose }) {
+  const { t } = useTranslation();
   const meta = BOT_META[botId];
   const { accent } = meta || {};
+
+  const tKey = `bot_modal.${botId}.sub`;
+  const hasTrans = t(tKey) !== tKey;
+  const bigLines = hasTrans
+    ? [t(`bot_modal.${botId}.big_0`), t(`bot_modal.${botId}.big_1`), t(`bot_modal.${botId}.big_2`)]
+    : meta?.big;
+  const subText = hasTrans ? t(tKey) : meta?.sub;
 
   useEffect(() => {
     if (!meta) return;
@@ -167,9 +176,9 @@ export default function BotProjectModal({ botId, onClose }) {
             fontWeight: 500, color: '#f5f2ea',
             letterSpacing: '-0.04em', lineHeight: 0.92, margin: 0,
           }}>
-            {meta.big[0]}<br />
-            {meta.big[1]}<br />
-            <span style={{ fontStyle: 'italic', color: accent }}>{meta.big[2]}</span>
+            {bigLines[0]}<br />
+            {bigLines[1]}<br />
+            <span style={{ fontStyle: 'italic', color: accent }}>{bigLines[2]}</span>
           </h2>
 
           <p style={{
@@ -178,7 +187,7 @@ export default function BotProjectModal({ botId, onClose }) {
             fontSize: 'clamp(14px, 1.1vw, 16px)',
             color: '#f5f2ea', opacity: 0.6, lineHeight: 1.65,
             maxWidth: 420,
-          }}>{meta.sub}</p>
+          }}>{subText}</p>
 
           <div style={{ marginTop: 24, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {meta.stack.map(s => (
@@ -201,7 +210,7 @@ export default function BotProjectModal({ botId, onClose }) {
               letterSpacing: '0.12em', textTransform: 'uppercase',
               textDecoration: 'none', borderRadius: 4,
               boxShadow: `0 0 40px ${accent}55`,
-            }}>Открыть в Telegram →</a>
+            }}>{t('modal.open_telegram')}</a>
             <button onClick={onClose} style={{
               padding: '14px 24px',
               background: 'transparent', color: '#f5f2ea',
@@ -209,7 +218,7 @@ export default function BotProjectModal({ botId, onClose }) {
               letterSpacing: '0.12em', textTransform: 'uppercase',
               border: '1px solid rgba(245,242,234,0.15)',
               borderRadius: 4, cursor: 'pointer',
-            }}>Esc</button>
+            }}>{t('modal.close')}</button>
           </div>
         </div>
 

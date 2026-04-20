@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PageHero from '../../components/PageHero';
 import axios from 'axios';
 
@@ -71,6 +72,7 @@ const inputStyle = {
 };
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
 
@@ -96,7 +98,7 @@ export default function Contact() {
         borderTop: '1px solid var(--fg-04)',
       }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <SectionLabel color="oklch(70% 0.15 250)" text="// contact · 04" />
+          <SectionLabel color="oklch(70% 0.15 250)" text={t('contact.section_label')} />
 
           <h2 style={{
             fontFamily: '"Space Grotesk", sans-serif',
@@ -104,12 +106,12 @@ export default function Contact() {
             fontWeight: 500, color: 'var(--fg)',
             letterSpacing: '-0.04em', lineHeight: 0.95, margin: '32px 0 0',
           }}>
-            Let's build<br />
+            {t('contact.h2_1')}<br />
             <span style={{
               fontStyle: 'italic',
               background: 'linear-gradient(90deg, oklch(70% 0.15 250), oklch(82% 0.17 50))',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            }}>something that ships.</span>
+            }}>{t('contact.h2_2')}</span>
           </h2>
 
           <p style={{
@@ -117,8 +119,7 @@ export default function Contact() {
             color: 'var(--fg)', opacity: 0.7, lineHeight: 1.65,
             marginTop: 24, maxWidth: 560,
           }}>
-            Currently open to new projects — bots, full-stack web apps, AI integrations.
-            Remote, Europe-friendly hours. Reach out in any channel below.
+            {t('contact.sub')}
           </p>
 
           {/* Contact cards */}
@@ -133,27 +134,27 @@ export default function Contact() {
 
           {/* Form */}
           <div style={{ marginTop: 80 }}>
-            <SectionLabel color="oklch(82% 0.17 50)" text="// or send a message" />
+            <SectionLabel color="oklch(82% 0.17 50)" text={t('contact.form_label')} />
             <form onSubmit={handleSubmit} style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 640 }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <input
-                  type="text" placeholder="Your name" required
+                  type="text" placeholder={t('contact.name')} required
                   value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   style={inputStyle}
                 />
                 <input
-                  type="email" placeholder="Your email" required
+                  type="email" placeholder={t('contact.email')} required
                   value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   style={inputStyle}
                 />
               </div>
               <input
-                type="text" placeholder="Subject" required
+                type="text" placeholder={t('contact.subject')} required
                 value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
                 style={inputStyle}
               />
               <textarea
-                placeholder="Your message" required rows={6}
+                placeholder={t('contact.message')} required rows={6}
                 value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                 style={{ ...inputStyle, resize: 'vertical' }}
               />
@@ -168,7 +169,7 @@ export default function Contact() {
                 boxShadow: '0 0 30px oklch(78% 0.15 140 / 0.4)',
                 transition: 'opacity 200ms',
               }}>
-                {sent ? 'Sent ✓' : 'Send message →'}
+                {sent ? t('contact.sent') : t('contact.send')}
               </button>
             </form>
           </div>
@@ -181,8 +182,8 @@ export default function Contact() {
             fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
             color: 'var(--fg)', opacity: 0.4, letterSpacing: '0.15em', textTransform: 'uppercase',
           }}>
-            <div>© 2026 Andrei Bolshakov</div>
-            <div>Built with React · v2.0</div>
+            <div>{t('contact.footer')}</div>
+            <div>{t('contact.built')}</div>
           </div>
         </div>
       </section>

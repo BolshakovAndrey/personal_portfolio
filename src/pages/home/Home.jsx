@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import GlobeCanvas from '../../components/Globe/GlobeCanvas';
 import ProjectDetail from '../../components/Globe/ProjectDetail';
 import BotProjectModal from '../../components/BotProjectModal';
@@ -72,6 +73,7 @@ function FilmGrain({ opacity = 0.04 }) {
 
 // ── HoverCard ────────────────────────────────────────────────────────────────
 function HoverCard({ hover, boxRect }) {
+  const { t } = useTranslation();
   if (!hover) return null;
   const { node, group, sx, sy } = hover;
   const color = group === 'bots' ? 'oklch(78% 0.18 280)' : 'oklch(78% 0.15 140)';
@@ -96,7 +98,7 @@ function HoverCard({ hover, boxRect }) {
         fontFamily: 'JetBrains Mono, monospace', fontSize: 9,
         color, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 4,
       }}>
-        {group === 'bots' ? 'tg bot' : 'web app'} · {node.city}
+        {group === 'bots' ? t('home.tg_bot') : t('home.web_app')} · {node.city}
       </div>
       <div style={{
         fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
@@ -114,7 +116,7 @@ function HoverCard({ hover, boxRect }) {
         marginTop: 8, fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
         color, opacity: 0.8, letterSpacing: '0.1em',
       }}>
-        click to open →
+        {t('home.click_open')}
       </div>
     </div>
   );
@@ -126,6 +128,7 @@ const EUROPE_CENTER = 0.32; // ~18° lon — Central Europe in front
 const EUROPE_AMP    = 0.48; // ±27° — covers Portugal↔Moscow
 
 function HeroSection({ theme }) {
+  const { t } = useTranslation();
   const [rotation, setRotation] = useState(EUROPE_CENTER - EUROPE_AMP); // start at Greenwich
   const [pulseT, setPulseT]     = useState(0);
   const [mouse, setMouse]       = useState({ x: 0.5, y: 0.5 });
@@ -346,7 +349,7 @@ function HeroSection({ theme }) {
               letterSpacing: '0.22em', textTransform: 'uppercase',
               marginBottom: 20,
             }}>
-              // portfolio · 10 projects · 2 continents
+              {t('home.label', { count: 10 })}
             </div>
 
             <h1 style={{
@@ -358,7 +361,7 @@ function HeroSection({ theme }) {
               lineHeight: 0.9,
               margin: 0,
             }}>
-              Every bot<br/>
+              {t('home.h1')}<br/>
               <span style={{
                 fontStyle: 'italic',
                 background: 'linear-gradient(90deg, oklch(78% 0.18 280), oklch(78% 0.15 140))',
@@ -366,7 +369,7 @@ function HeroSection({ theme }) {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                ships somewhere.
+                {t('home.h2')}
               </span>
             </h1>
 
@@ -376,8 +379,8 @@ function HeroSection({ theme }) {
               color: 'var(--fg)', opacity: 0.55,
               lineHeight: 1.6, marginTop: 24, maxWidth: 380,
             }}>
-              4 Telegram bots and 6 web apps, deployed for real teams across Europe.
-              {!isMobile && <><br/>Hover a node to preview. Click to open live.</>}
+              {t('home.sub')}
+              {!isMobile && <><br/>{t('home.hint')}</>}
             </p>
 
             {/* Legend */}
@@ -393,7 +396,7 @@ function HeroSection({ theme }) {
                     fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
                     color: 'var(--fg)', opacity: 0.7,
                     letterSpacing: '0.15em', textTransform: 'uppercase',
-                  }}>Bots</div>
+                  }}>{t('home.stats_bots')}</div>
                 </div>
                 <div style={{
                   fontFamily: '"Space Grotesk", sans-serif', fontSize: 32, fontWeight: 500,
@@ -412,7 +415,7 @@ function HeroSection({ theme }) {
                     fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
                     color: 'var(--fg)', opacity: 0.7,
                     letterSpacing: '0.15em', textTransform: 'uppercase',
-                  }}>Web apps</div>
+                  }}>{t('home.stats_web')}</div>
                 </div>
                 <div style={{
                   fontFamily: '"Space Grotesk", sans-serif', fontSize: 32, fontWeight: 500,
@@ -431,7 +434,7 @@ function HeroSection({ theme }) {
                     fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
                     color: 'var(--fg)', opacity: 0.7,
                     letterSpacing: '0.15em', textTransform: 'uppercase',
-                  }}>Years</div>
+                  }}>{t('home.stats_years')}</div>
                 </div>
                 <div style={{
                   fontFamily: '"Space Grotesk", sans-serif', fontSize: 32, fontWeight: 500,
@@ -497,7 +500,7 @@ function HeroSection({ theme }) {
                   color: 'var(--fg)', opacity: 0.5,
                   letterSpacing: '0.2em', textTransform: 'uppercase',
                 }}>
-                  Loading world…
+                  {t('home.loading')}
                 </div>
               )}
             </div>
@@ -512,7 +515,7 @@ function HeroSection({ theme }) {
               {/* Pause / Play toggle */}
               <button
                 onClick={() => { pausedRef.current = !pausedRef.current; setPaused(p => !p); }}
-                title={paused ? 'Resume rotation' : 'Pause rotation'}
+                title={paused ? t('home.resume') : t('home.pause')}
                 style={{
                   width: 28, height: 28, borderRadius: '50%',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -539,7 +542,7 @@ function HeroSection({ theme }) {
               </button>
 
               <span style={{ opacity: paused ? 1 : 0.6 }}>
-                {paused ? 'PAUSED' : 'SPEED'}
+                {paused ? t('home.paused') : t('home.speed')}
               </span>
               <input
                 type="range" min="0.1" max="4" step="0.1"
@@ -551,6 +554,17 @@ function HeroSection({ theme }) {
               <span style={{ opacity: paused ? 0.3 : 1 }}>{speed.toFixed(1)}×</span>
             </div>
           </div>
+        </div>
+
+        {/* AI translation disclaimer */}
+        <div style={{
+          position: 'absolute', bottom: 48, left: 0, right: 0,
+          textAlign: 'center', pointerEvents: 'none', zIndex: 5,
+          fontFamily: 'JetBrains Mono, monospace', fontSize: 9,
+          color: 'var(--fg)', opacity: 0.25, letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+        }}>
+          {t('home.ai_note')}
         </div>
 
         {/* Hover tooltip */}

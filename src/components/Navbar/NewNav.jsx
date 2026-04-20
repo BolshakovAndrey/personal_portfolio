@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // ── useTheme hook ────────────────────────────────────────────────────────────
 export function useTheme() {
@@ -25,11 +26,12 @@ export function useTheme() {
 
 // ── ThemeToggle ──────────────────────────────────────────────────────────────
 function ThemeToggle({ theme, onToggle }) {
+  const { t } = useTranslation();
   const isDark = theme !== 'light';
   return (
     <button
       onClick={onToggle}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isDark ? t('nav.theme_light') : t('nav.theme_dark')}
       style={{
         width: 40, height: 40, borderRadius: '50%',
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -70,21 +72,109 @@ function ThemeToggle({ theme, onToggle }) {
   );
 }
 
-// ── Nav routes ───────────────────────────────────────────────────────────────
-const NAV_LINKS = [
-  { to: '/',         label: 'Home' },
-  { to: '/about',    label: 'About' },
-  { to: '/portfolio',label: 'Portfolio' },
-  { to: '/contact',  label: 'Contact' },
+// ── Language switcher ────────────────────────────────────────────────────────
+const LANGS = [
+  { code: 'en', label: 'EN', flag: '🇬🇧' },
+  { code: 'de', label: 'DE', flag: '🇩🇪' },
+  { code: 'ru', label: 'RU', flag: '🇷🇺' },
+  { code: 'sr', label: 'SR', flag: '🇷🇸' },
+  { code: 'es', label: 'ES', flag: '🇪🇸' },
+  { code: 'pt', label: 'PT', flag: '🇵🇹' },
+  { code: 'zh', label: 'ZH', flag: '🇨🇳' },
 ];
+
+function LangSwitcher() {
+  const { i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const current = LANGS.find(l => l.code === i18n.language) || LANGS[0];
+
+  const select = (code) => {
+    i18n.changeLanguage(code);
+    try { localStorage.setItem('lang', code); } catch {}
+    setOpen(false);
+  };
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: 5,
+          padding: '6px 10px', borderRadius: 4,
+          background: open ? 'var(--fg-06)' : 'transparent',
+          border: '1px solid var(--fg-15)',
+          color: 'var(--fg)', cursor: 'pointer',
+          fontFamily: 'JetBrains Mono, monospace', fontSize: 10,
+          letterSpacing: '0.12em',
+          transition: 'all 200ms',
+        }}
+      >
+        <span>{current.flag}</span>
+        <span>{current.label}</span>
+        <svg width="8" height="5" viewBox="0 0 8 5" fill="currentColor"
+          style={{ opacity: 0.5, transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 200ms' }}>
+          <path d="M0 0l4 5 4-5H0z"/>
+        </svg>
+      </button>
+
+      {open && (
+        <>
+          <div onClick={() => setOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 998 }} />
+          <div style={{
+            position: 'absolute', top: 'calc(100% + 8px)', right: 0,
+            zIndex: 999,
+            background: 'var(--bg-elev)',
+            border: '1px solid var(--fg-10)',
+            borderRadius: 8,
+            padding: 4,
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 16px 40px rgba(0,0,0,0.4)',
+            minWidth: 110,
+          }}>
+            {LANGS.map(l => (
+              <button
+                key={l.code}
+                onClick={() => select(l.code)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  width: '100%', padding: '8px 12px',
+                  background: l.code === i18n.language ? 'var(--fg-08)' : 'transparent',
+                  border: 'none', borderRadius: 5,
+                  color: 'var(--fg)', cursor: 'pointer',
+                  fontFamily: 'JetBrains Mono, monospace', fontSize: 11,
+                  letterSpacing: '0.1em',
+                  transition: 'background 150ms',
+                  textAlign: 'left',
+                }}
+                onMouseEnter={e => { if (l.code !== i18n.language) e.currentTarget.style.background = 'var(--fg-06)'; }}
+                onMouseLeave={e => { if (l.code !== i18n.language) e.currentTarget.style.background = 'transparent'; }}
+              >
+                <span>{l.flag}</span>
+                <span style={{ opacity: 0.8 }}>{l.label}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 // ── NewNav component ─────────────────────────────────────────────────────────
 function NewNav({ theme, onToggleTheme }) {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 820 : false
   );
+
+  const NAV_LINKS = [
+    { to: '/',          label: t('nav.home') },
+    { to: '/about',     label: t('nav.about') },
+    { to: '/portfolio', label: t('nav.portfolio') },
+    { to: '/contact',   label: t('nav.contact') },
+  ];
 
   React.useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 820);
@@ -123,7 +213,7 @@ function NewNav({ theme, onToggleTheme }) {
         borderBottom: scrolled ? '1px solid var(--fg-08)' : '1px solid transparent',
         transition: 'background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
       }}>
-        {/* Logo / name */}
+        {/* Logo */}
         <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
           <div style={{
             width: 8, height: 8, borderRadius: '50%',
@@ -145,6 +235,7 @@ function NewNav({ theme, onToggleTheme }) {
         {/* Desktop nav */}
         {isMobile ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <LangSwitcher />
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
             <button
               onClick={() => setOpen(!open)}
@@ -182,6 +273,7 @@ function NewNav({ theme, onToggleTheme }) {
                 {label}
               </NavLink>
             ))}
+            <LangSwitcher />
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           </div>
         )}

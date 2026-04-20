@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Početna",
+    "about": "O meni",
+    "portfolio": "Portfolio",
+    "contact": "Kontakt",
+    "theme_light": "Svetla tema",
+    "theme_dark": "Tamna tema"
+  },
+  "home": {
+    "label": "// portfolio · {{count}} projekata · 2 kontinenta",
+    "h1": "Svaki bot",
+    "h2": "radi negde u svetu.",
+    "sub": "4 Telegram bota i 6 web aplikacija, razvijenih za prave timove širom Evrope.",
+    "hint": "Pređite mišem za pregled. Kliknite za otvaranje.",
+    "stats_bots": "Botova",
+    "stats_web": "Web aplikacija",
+    "stats_years": "Godina",
+    "loading": "Učitavanje mape…",
+    "speed": "BRZINA",
+    "paused": "PAUZA",
+    "pause": "Zaustavi rotaciju",
+    "resume": "Nastavi rotaciju",
+    "click_open": "otvori →",
+    "tg_bot": "tg bot",
+    "web_app": "web",
+    "ai_note": "Prevodi generisani AI-jem — mogu sadržati greške"
+  },
+  "hero": {
+    "about_label": "// o meni",
+    "about_kicker": "4+ godine · 2 kontinenta",
+    "about_title": "Graditelj.",
+    "about_sub": "Python backend. React frontend. Telegram botovi i web aplikacije za prave timove.",
+    "portfolio_label": "// projekti · 10",
+    "portfolio_kicker": "deset završenih projekata",
+    "portfolio_title": "Radovi.",
+    "portfolio_sub": "Botovi, platforme, uređivačke stranice. Kliknite karticu za pregled.",
+    "contact_label": "// kontakt",
+    "contact_kicker": "najbrži odgovor na Telegramu",
+    "contact_title": "Stupite u kontakt.",
+    "contact_sub": "Zapošljavanje, freelance, prijateljske poruke — sve je dobrodošlo."
+  },
+  "about": {
+    "section_label": "// o meni · 01",
+    "h2_1": "Full-stack",
+    "h2_2": "fokusiran\nna isporuku.",
+    "bio1": "Razvijam i isporučujem produkcioni softver — Telegram botove, web platforme i AI integracije. Baziran u Evropi, radim remotely sa timovima u Rusiji, Nemačkoj i na Balkanu.",
+    "bio2": "Četiri godine pisanja koda koji pravi ljudi koriste svakodnevno — festival platforma za stotine posetilaca, botovi koji obrađuju hiljade narudžbi, AI alati koji zaista štede vreme.",
+    "skills_label": "// veštine · 02",
+    "skills_title": "Tech stack.",
+    "orbit": "◎ orbita",
+    "cloud": "⊹ oblak",
+    "resume_label": "// rezime · 03",
+    "resume_title": "Iskustvo i\nObrazovanje.",
+    "experience": "iskustvo",
+    "education": "obrazovanje"
+  },
+  "portfolio": {
+    "section_label": "// projekti · 02",
+    "headline": "{{count}} završenih",
+    "headline2": "projekata.",
+    "filter_all": "Svi · {{count}}",
+    "filter_bots": "Botovi · {{count}}",
+    "filter_web": "Web · {{count}}",
+    "open": "otvori →",
+    "tg_bot": "tg bot",
+    "web": "web"
+  },
+  "contact": {
+    "section_label": "// kontakt · 04",
+    "h2_1": "Hajde da izgradimo",
+    "h2_2": "nešto pravo.",
+    "sub": "Otvoren za nove projekte — botovi, full-stack web aplikacije, AI integracije. Remotely, evropsko radno vreme. Javite se putem bilo kog kanala ispod.",
+    "form_label": "// ili pošaljite poruku",
+    "name": "Vaše ime",
+    "email": "Vaš email",
+    "subject": "Naslov",
+    "message": "Vaša poruka",
+    "send": "Pošalji poruku →",
+    "sent": "Poslato ✓",
+    "footer": "© 2026 Andrei Bolshakov",
+    "built": "Napravljeno u React-u · v2.0"
+  },
+  "modal": {
+    "open_telegram": "Otvori u Telegramu →",
+    "close": "Esc"
+  },
+  "bot_modal": {
+    "ht": {
+      "big_0": "AI zdravstveni treker:",
+      "big_1": "zdrave navike",
+      "big_2": "bez napora.",
+      "sub": "AI asistent koji analizira fotografije hrane i glasovne poruke, broji kalorije i nutrijente (makronutrijenti + vlakna), prati vodu, korake, trening, san i raspoloženje. Ugrađeni sistem maratona sa rang listom, kaznama i nagradama — motiviše korisnike da zajedno dostižu ciljeve. Model pretplate + admin panel sa imejl kampanjama, tiketima podrške i analitikom po korisniku. Čita etikete, prepoznaje brendove, uzima u obzir gramaže."
+    }
+  },
+  "resume_items": {
+    "1": {
+      "title": "FullStack Web Programer <span> VoxLink </span>",
+      "desc": "JavaScript (TypeScript) FullStack programer u VoxLinku"
+    },
+    "2": {
+      "title": "Web Programer <span> Slobodnjak </span>",
+      "desc": "Poslednji slobodnjački projekat — napredni Telegram bot za prodavnicu \"GoodChemistry\""
+    },
+    "3": {
+      "title": "Backend Programer <span> Yandex.Practicum.Studio </span>",
+      "desc": "Projekat za festival mladih dramskih pisaca \"Ljubimovka\""
+    },
+    "4": {
+      "title": "Web Programer <span> Yandex Practicum </span>",
+      "desc": "Praksa, obuka na kursevima web razvoja i Python backend razvoja"
+    },
+    "5": {
+      "title": "Web Programer <span> Yandex Practicum </span>",
+      "desc": "Praksa, obuka na kursu web razvoja"
+    },
+    "6": {
+      "title": "Backend Programer <span> Yandex Practicum </span>",
+      "desc": "Praksa, obuka na kursu Python backend razvoja"
+    },
+    "7": {
+      "title": "Magistar poslovne administracije <span> Moscow RANEPA </span>",
+      "desc": "Poslovna administracija — strateški marketing i menadžment"
+    }
+  }
+}
