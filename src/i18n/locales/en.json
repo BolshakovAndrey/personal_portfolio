@@ -105,6 +105,12 @@
       "big_1": "healthy habits,",
       "big_2": "effortlessly.",
       "sub": "AI assistant that analyzes food photos and voice messages, counts calories and nutrients (macros + fiber), tracks water, steps, workouts, sleep, and mood. Built-in marathon system with leaderboards, penalties, and rewards — motivates users to reach goals together. Subscription model + admin panel with newsletters, support tickets, and per-user analytics. Reads labels, recognizes brands, accounts for portion sizes."
+    },
+    "mr": {
+      "big_0": "Fitness challenge",
+      "big_1": "controlled by AI.",
+      "big_2": "Real weight loss.",
+      "sub": "▎ AI pedometer screenshot verification · Auto macro calc · Leaderboard in Telegram Mini App · Daily participant ratings."
     }
   },
   "resume_items": {

@@ -63,8 +63,8 @@ const BOT_META = {
   },
   mr: {
     kicker: 'GAMIFIED FITNESS · MARATHON BOT + MINI APP',
-    big: ['30-дневный', 'марафон со', 'штрафами.'],
-    sub: 'КБЖУ, шаги (AI-проверка скриншота), тренировки — каждый день. Штраф 3 EUR за пропуск, 100 EUR за выход. Лидерборд, Telegram Mini App с дашбордом и рейтингом, 605+ тестов. Функционал влит в Health Tracker.',
+    big: ['Фитнес-челлендж', 'под контролем AI.', 'Реальное похудение.'],
+    sub: '▎ AI-верификация скриншотов шагомера · Авторасчёт КБЖУ · Лидерборд в Telegram Mini App · Ежедневный рейтинг участников.',
     stack: ['Python 3.13', 'Aiogram 3', 'PostgreSQL', 'Redis', 'APScheduler', 'AI Vision', 'Telegram Mini App', 'Railway'],
     url: 'https://t.me/slim_together_bot',
     accent: 'oklch(78% 0.16 210)',

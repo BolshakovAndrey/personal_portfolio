@@ -105,6 +105,12 @@
       "big_1": "zdrave navike",
       "big_2": "bez napora.",
       "sub": "AI asistent koji analizira fotografije hrane i glasovne poruke, broji kalorije i nutrijente (makronutrijenti + vlakna), prati vodu, korake, trening, san i raspoloženje. Ugrađeni sistem maratona sa rang listom, kaznama i nagradama — motiviše korisnike da zajedno dostižu ciljeve. Model pretplate + admin panel sa imejl kampanjama, tiketima podrške i analitikom po korisniku. Čita etikete, prepoznaje brendove, uzima u obzir gramaže."
+    },
+    "mr": {
+      "big_0": "Fitnes izazov",
+      "big_1": "pod kontrolom AI.",
+      "big_2": "Pravo mršavljenje.",
+      "sub": "▎ AI verifikacija pedometra · Auto makro kalkulacija · Tabela lidera u Telegram Mini App · Dnevni rejtinzi učesnika."
     }
   },
   "resume_items": {

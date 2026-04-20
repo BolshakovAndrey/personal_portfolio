@@ -105,6 +105,12 @@
       "big_1": "hábitos saludables",
       "big_2": "sin esfuerzo.",
       "sub": "Asistente de IA que analiza fotos de comida y mensajes de voz, cuenta calorías y nutrientes (macros + fibra), y registra agua, pasos, entrenamientos, sueño y estado de ánimo. Sistema de maratón integrado con clasificaciones, penalizaciones y recompensas — motiva a los usuarios a alcanzar metas juntos. Modelo de suscripción + panel de administración con boletines, tickets de soporte y analíticas por usuario. Lee etiquetas, reconoce marcas, considera las porciones."
+    },
+    "mr": {
+      "big_0": "Reto de fitness",
+      "big_1": "controlado por IA.",
+      "big_2": "Pérdida de peso real.",
+      "sub": "▎ IA verificación de podómetro · Cálculo automático de macros · Clasificación en Telegram Mini App · Calificaciones diarias."
     }
   },
   "resume_items": {
