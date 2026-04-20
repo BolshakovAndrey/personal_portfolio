@@ -1,11 +1,66 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useSpring, useMotionTemplate } from 'framer-motion';
 import PageHero from '../../components/PageHero';
 import SkillsCloud from '../../components/SkillsCloud';
 import OrbitCloud from '../../components/OrbitCloud';
 import MagneticButton from '../../components/MagneticButton/MagneticButton';
 import { resume } from '../../data';
+
+function ResumeCard({ r, itemTitle, itemDesc }) {
+  const mouseX = useSpring(0, { stiffness: 500, damping: 50 });
+  const mouseY = useSpring(0, { stiffness: 500, damping: 50 });
+
+  function onMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div 
+      variants={{
+        hidden: { opacity: 0, x: -80, filter: 'blur(15px)', skewX: -10 },
+        show:   { opacity: 1, x: 0, filter: 'blur(0px)', skewX: 0, transition: { type: 'spring', damping: 20, stiffness: 120 } },
+        exit:   { opacity: 0, x: 40, filter: 'blur(10px)', transition: { duration: 0.2 } }
+      }}
+      exit="exit"
+      onMouseMove={onMouseMove}
+      style={{
+        position: 'relative',
+        background: 'rgba(255,255,255,0.02)',
+        border: '1px solid rgba(255,255,255,0.06)',
+        borderRadius: 16,
+        padding: '32px 36px',
+        overflow: 'hidden',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+      }}
+    >
+      <motion.div
+        style={{
+          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none',
+          background: useMotionTemplate`radial-gradient(500px circle at ${mouseX}px ${mouseY}px, oklch(82% 0.17 50 / 0.12), transparent 80%)`,
+          zIndex: 0
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 24, alignItems: 'center' }}>
+        <div style={{ flexShrink: 0, width: 48, height: 48, borderRadius: '50%', background: 'oklch(82% 0.17 50 / 0.15)', border: '1px solid oklch(82% 0.17 50 / 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'oklch(82% 0.17 50)', boxShadow: '0 0 20px oklch(82% 0.17 50 / 0.2)' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: 'oklch(82% 0.17 50)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
+            {r.year}
+          </div>
+          <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 24, fontWeight: 600, color: '#f5f2ea', letterSpacing: '-0.01em', marginBottom: 6 }}
+            dangerouslySetInnerHTML={{ __html: itemTitle }} />
+          <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, color: '#f5f2ea', opacity: 0.6, lineHeight: 1.6 }}>
+            {itemDesc}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 
 function SectionLabel({ color, text }) {
@@ -152,29 +207,7 @@ export default function About() {
               {resume.filter(r => r.category === resumeTab).map(r => {
                 const itemTitle = t(`resume_items.${r.id}.title`, { defaultValue: r.title });
                 const itemDesc  = t(`resume_items.${r.id}.desc`,  { defaultValue: r.desc });
-                return (
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, x: -80, filter: 'blur(15px)', skewX: -10 },
-                    show:   { opacity: 1, x: 0, filter: 'blur(0px)', skewX: 0, transition: { type: 'spring', damping: 20, stiffness: 120 } },
-                    exit:   { opacity: 0, x: 40, filter: 'blur(10px)', transition: { duration: 0.2 } }
-                  }}
-                  exit="exit"
-                  key={r.id} style={{
-                  background: 'var(--fg-02)', border: '1px solid var(--fg-08)',
-                  borderRadius: 10, padding: '24px 28px',
-                  transition: 'border-color 200ms',
-                }}>
-                  <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'oklch(82% 0.17 50)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
-                    {r.year}
-                  </div>
-                  <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: 'var(--fg)', letterSpacing: '-0.01em', marginBottom: 6 }}
-                    dangerouslySetInnerHTML={{ __html: itemTitle }} />
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: 'var(--fg)', opacity: 0.6, lineHeight: 1.5 }}>
-                    {itemDesc}
-                  </div>
-                </motion.div>
-                );
+                return <ResumeCard key={r.id} r={r} itemTitle={itemTitle} itemDesc={itemDesc} />;
               })}
             </motion.div>
           </AnimatePresence>

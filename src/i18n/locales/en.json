@@ -79,7 +79,21 @@
     "send": "Send message →",
     "sent": "Sent ✓",
     "footer": "© 2026 Andrei Bolshakov",
-    "built": "Built with React · v2.0"
+    "built": "Built with React · v2.0",
+    "chat": {
+      "greeting": "Hi there! 👋 Glad to see you here.",
+      "ask_name": "What's your name?",
+      "ask_email": "Nice to meet you, {{name}}! What's your email?",
+      "ask_message": "Got it. What message would you like to send?",
+      "sent": "Message sent! I'll get back to you ASAP. 🚀",
+      "error": "Oops, my server seems to be hitting its limits right now! 😅 But no worries, you can just click my Telegram or Email links to the left to reach me.",
+      "today": "Today",
+      "now": "Now",
+      "ended": "Chat ended",
+      "placeholder": "Message...",
+      "back": "Back",
+      "online": "online"
+    }
   },
   "modal": {
     "open_telegram": "Open in Telegram →",
