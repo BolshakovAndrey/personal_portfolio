@@ -79,7 +79,21 @@
     "send": "Pošalji poruku →",
     "sent": "Poslato ✓",
     "footer": "© 2026 Andrei Bolshakov",
-    "built": "Napravljeno u React-u · v2.0"
+    "built": "Napravljeno u React-u · v2.0",
+    "chat": {
+      "greeting": "Zdravo! 👋 Drago mi je.",
+      "ask_name": "Kako se zoves?",
+      "ask_email": "Drago mi je, {{name}}! Koji je tvoj email?",
+      "ask_message": "U redu. Koju poruku zelis poslati?",
+      "sent": "Poslato! Vracam se brzo. 🚀",
+      "error": "Server je preopterecen! 😅 Koristi Telegram.",
+      "today": "Danas",
+      "now": "Sada",
+      "ended": "Zavrseno",
+      "placeholder": "Poruka...",
+      "back": "Nazad",
+      "online": "na mrezi"
+    }
   },
   "modal": {
     "open_telegram": "Otvori u Telegramu →",

@@ -79,7 +79,21 @@
     "send": "发送消息 →",
     "sent": "已发送 ✓",
     "footer": "© 2026 Andrei Bolshakov",
-    "built": "基于 React 构建 · v2.0"
+    "built": "基于 React 构建 · v2.0",
+    "chat": {
+      "greeting": "你好！👋 很高兴见到你。",
+      "ask_name": "你叫什么名字？",
+      "ask_email": "很高兴认识你, {{name}}! 你的电子邮箱是什么？",
+      "ask_message": "明白了。你想发送什么信息？",
+      "sent": "信息已发送！我会尽快回复。🚀",
+      "error": "抱歉，服务器达到限制！😅 请使用 Telegram 或 Email 链接。",
+      "today": "今天",
+      "now": "现在",
+      "ended": "聊天结束",
+      "placeholder": "信息...",
+      "back": "返回",
+      "online": "在线"
+    }
   },
   "modal": {
     "open_telegram": "在 Telegram 中打开 →",

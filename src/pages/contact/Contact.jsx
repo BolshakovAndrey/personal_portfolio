@@ -176,8 +176,8 @@ export default function Contact() {
 // ── Interactive Chat Form (Telegram Style) ──────────────────────────────────
 function InteractiveChatForm({ t }) {
   const [messages, setMessages] = useState([
-    { id: 1, text: t('contact.chat.greeting', { defaultValue: "Hi there! 👋 Glad to see you here." }), sender: 'bot', time: t('contact.chat.now', { defaultValue: 'Now' }) },
-    { id: 2, text: t('contact.chat.ask_name', { defaultValue: "What's your name?" }), sender: 'bot', time: t('contact.chat.now', { defaultValue: 'Now' }) }
+    { id: 1, textKey: 'contact.chat.greeting', defaultText: "Hi there! 👋 Glad to see you here.", sender: 'bot', timeKey: 'contact.chat.now', defaultTime: 'Now' },
+    { id: 2, textKey: 'contact.chat.ask_name', defaultText: "What's your name?", sender: 'bot', timeKey: 'contact.chat.now', defaultTime: 'Now' }
   ]);
   const [input, setInput] = useState('');
   const [step, setStep] = useState('NAME'); // NAME, EMAIL, MSG, DONE
@@ -189,19 +189,19 @@ function InteractiveChatForm({ t }) {
     
     const newVal = input.trim();
     const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    setMessages(prev => [...prev, { id: Date.now(), text: newVal, sender: 'user', time: timeNow }]);
+    setMessages(prev => [...prev, { id: Date.now(), text: newVal, sender: 'user', timeText: timeNow }]);
     setInput('');
 
     if (step === 'NAME') {
       setForm(f => ({ ...f, name: newVal }));
       setTimeout(() => {
-        setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.ask_email', { defaultValue: `Nice to meet you, {{name}}! What's your email?`, name: newVal }), sender: 'bot', time: timeNow }]);
+        setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.ask_email', nameVar: newVal, defaultText: `Nice to meet you, {{name}}! What's your email?`, sender: 'bot', timeText: timeNow }]);
         setStep('EMAIL');
       }, 600);
     } else if (step === 'EMAIL') {
       setForm(f => ({ ...f, email: newVal }));
       setTimeout(() => {
-        setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.ask_message', { defaultValue: "Got it. What message would you like to send?" }), sender: 'bot', time: timeNow }]);
+        setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.ask_message', defaultText: "Got it. What message would you like to send?", sender: 'bot', timeText: timeNow }]);
         setStep('MESSAGE');
       }, 600);
     } else if (step === 'MESSAGE') {
@@ -211,10 +211,10 @@ function InteractiveChatForm({ t }) {
              Name: form.name, Email: form.email, Subject: 'Chat Form', Message: newVal
          })
          .then(() => {
-            setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.sent', { defaultValue: "Message sent! I'll get back to you ASAP. 🚀" }), sender: 'bot', time: timeNow }]);
+            setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.sent', defaultText: "Message sent! I'll get back to you ASAP. 🚀", sender: 'bot', timeText: timeNow }]);
          })
          .catch((err) => {
-            setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.error', { defaultValue: "Oops, my server seems to be hitting its limits right now! 😅 But no worries, you can just click my Telegram or Email links to the left to reach me." }), sender: 'bot', time: timeNow }]);
+            setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.error', defaultText: "Oops, my server seems to be hitting its limits right now! 😅 But no worries, you can just click my Telegram or Email links to the left to reach me.", sender: 'bot', timeText: timeNow }]);
          });
          setStep('DONE');
       }, 800);
@@ -261,8 +261,10 @@ function InteractiveChatForm({ t }) {
               wordBreak: 'break-word',
               boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
             }}>
-               {m.text}
-               <div style={{ fontSize: 11, color: m.sender === 'user' ? '#749dbe' : '#7f91a4', textAlign: 'right', marginTop: 4 }}>{m.time}</div>
+               {m.textKey ? t(m.textKey, { defaultValue: m.defaultText, name: m.nameVar }) : m.text}
+               <div style={{ fontSize: 11, color: m.sender === 'user' ? '#749dbe' : '#7f91a4', textAlign: 'right', marginTop: 4 }}>
+                 {m.timeKey ? t(m.timeKey, { defaultValue: m.defaultTime }) : m.timeText}
+               </div>
             </div>
           ))}
         </div>

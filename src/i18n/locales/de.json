@@ -79,7 +79,21 @@
     "send": "Nachricht senden →",
     "sent": "Gesendet ✓",
     "footer": "© 2026 Andrei Bolshakov",
-    "built": "Gebaut mit React · v2.0"
+    "built": "Gebaut mit React · v2.0",
+    "chat": {
+      "greeting": "Hallo! 👋 Schön dich zu sehen.",
+      "ask_name": "Wie heißt du?",
+      "ask_email": "Schön dich kennenzulernen, {{name}}! Wie lautet deine E-Mail?",
+      "ask_message": "Verstanden. Welche Nachricht möchtest du senden?",
+      "sent": "Nachricht gesendet! Ich melde mich bald. 🚀",
+      "error": "Hoppla, mein Server ist überlastet! 😅 Nutze einfach die Telegram- oder E-Mail-Links.",
+      "today": "Heute",
+      "now": "Jetzt",
+      "ended": "Chat beendet",
+      "placeholder": "Nachricht...",
+      "back": "Zurück",
+      "online": "online"
+    }
   },
   "modal": {
     "open_telegram": "In Telegram öffnen →",
