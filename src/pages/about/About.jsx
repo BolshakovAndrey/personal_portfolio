@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '../../components/PageHero';
 import SkillsCloud from '../../components/SkillsCloud';
 import OrbitCloud from '../../components/OrbitCloud';
+import MagneticButton from '../../components/MagneticButton/MagneticButton';
 import { resume } from '../../data';
 
 
@@ -93,16 +94,18 @@ export default function About() {
             <h2 style={h2Style}>{t('about.skills_title')}</h2>
             <div style={{ display: 'flex', gap: 8 }}>
               {['orbit', 'cloud'].map(v => (
-                <button key={v} onClick={() => setSkillsView(v)} style={{
-                  padding: '8px 16px',
-                  background: skillsView === v ? 'var(--fg)' : 'transparent',
-                  color: skillsView === v ? 'var(--bg-deep)' : 'var(--fg)',
-                  border: '1px solid', borderColor: skillsView === v ? 'var(--fg)' : 'var(--fg-20)',
-                  borderRadius: 4,
-                  fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 600,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  cursor: 'pointer', transition: 'all 200ms',
-                }}>{v === 'orbit' ? t('about.orbit') : t('about.cloud')}</button>
+                <MagneticButton key={v} onClick={() => setSkillsView(v)}>
+                  <button style={{
+                    padding: '8px 16px',
+                    background: skillsView === v ? 'var(--fg)' : 'transparent',
+                    color: skillsView === v ? 'var(--bg-deep)' : 'var(--fg)',
+                    border: '1px solid', borderColor: skillsView === v ? 'var(--fg)' : 'var(--fg-20)',
+                    borderRadius: 4,
+                    fontFamily: 'JetBrains Mono, monospace', fontSize: 10, fontWeight: 600,
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                    cursor: 'pointer', transition: 'all 200ms',
+                  }}>{v === 'orbit' ? t('about.orbit') : t('about.cloud')}</button>
+                </MagneticButton>
               ))}
             </div>
           </div>
@@ -118,16 +121,18 @@ export default function About() {
             <h2 style={{ ...h2Style, whiteSpace: 'pre-line' }}>{t('about.resume_title')}</h2>
             <div style={{ display: 'flex', gap: 8 }}>
               {['experience', 'education'].map(tab => (
-                <button key={tab} onClick={() => setResumeTab(tab)} style={{
-                  padding: '10px 18px',
-                  background: resumeTab === tab ? 'var(--fg)' : 'transparent',
-                  color: resumeTab === tab ? 'var(--bg-deep)' : 'var(--fg)',
-                  border: '1px solid', borderColor: resumeTab === tab ? 'var(--fg)' : 'var(--fg-20)',
-                  borderRadius: 4,
-                  fontFamily: 'JetBrains Mono, monospace', fontSize: 11, fontWeight: 600,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                  cursor: 'pointer', transition: 'all 200ms',
-                }}>{tab === 'experience' ? t('about.experience') : t('about.education')}</button>
+                <MagneticButton key={tab} onClick={() => setResumeTab(tab)}>
+                  <button style={{
+                    padding: '10px 18px',
+                    background: resumeTab === tab ? 'var(--fg)' : 'transparent',
+                    color: resumeTab === tab ? 'var(--bg-deep)' : 'var(--fg)',
+                    border: '1px solid', borderColor: resumeTab === tab ? 'var(--fg)' : 'var(--fg-20)',
+                    borderRadius: 4,
+                    fontFamily: 'JetBrains Mono, monospace', fontSize: 11, fontWeight: 600,
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                    cursor: 'pointer', transition: 'all 200ms',
+                  }}>{tab === 'experience' ? t('about.experience') : t('about.education')}</button>
+                </MagneticButton>
               ))}
             </div>
           </div>
@@ -137,7 +142,7 @@ export default function About() {
               key={resumeTab}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, amount: 0.1, margin: "50px" }}
               variants={{
                 hidden: { opacity: 0 },
                 show: { opacity: 1, transition: { staggerChildren: 0.15 } }

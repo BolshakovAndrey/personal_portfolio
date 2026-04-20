@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PageHero from '../../components/PageHero';
 import axios from 'axios';
+import { PhoneFrame } from '../../components/Globe/Mockups';
+import ImgAvatar from '../../assets/home.jpg';
 
 const CONTACT_LINKS = [
   { label: 'Telegram', value: '@Bolshakov_Andrey', href: 'https://t.me/Bolshakov_Andrey',                    hue: 200 },
@@ -126,52 +128,32 @@ export default function Contact() {
           <div style={{
             marginTop: 56,
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: 16,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 'clamp(40px, 6vw, 80px)',
+            alignItems: 'start'
           }}>
-            {CONTACT_LINKS.map(l => <ContactCard key={l.label} link={l} />)}
-          </div>
-
-          {/* Form */}
-          <div style={{ marginTop: 80 }}>
-            <SectionLabel color="oklch(82% 0.17 50)" text={t('contact.form_label')} />
-            <form onSubmit={handleSubmit} style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 640 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                <input
-                  type="text" placeholder={t('contact.name')} required
-                  value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  style={inputStyle}
-                />
-                <input
-                  type="email" placeholder={t('contact.email')} required
-                  value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  style={inputStyle}
-                />
-              </div>
-              <input
-                type="text" placeholder={t('contact.subject')} required
-                value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                style={inputStyle}
-              />
-              <textarea
-                placeholder={t('contact.message')} required rows={6}
-                value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                style={{ ...inputStyle, resize: 'vertical' }}
-              />
-              <button type="submit" style={{
-                alignSelf: 'flex-start',
-                padding: '14px 32px',
-                background: 'var(--accent-web)',
-                color: 'var(--bg-deep)',
-                fontFamily: 'JetBrains Mono, monospace', fontSize: 13, fontWeight: 700,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
-                border: 'none', borderRadius: 4, cursor: 'pointer',
-                boxShadow: '0 0 30px oklch(78% 0.15 140 / 0.4)',
-                transition: 'opacity 200ms',
+            {/* Left Column: Links & Large Photo */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: 16,
               }}>
-                {sent ? t('contact.sent') : t('contact.send')}
-              </button>
-            </form>
+                {CONTACT_LINKS.map(l => <ContactCard key={l.label} link={l} />)}
+              </div>
+              <div style={{
+                width: '100%', maxWidth: 480, overflow: 'hidden', borderRadius: 16,
+                boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+                border: '1px solid var(--fg-08)'
+              }}>
+                <img src={ImgAvatar} alt="Andrey Bolshakov" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              </div>
+            </div>
+
+            {/* Right Column: Telegram Chat Form */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <InteractiveChatForm t={t} />
+            </div>
           </div>
 
           {/* Footer */}
@@ -190,3 +172,121 @@ export default function Contact() {
     </main>
   );
 }
+
+// ── Interactive Chat Form (Telegram Style) ──────────────────────────────────
+function InteractiveChatForm({ t }) {
+  const [messages, setMessages] = useState([
+    { id: 1, text: t('contact.chat.greeting', { defaultValue: "Hi there! 👋 Glad to see you here." }), sender: 'bot', time: t('contact.chat.now', { defaultValue: 'Now' }) },
+    { id: 2, text: t('contact.chat.ask_name', { defaultValue: "What's your name?" }), sender: 'bot', time: t('contact.chat.now', { defaultValue: 'Now' }) }
+  ]);
+  const [input, setInput] = useState('');
+  const [step, setStep] = useState('NAME'); // NAME, EMAIL, MSG, DONE
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!input.trim() || step === 'DONE') return;
+    
+    const newVal = input.trim();
+    const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    setMessages(prev => [...prev, { id: Date.now(), text: newVal, sender: 'user', time: timeNow }]);
+    setInput('');
+
+    if (step === 'NAME') {
+      setForm(f => ({ ...f, name: newVal }));
+      setTimeout(() => {
+        setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.ask_email', { defaultValue: `Nice to meet you, {{name}}! What's your email?`, name: newVal }), sender: 'bot', time: timeNow }]);
+        setStep('EMAIL');
+      }, 600);
+    } else if (step === 'EMAIL') {
+      setForm(f => ({ ...f, email: newVal }));
+      setTimeout(() => {
+        setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.ask_message', { defaultValue: "Got it. What message would you like to send?" }), sender: 'bot', time: timeNow }]);
+        setStep('MESSAGE');
+      }, 600);
+    } else if (step === 'MESSAGE') {
+      setForm(f => ({ ...f, message: newVal }));
+      setTimeout(() => {
+         axios.post('https://sheet.best/api/sheets/49b0e9e0-12d5-4879-a9b7-a82907ebb26a', {
+             Name: form.name, Email: form.email, Subject: 'Chat Form', Message: newVal
+         })
+         .then(() => {
+            setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.sent', { defaultValue: "Message sent! I'll get back to you ASAP. 🚀" }), sender: 'bot', time: timeNow }]);
+         })
+         .catch((err) => {
+            setMessages(prev => [...prev, { id: Date.now(), text: t('contact.chat.error', { defaultValue: "Oops, my server seems to be hitting its limits right now! 😅 But no worries, you can just click my Telegram or Email links to the left to reach me." }), sender: 'bot', time: timeNow }]);
+         });
+         setStep('DONE');
+      }, 800);
+    }
+  };
+
+  return (
+    <PhoneFrame width={340} height={640} glow="oklch(70% 0.15 250)">
+      <div style={{ width: '100%', height: '100%', background: '#0e1621', display: 'flex', flexDirection: 'column', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+        
+        {/* iOS Header to clear Notch */}
+        <div style={{ 
+          paddingTop: 44, paddingBottom: 10, background: '#17212b', 
+          display: 'flex', alignItems: 'center', paddingLeft: 12, paddingRight: 12,
+          borderBottom: '1px solid rgba(0,0,0,0.3)',
+          zIndex: 10
+        }}>
+          <div style={{ color: '#5288c1', display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+             <span style={{ fontSize: 16 }}>{t('contact.chat.back', { defaultValue: 'Back' })}</span>
+          </div>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: -40 }}>
+             <div style={{ color: '#fff', fontSize: 16, fontWeight: 500 }}>Andrey Bolshakov</div>
+             <div style={{ color: '#5288c1', fontSize: 13 }}>{t('contact.chat.online', { defaultValue: 'online' })}</div>
+          </div>
+          <img src={ImgAvatar} alt="" style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', flexShrink: 0, position: 'absolute', right: 12 }} />
+        </div>
+
+        {/* Chat Area */}
+        <div style={{ 
+          flex: 1, padding: 16, display: 'flex', flexDirection: 'column', gap: 8, 
+          background: 'url("https://www.transparenttextures.com/patterns/cubes.png") #0e1621',
+          overflowY: 'auto'
+        }}>
+          <div style={{ alignSelf: 'center', background: '#182533', padding: '4px 12px', borderRadius: 12, color: '#7f91a4', fontSize: 13, marginBottom: 8 }}>{t('contact.chat.today', { defaultValue: 'Today' })}</div>
+          
+          {messages.map(m => (
+            <div key={m.id} style={{ 
+              alignSelf: m.sender === 'user' ? 'flex-end' : 'flex-start', 
+              background: m.sender === 'user' ? '#2b5278' : '#182533', 
+              padding: '8px 12px', 
+              borderRadius: m.sender === 'user' ? '12px 12px 4px 12px' : '12px 12px 12px 4px', 
+              maxWidth: '85%', color: '#fff', fontSize: 15,
+              wordBreak: 'break-word',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
+            }}>
+               {m.text}
+               <div style={{ fontSize: 11, color: m.sender === 'user' ? '#749dbe' : '#7f91a4', textAlign: 'right', marginTop: 4 }}>{m.time}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Input */}
+        <form onSubmit={handleSend} style={{ height: 50, background: '#17212b', display: 'flex', alignItems: 'center', padding: '0 12px', gap: 12 }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7f91a4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+          <input 
+             type="text" 
+             value={input}
+             onChange={e => setInput(e.target.value)}
+             disabled={step === 'DONE'}
+             placeholder={step === 'DONE' ? t('contact.chat.ended', { defaultValue: "Chat ended" }) : t('contact.chat.placeholder', { defaultValue: "Message..." })}
+             style={{ 
+               flex: 1, background: 'transparent', border: 'none', color: '#fff', fontSize: 16, outline: 'none',
+               fontFamily: 'inherit'
+             }}
+          />
+          <button type="submit" disabled={!input.trim()} style={{ background: 'transparent', border: 'none', cursor: input.trim() ? 'pointer' : 'default', display: 'flex', alignItems: 'center' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill={input.trim() ? "#5288c1" : "none"} stroke={input.trim() ? "#5288c1" : "#7f91a4"} strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </PhoneFrame>
+  );
+}
+
