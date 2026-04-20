@@ -8,9 +8,9 @@
     "theme_dark": "Dunkles Design"
   },
   "home": {
-    "label": "// portfolio · {{count}} Projekte · 2 Kontinente",
-    "h1": "Jeder Bot",
-    "h2": "landet irgendwo.",
+    "label": "// Full-Stack · {{count}} Projekte · 2 Kontinente",
+    "h1": "Jedes Projekt",
+    "h2": "liefert echte Ergebnisse.",
     "sub": "4 Telegram-Bots und 6 Web-Apps, für echte Teams in Europa entwickelt.",
     "hint": "Node berühren zum Vorschauen. Klicken zum Öffnen.",
     "stats_bots": "Bots",
@@ -38,7 +38,8 @@
     "contact_label": "// kontakt",
     "contact_kicker": "schnellste Antwort auf Telegram",
     "contact_title": "Kontakt aufnehmen.",
-    "contact_sub": "Anstellung, Freelance, freundliche Nachrichten — alles willkommen."
+    "contact_sub": "Anstellung, Freelance, freundliche Nachrichten — alles willkommen.",
+    "about_sub_part2": "Telegram-Bots und Web-Apps für echte Teams."
   },
   "about": {
     "section_label": "// über mich · 01",

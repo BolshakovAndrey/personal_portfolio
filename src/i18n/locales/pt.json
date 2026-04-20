@@ -8,9 +8,9 @@
     "theme_dark": "Modo escuro"
   },
   "home": {
-    "label": "// portfolio · {{count}} projetos · 2 continentes",
-    "h1": "Cada bot",
-    "h2": "funciona em algum lugar.",
+    "label": "// Full-Stack · {{count}} projetos · 2 continentes",
+    "h1": "Cada projeto",
+    "h2": "gera resultados reais.",
     "sub": "4 bots do Telegram e 6 apps web, implantados para equipes reais na Europa.",
     "hint": "Passe o mouse sobre um nó para visualizar. Clique para abrir.",
     "stats_bots": "Bots",
@@ -38,7 +38,8 @@
     "contact_label": "// contato",
     "contact_kicker": "resposta mais rápida no Telegram",
     "contact_title": "Vamos conversar.",
-    "contact_sub": "Contratação, freelance, mensagens amigáveis — tudo bem-vindo."
+    "contact_sub": "Contratação, freelance, mensagens amigáveis — tudo bem-vindo.",
+    "about_sub_part2": "Bots do Telegram e aplicativos web para equipes reais."
   },
   "about": {
     "section_label": "// sobre · 01",

@@ -8,9 +8,9 @@
     "theme_dark": "Tamna tema"
   },
   "home": {
-    "label": "// portfolio · {{count}} projekata · 2 kontinenta",
-    "h1": "Svaki bot",
-    "h2": "radi negde u svetu.",
+    "label": "// Full-Stack · {{count}} projekata · 2 kontinenta",
+    "h1": "Svaki projekat",
+    "h2": "donosi prave rezultate.",
     "sub": "4 Telegram bota i 6 web aplikacija, razvijenih za prave timove širom Evrope.",
     "hint": "Pređite mišem za pregled. Kliknite za otvaranje.",
     "stats_bots": "Botova",
@@ -38,7 +38,8 @@
     "contact_label": "// kontakt",
     "contact_kicker": "najbrži odgovor na Telegramu",
     "contact_title": "Stupite u kontakt.",
-    "contact_sub": "Zapošljavanje, freelance, prijateljske poruke — sve je dobrodošlo."
+    "contact_sub": "Zapošljavanje, freelance, prijateljske poruke — sve je dobrodošlo.",
+    "about_sub_part2": "Telegram botovi i veb aplikacije za realne timove."
   },
   "about": {
     "section_label": "// o meni · 01",

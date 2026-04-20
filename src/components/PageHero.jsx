@@ -1,5 +1,111 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
+
+function TerminalBio({ t }) {
+  const [index, setIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const roles = [
+    'Backend Development',
+    'Frontend Development',
+    'Full-stack Development',
+    'Telegram Bot Development',
+    'AI Solutions Development'
+  ];
+  
+  const typingSpeed = isDeleting ? 40 : 80;
+  const pauseTime = 2000;
+
+  useEffect(() => {
+    let timer;
+    const currentRole = roles[index];
+
+    if (!isDeleting && displayText === currentRole) {
+      timer = setTimeout(() => setIsDeleting(true), pauseTime);
+    } else if (isDeleting && displayText === '') {
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % roles.length);
+    } else {
+      timer = setTimeout(() => {
+        setDisplayText(currentRole.substring(0, isDeleting ? displayText.length - 1 : displayText.length + 1));
+      }, typingSpeed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, roles]);
+
+  const syntax = {
+    keyword: '#ff79c6',
+    variable: '#8be9fd',
+    string: '#f1fa8c',
+    operator: '#f8f8f2',
+    comment: '#6272a4',
+    prompt: '#50fa7b',
+    icon_apple: '#ffffff',
+    icon_home: '#8be9fd',
+    icon_path: '#6272a4',
+    icon_arrow: '#ff5555'
+  };
+
+  const lastLogin = new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+
+  return (
+    <div style={{ 
+      marginTop: 24, 
+      fontFamily: 'JetBrains Mono, monospace', 
+      fontSize: 'clamp(12px, 0.9vw, 15px)', 
+      lineHeight: 1.8,
+      padding: '20px',
+      background: 'rgba(0,0,0,0.3)',
+      borderRadius: '8px',
+      border: '1px solid rgba(255,255,255,0.05)',
+      maxWidth: 640
+    }}>
+      {/* Last Login Header */}
+      <div style={{ color: syntax.comment, marginBottom: 12, fontSize: '0.85em' }}>
+        Last login: {lastLogin} on ttys001
+      </div>
+
+      {/* Line 1: Real Zsh Prompt */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <span style={{ color: syntax.icon_apple }}></span>
+          <span style={{ color: syntax.icon_home }}>🏠</span>
+          <span style={{ color: syntax.icon_path }}>~</span>
+          <span style={{ color: syntax.icon_arrow }}>❯</span>
+        </div>
+        <div style={{ flex: 1, minWidth: 200 }}>
+          <span style={{ color: syntax.variable }}>specialize</span>
+          <span style={{ color: syntax.operator, margin: '0 8px' }}>--in</span>
+          <span style={{ color: syntax.string }}>'{displayText}'</span>
+          <motion.span 
+            animate={{ opacity: [1, 0] }} 
+            transition={{ repeat: Infinity, duration: 0.8 }}
+            style={{ width: 8, height: 16, background: syntax.prompt, display: 'inline-block', marginLeft: 4, verticalAlign: 'middle' }} 
+          />
+        </div>
+        <div style={{ color: syntax.comment, fontSize: '0.8em', opacity: 0.7 }}>
+           {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+        </div>
+      </div>
+
+      {/* Line 2 Content */}
+      <div style={{ marginTop: 8, display: 'flex', flexWrap: 'wrap', gap: '0 8px', paddingLeft: 70 }}>
+         <span style={{ color: syntax.keyword }}>const</span>
+         <span style={{ color: syntax.variable }}>mission</span>
+         <span style={{ color: syntax.operator }}>=</span>
+         <span style={{ color: syntax.string }}>"{t('hero.about_sub_part2', { defaultValue: 'Telegram-боты и веб-приложения для реальных команд.' })}"</span>
+      </div>
+      
+      {/* Line 3 Status */}
+      <div style={{ marginTop: 4, color: syntax.comment, fontSize: '0.85em', paddingLeft: 70 }}>
+         // status: <span style={{ color: syntax.prompt }}>ready_to_deploy</span>
+      </div>
+    </div>
+  );
+}
 
 export default function PageHero({ page }) {
   const { t } = useTranslation();
@@ -62,18 +168,22 @@ export default function PageHero({ page }) {
           {m.title}
         </h1>
 
-        <p className="page-enter-up" style={{
-          marginTop: 24,
-          maxWidth: 560,
-          fontFamily: 'Inter, sans-serif',
-          fontSize: 'clamp(15px, 1.2vw, 18px)',
-          color: 'var(--fg)',
-          opacity: 0.6,
-          lineHeight: 1.55,
-          animationDelay: '150ms',
-        }}>
-          {m.sub}
-        </p>
+        {page === 'about' ? (
+          <TerminalBio t={t} />
+        ) : (
+          <p className="page-enter-up" style={{
+            marginTop: 24,
+            maxWidth: 560,
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 'clamp(15px, 1.2vw, 18px)',
+            color: 'var(--fg)',
+            opacity: 0.6,
+            lineHeight: 1.55,
+            animationDelay: '150ms',
+          }}>
+            {m.sub}
+          </p>
+        )}
 
         <div style={{
           marginTop: 40,

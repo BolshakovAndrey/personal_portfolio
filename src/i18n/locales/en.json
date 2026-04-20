@@ -8,9 +8,9 @@
     "theme_dark": "Switch to dark mode"
   },
   "home": {
-    "label": "// portfolio · {{count}} projects · 2 continents",
-    "h1": "Every bot",
-    "h2": "ships somewhere.",
+    "label": "// full-stack · {{count}} projects · 2 continents",
+    "h1": "Every project",
+    "h2": "delivers real results.",
     "sub": "4 Telegram bots and 6 web apps, deployed for real teams across Europe.",
     "hint": "Hover a node to preview. Click to open live.",
     "stats_bots": "Bots",
@@ -38,7 +38,8 @@
     "contact_label": "// contact",
     "contact_kicker": "fastest response on telegram",
     "contact_title": "Get in touch.",
-    "contact_sub": "Hiring, freelance, friendly DMs — all welcome."
+    "contact_sub": "Hiring, freelance, friendly DMs — all welcome.",
+    "about_sub_part2": "Telegram bots and web apps for real-world teams."
   },
   "about": {
     "section_label": "// about · 01",

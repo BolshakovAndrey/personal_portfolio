@@ -8,9 +8,9 @@
     "theme_dark": "切换暗色模式"
   },
   "home": {
-    "label": "// 作品集 · {{count}} 个项目 · 2 大洲",
-    "h1": "每个机器人",
-    "h2": "都在某处运行。",
+    "label": "// 全栈 · {{count}} 个项目 · 2 个大洲",
+    "h1": "每一个项目",
+    "h2": "都带来实际成果。",
     "sub": "4 个 Telegram 机器人和 6 个网页应用，为欧洲各地的真实团队部署。",
     "hint": "悬停节点预览。点击查看详情。",
     "stats_bots": "机器人",
@@ -38,7 +38,8 @@
     "contact_label": "// 联系",
     "contact_kicker": "Telegram 回复最快",
     "contact_title": "联系我。",
-    "contact_sub": "招聘、自由职业、友好交流 — 均欢迎。"
+    "contact_sub": "招聘、自由职业、友好交流 — 均欢迎。",
+    "about_sub_part2": "为真实团队量身定制的 Telegram 机器人和 Web 应用程序。"
   },
   "about": {
     "section_label": "// 关于 · 01",
