@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '../../components/PageHero';
 import axios from 'axios';
 import { PhoneFrame } from '../../components/Globe/Mockups';
@@ -180,12 +181,21 @@ function InteractiveChatForm({ t }) {
     { id: 2, textKey: 'contact.chat.ask_name', defaultText: "What's your name?", sender: 'bot', timeKey: 'contact.chat.now', defaultTime: 'Now' }
   ]);
   const [input, setInput] = useState('');
-  const [step, setStep] = useState('NAME'); // NAME, EMAIL, MSG, DONE
+  const [step, setStep] = useState('NAME'); 
+  const [isTyping, setIsTyping] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const addBotMessage = (msgObj) => {
+    setIsTyping(true);
+    setTimeout(() => {
+      setMessages(prev => [...prev, { id: Date.now(), ...msgObj, sender: 'bot' }]);
+      setIsTyping(false);
+    }, 1200);
+  };
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (!input.trim() || step === 'DONE') return;
+    if (!input.trim() || step === 'DONE' || isTyping) return;
     
     const newVal = input.trim();
     const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -194,18 +204,24 @@ function InteractiveChatForm({ t }) {
 
     if (step === 'NAME') {
       setForm(f => ({ ...f, name: newVal }));
-      setTimeout(() => {
-        setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.ask_email', nameVar: newVal, defaultText: `Nice to meet you, {{name}}! What's your email?`, sender: 'bot', timeText: timeNow }]);
-        setStep('EMAIL');
-      }, 600);
+      addBotMessage({ 
+        textKey: 'contact.chat.ask_email', 
+        nameVar: newVal, 
+        defaultText: `Nice to meet you, {{name}}! What's your email?`,
+        timeText: timeNow 
+      });
+      setStep('EMAIL');
     } else if (step === 'EMAIL') {
       setForm(f => ({ ...f, email: newVal }));
-      setTimeout(() => {
-        setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.ask_message', defaultText: "Got it. What message would you like to send?", sender: 'bot', timeText: timeNow }]);
-        setStep('MESSAGE');
-      }, 600);
+      addBotMessage({ 
+        textKey: 'contact.chat.ask_message', 
+        defaultText: "Got it. What message would you like to send?",
+        timeText: timeNow 
+      });
+      setStep('MESSAGE');
     } else if (step === 'MESSAGE') {
       setForm(f => ({ ...f, message: newVal }));
+      setIsTyping(true);
       setTimeout(() => {
          axios.post('https://sheet.best/api/sheets/49b0e9e0-12d5-4879-a9b7-a82907ebb26a', {
              Name: form.name, Email: form.email, Subject: 'Chat Form', Message: newVal
@@ -214,10 +230,13 @@ function InteractiveChatForm({ t }) {
             setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.sent', defaultText: "Message sent! I'll get back to you ASAP. 🚀", sender: 'bot', timeText: timeNow }]);
          })
          .catch((err) => {
-            setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.error', defaultText: "Oops, my server seems to be hitting its limits right now! 😅 But no worries, you can just click my Telegram or Email links to the left to reach me.", sender: 'bot', timeText: timeNow }]);
+            setMessages(prev => [...prev, { id: Date.now(), textKey: 'contact.chat.error', defaultText: "Oops, my server seems to be hitting its limits right now!", sender: 'bot', timeText: timeNow }]);
+         })
+         .finally(() => {
+            setIsTyping(false);
+            setStep('DONE');
          });
-         setStep('DONE');
-      }, 800);
+      }, 1000);
     }
   };
 
@@ -267,6 +286,14 @@ function InteractiveChatForm({ t }) {
                </div>
             </div>
           ))}
+
+          {isTyping && (
+             <div style={{ alignSelf: 'flex-start', background: '#182533', padding: '8px 16px', borderRadius: '12px 12px 12px 4px', color: '#fff', display: 'flex', gap: 4 }}>
+                <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1, delay: 0 }} style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />
+                <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />
+                <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} style={{ width: 4, height: 4, borderRadius: '50%', background: '#fff' }} />
+             </div>
+          )}
         </div>
 
         {/* Input */}
