@@ -12,6 +12,17 @@ const CustomCursor = () => {
     const cursorYSpring = useSpring(cursorY, springConfig);
 
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const mql = window.matchMedia('(pointer: coarse)');
+            setIsMobile(mql.matches);
+            const onChange = (e) => setIsMobile(e.matches);
+            mql.addEventListener('change', onChange);
+            return () => mql.removeEventListener('change', onChange);
+        }
+    }, []);
 
     useEffect(() => {
         const updateMousePosition = (e) => {
@@ -55,6 +66,8 @@ const CustomCursor = () => {
             border: 'none',
         }
     };
+
+    if (isMobile) return null;
 
     return (
         <React.Fragment>

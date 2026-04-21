@@ -11,6 +11,15 @@ import zh from './locales/zh.json';
 
 const savedLang = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();
 
+const getOSLang = () => {
+    if (typeof navigator !== 'undefined') {
+        const lang = (navigator.language || navigator.userLanguage || '').split('-')[0];
+        if (['en', 'de', 'ru', 'sr', 'es', 'pt', 'zh'].includes(lang)) {
+            return lang;
+        }
+    }
+    return 'en';
+};
 i18n
   .use(initReactI18next)
   .init({
@@ -23,7 +32,7 @@ i18n
       pt: { translation: pt },
       zh: { translation: zh },
     },
-    lng: savedLang || 'en',
+    lng: savedLang || getOSLang(),
     fallbackLng: 'en',
     interpolation: { escapeValue: false },
   });

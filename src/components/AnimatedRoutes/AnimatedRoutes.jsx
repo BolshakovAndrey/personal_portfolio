@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Home from "../../pages/home/Home";
@@ -22,6 +22,7 @@ const AnimatedRoutes = () => {
                     <Route path="about" element={<PageWrapper><About /></PageWrapper>} />
                     <Route path="portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
                     <Route path="contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </AnimatePresence>
         </>

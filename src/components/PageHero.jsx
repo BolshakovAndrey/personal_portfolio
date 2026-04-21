@@ -2,31 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const TERMINAL_ROLES = [
+  'Backend Development',
+  'Frontend Development',
+  'Full-stack Development',
+  'Telegram Bot Development',
+  'AI Solutions Development'
+];
+
 function TerminalBio({ t }) {
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  const roles = [
-    'Backend Development',
-    'Frontend Development',
-    'Full-stack Development',
-    'Telegram Bot Development',
-    'AI Solutions Development'
-  ];
   
   const typingSpeed = isDeleting ? 40 : 80;
   const pauseTime = 2000;
 
   useEffect(() => {
     let timer;
-    const currentRole = roles[index];
+    const currentRole = TERMINAL_ROLES[index];
 
     if (!isDeleting && displayText === currentRole) {
       timer = setTimeout(() => setIsDeleting(true), pauseTime);
     } else if (isDeleting && displayText === '') {
       setIsDeleting(false);
-      setIndex((prev) => (prev + 1) % roles.length);
+      setIndex((prev) => (prev + 1) % TERMINAL_ROLES.length);
     } else {
       timer = setTimeout(() => {
         setDisplayText(currentRole.substring(0, isDeleting ? displayText.length - 1 : displayText.length + 1));
@@ -34,7 +34,7 @@ function TerminalBio({ t }) {
     }
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, roles]);
+  }, [displayText, isDeleting, index]);
 
   const syntax = {
     keyword: '#ff79c6',
