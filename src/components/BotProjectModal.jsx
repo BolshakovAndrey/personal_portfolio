@@ -66,7 +66,7 @@ const BOT_META = {
     big: ['Фитнес-челлендж', 'под контролем AI.', 'Реальное похудение.'],
     sub: '▎ AI-верификация скриншотов шагомера · Авторасчёт КБЖУ · Лидерборд в Telegram Mini App · Ежедневный рейтинг участников.',
     stack: ['Python 3.13', 'Aiogram 3', 'PostgreSQL', 'Redis', 'APScheduler', 'AI Vision', 'Telegram Mini App', 'Railway'],
-    url: 'https://t.me/slim_together_bot',
+    url: 'https://t.me/slim_together_bot?start=inv_564eb506',
     accent: 'oklch(78% 0.16 210)',
     miniApp: true,
   },
