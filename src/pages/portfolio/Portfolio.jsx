@@ -20,10 +20,9 @@ import ImgMovies from '../../assets/project-4.jpeg';
 import ImgTravel from '../../assets/project-3.jpeg';
 import ImgShop   from '../../assets/project-6.jpeg';
 import ImgEditor from '../../assets/Project-8.png';
-import ImgNutriFor from '../../assets/nutrifor.png';
 
 const BOT_IMAGE_MAP = { gc: GC2, ht: HT4, dl: DL2, mr: MR2 };
-const WEB_IMAGE_MAP = { lub: ImgLub, place: ImgPlace, movies: ImgMovies, travel: ImgTravel, shop: ImgShop, editor: ImgEditor, nutrifor: ImgNutriFor };
+const WEB_IMAGE_MAP = { lub: ImgLub, place: ImgPlace, movies: ImgMovies, travel: ImgTravel, shop: ImgShop, editor: ImgEditor };
 
 const BOT_NODES = [
   { id: 'gc',  city: 'Moscow',   lat: 55.75, lon: 37.61,  title: 'GoodChemistry',    sub: 'e-commerce bot',       url: 'http://t.me/online_gc_bot',       stack: 'Python · Aiogram · PostgreSQL' },
@@ -33,7 +32,6 @@ const BOT_NODES = [
 ];
 
 const WEB_NODES = [
-  { id: 'nutrifor', city: 'Europe', lat: 48.86, lon: 2.35, title: 'NutriFor', sub: 'nutrition & habits app', url: 'https://nutrifor.app/', kind: 'health', stack: 'React · Telegram Mini App · AI', accent: 'oklch(78% 0.15 140)' },
   { id: 'lub',    city: 'Belgrade',  lat: 44.79, lon: 20.45, title: 'Lyubimovka Festival', sub: 'festival platform', url: 'https://lubimovka.art',                                       kind: 'festival', stack: 'Python · Django · React', accent: 'oklch(78% 0.15 120)' },
   { id: 'place',  city: 'Amsterdam', lat: 52.37, lon:  4.89, title: 'The Place',           sub: 'social network',    url: 'https://bolshakov.nomoredomains.xyz',                         kind: 'social',   stack: 'React · Node.js',         accent: 'oklch(70% 0.15 250)' },
   { id: 'movies', city: 'Warsaw',    lat: 52.23, lon: 21.01, title: 'Movies Explorer',     sub: 'film library',      url: 'https://bolshakovav.nomoredomains.xyz/movies',                kind: 'movies',   stack: 'React · Node.js',         accent: 'oklch(70% 0.15 200)' },

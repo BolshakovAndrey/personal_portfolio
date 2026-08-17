@@ -51,6 +51,7 @@ const BOT_META = {
     sub: 'Мультипровайдерный AI (OpenAI → Anthropic → Gemini, auto-fallback). Трекинг еды, воды, шагов, тренировок, сна и настроения. Встроенный марафон со штрафной системой. Pro/Trial-подписка. Mini App. 782 теста.',
     stack: ['Python', 'Aiogram 3', 'FastAPI', 'PostgreSQL', 'Redis', 'APScheduler', 'Telegram Mini App', 'Railway'],
     url: 'https://t.me/NutrForProBot',
+    webUrl: 'https://nutrifor.app/',
     accent: 'oklch(78% 0.15 160)',
   },
   dl: {
@@ -211,6 +212,15 @@ export default function BotProjectModal({ botId, onClose }) {
               textDecoration: 'none', borderRadius: 4,
               boxShadow: `0 0 40px ${accent}55`,
             }}>{t('modal.open_telegram')}</a>
+            {meta.webUrl && (
+              <a href={meta.webUrl} target="_blank" rel="noopener noreferrer" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '14px 24px', background: 'transparent', color: '#f5f2ea',
+                fontFamily: 'JetBrains Mono, monospace', fontSize: 12, fontWeight: 600,
+                letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none',
+                border: '1px solid rgba(245,242,234,0.15)', borderRadius: 4,
+              }}>Открыть сайт →</a>
+            )}
             <button onClick={onClose} style={{
               padding: '14px 24px',
               background: 'transparent', color: '#f5f2ea',
