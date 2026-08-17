@@ -8,10 +8,16 @@ import ImgMovies from '../../assets/project-4.jpeg';
 import ImgTravel from '../../assets/project-3.jpeg';
 import ImgShop   from '../../assets/project-6.jpeg';
 import ImgEditor from '../../assets/Project-8.png';
+import ImgNutriFor from '../../assets/nutrifor.png';
 
-const WEB_IMAGE_MAP = { lub: ImgLub, place: ImgPlace, movies: ImgMovies, travel: ImgTravel, shop: ImgShop, editor: ImgEditor };
+const WEB_IMAGE_MAP = { lub: ImgLub, place: ImgPlace, movies: ImgMovies, travel: ImgTravel, shop: ImgShop, editor: ImgEditor, nutrifor: ImgNutriFor };
 
 const WEB_META = {
+  nutrifor: {
+    kicker: 'HEALTH APP · TELEGRAM MINI APP',
+    big: ['NutriFor', 'держать', 'ритм'],
+    sub: 'Веб-приложение и Telegram Mini App для питания и привычек: еда, вода, движение и самочувствие — в одной картине дня.',
+  },
   lub: {
     kicker: 'PLATFORM · REACT & DJANGO',
     big: ['Платформа', 'Любимовки', ''],
