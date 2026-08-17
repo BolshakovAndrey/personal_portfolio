@@ -439,7 +439,7 @@ function HeroSection({ theme }) {
                 <div style={{
                   fontFamily: '"Space Grotesk", sans-serif', fontSize: 32, fontWeight: 500,
                   color: 'var(--fg)', letterSpacing: '-0.02em',
-                }}>4+</div>
+                }}>5+</div>
               </div>
             </div>
           </div>
