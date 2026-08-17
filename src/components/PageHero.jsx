@@ -96,7 +96,9 @@ function TerminalBio({ t }) {
          <span style={{ color: syntax.keyword }}>const</span>
          <span style={{ color: syntax.variable }}>mission</span>
          <span style={{ color: syntax.operator }}>=</span>
-         <span style={{ color: syntax.string }}>"{t('hero.about_sub_part2', { defaultValue: 'Telegram-боты и веб-приложения для реальных команд.' })}"</span>
+         <span style={{ color: syntax.string }}>
+           "{t('hero.about_sub_part2', { defaultValue: 'Telegram-боты и веб-приложения для реальных клиентов и команд.' })}"
+         </span>
       </div>
       
       {/* Line 3 Status */}
