@@ -1,17 +1,14 @@
 {
   "files": {
     "main.css": "./static/css/main.39904c95.css",
-    "main.js": "./static/js/main.0f436c3d.js",
+    "main.js": "./static/js/main.b32e57d4.js",
     "static/js/787.1ed0c42c.chunk.js": "./static/js/787.1ed0c42c.chunk.js",
     "static/media/project-3.jpeg": "./static/media/project-3.d3dba107aed9234a6f8e.jpeg",
     "static/media/project-4.jpeg": "./static/media/project-4.babdd9ce965afe43bb16.jpeg",
     "static/media/project-2.jpeg": "./static/media/project-2.2d8ebc8eeeafb414e76b.jpeg",
     "static/media/project-6.jpeg": "./static/media/project-6.e49de50237efdd2de613.jpeg",
     "static/media/project-7.jpeg": "./static/media/project-7.1ab6a600320e08c53d66.jpeg",
-    "static/media/healthtracker-miniapp-03-reports.png": "./static/media/healthtracker-miniapp-03-reports.dfd1c86ae6f353096cb2.png",
-    "static/media/healthtracker-miniapp-02-results.png": "./static/media/healthtracker-miniapp-02-results.a5f45110babdc08b3a97.png",
     "static/media/project-5.jpeg": "./static/media/project-5.18585a2803fabe0bef58.jpeg",
-    "static/media/healthtracker-miniapp-01-dashboard.png": "./static/media/healthtracker-miniapp-01-dashboard.1a46d9ad112255bcf30d.png",
     "static/media/Project-8.png": "./static/media/Project-8.a2dbb8bd7030a1730905.png",
     "static/media/goodchemistry-03-product.png": "./static/media/goodchemistry-03-product.4848616b2d8e54cf045b.png",
     "static/media/marathon-02-chat.png": "./static/media/marathon-02-chat.1e73a808b347e26e53ab.png",
@@ -33,11 +30,11 @@
     "static/media/home.jpg": "./static/media/home.5761b2518c19a818cd09.jpg",
     "index.html": "./index.html",
     "main.39904c95.css.map": "./static/css/main.39904c95.css.map",
-    "main.0f436c3d.js.map": "./static/js/main.0f436c3d.js.map",
+    "main.b32e57d4.js.map": "./static/js/main.b32e57d4.js.map",
     "787.1ed0c42c.chunk.js.map": "./static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.39904c95.css",
-    "static/js/main.0f436c3d.js"
+    "static/js/main.b32e57d4.js"
   ]
 }
